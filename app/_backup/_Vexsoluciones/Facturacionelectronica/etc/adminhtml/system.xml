@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="vex_facturacion" translate="label" sortOrder="100">
+            <label>Vex Facturación</label>
+        </tab> 
+        <section id="facturacionelectronica_service" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Configuración</label>
+            <tab>vex_facturacion</tab>
+            <resource>Vexsoluciones_Facturacionelectronica::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="license" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>License</label>
+                </field>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <label>Nubefact</label>
+                <field id="title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Url de envío</label>
+                    <config_path>vexsoluciones/facturacionnubefact/urlenvio</config_path>
+                </field> 
+                <field id="token" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Token de autorización</label>
+                    <comment>Use {{name}} as Product Name placeholder</comment>
+                    <config_path>vexsoluciones/facturacionnubefact/token</config_path>
+                </field>
+
+
+                <!-- Hidden Fields Data -->
+                <field id="code_service" type="text" sortOrder="101" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>last_date</label>
+                </field>
+                <field id="token_start" type="text" sortOrder="102" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>setting</label>
+                </field>
+                <field id="token_expires" type="text" sortOrder="103" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>license_registered</label>
+                </field>
+                <!-- End Hidden Fields Data -->
+
+                <!-- Validation Configuration Data-->
+                <field id="activated" type="hidden" sortOrder="100" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>activated</label>
+                </field>
+                <field id="last_date" type="hidden" sortOrder="101" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>last_date</label>
+                </field>
+                <field id="setting" type="hidden" sortOrder="102" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>setting</label>
+                </field>
+                <field id="is_registered" type="text" sortOrder="103" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>license_registered</label>
+                </field>
+                <!-- End Validation Configuration Data-->
+            </group> 
+        </section>
+ 
+    </system>
+</config>

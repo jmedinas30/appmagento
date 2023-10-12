@@ -1,0 +1,37 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Catalog\Product\FindAStore */
+$locations = $block->getLocations();
+if ($block->isLocationOnProductEnabled()) :?>
+    <?php if ($block->isDetailedStoresDisplayMode()) : ?>
+        <div class="location-button" data-mage-init='{"findAStoreUpdate": {"target": "#find_a_store", "product":"<?=
+        $block->escapeHtmlAttr($block->getProductId()) ?>", "dataUrl": "<?= /* @noEscape */ $block->getBaseUrl(); ?>"}}'>
+            <div id="find_a_store">
+                <div class="location-button__select_option">
+                    <?= $block->escapeHtml(__('Available stores are loading ...')); ?>
+                </div>
+            </div>
+            <div class="places_list_all_stores show-location-text" id="showLocationButton" style="display: none"
+                 data-mage-init='{"locations-modal": {"target": "#locationPopup", "dataUrl": "<?=
+                 /* @noEscape */ $block->getBaseUrl(); ?>", "isShowMap": <?= (int)$block->isShowMap(); ?>, "googleMapsApiLibraryUrl": "<?=
+                 /* @noEscape */ $block->getGoogleMapsApiLibraryUrl(); ?>"}}'>
+                <?= $block->escapeHtml(
+                    __('View all stores')
+                ) ?>
+            </div>
+        </div>
+    <?php else : ?>
+        <div data-mage-init='{"findAStoreUpdate": {"target": "#find_a_store", "product":"<?=
+        $block->escapeHtmlAttr($block->getProductId()) ?>", "dataUrl": "<?= /* @noEscape */ $block->getBaseUrl(); ?>"}}'>
+            <button type="button" class="location-button" id="showLocationButton"
+                    data-mage-init='{"locations-modal": {"target": "#locationPopup", "dataUrl": "<?=
+                    /* @noEscape */ $block->getBaseUrl(); ?>", "isShowMap": <?= (int)$block->isShowMap(); ?>, "googleMapsApiLibraryUrl": "<?=
+                    /* @noEscape */ $block->getGoogleMapsApiLibraryUrl(); ?>"}}'>
+                <div id="find_a_store">
+                    <div class="location-button__select_option">
+                        <?= $block->escapeHtml(__('Available stores are loading ...')); ?>
+                    </div>
+                </div>
+            </button>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,114 @@
+<?php
+ 
+$comprobanteInfo = $block->getComprobanteInfo();
+
+$dataTxt = $comprobanteInfo['data_respuesta'];
+
+try{
+
+    if($dataTxt != ''){
+        $data = json_decode($dataTxt,true);
+    }
+ 
+} catch (Exception $e) {
+
+
+}
+
+
+if($comprobanteInfo): 
+
+    $tipo_de_comprobante_label = 'BOLETA';
+
+    if(  $comprobanteInfo['tipo_de_comprobante'] == \Vexsoluciones\Facturacionelectronica\Api\Data\CheckoutFacturacionFieldsInterface::COMPROBANTE_FACTURA ){
+        $tipo_de_comprobante_label = 'FACTURA';
+    }
+
+?>
+
+    <div class="block block-order-details-view">
+        <div class="block-title">
+            <strong> Información de facturación electrónica </strong>
+        </div>
+        <div class="block-content">
+
+            <table> 
+                <tr>
+                    <td width="120" style="padding: 3px 0px !important;">
+                       <strong><?php /* @escapeNotVerified */ echo __('Tipo') ?></strong>
+                    </td>
+                    <td width="30" align="center" style="padding: 3px 0px !important;">
+                        <span>:</span>
+                    </td>
+                    <td style="padding: 3px 0px !important;">
+                          <?php echo $tipo_de_comprobante_label;  ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 3px 0px !important;">
+                       <strong><?php /* @escapeNotVerified */ echo __('Número') ?></strong>
+                    </td>
+                    <td width="30" align="center" style="padding: 3px 0px !important;">
+                        <span>:</span>
+                    </td>
+                    <td style="padding: 3px 0px !important;">
+                          <?php echo $comprobanteInfo['serie'].'-'.str_pad($comprobanteInfo['numero'], 4, "0", STR_PAD_LEFT); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 3px 0px !important;">
+                        <strong><?php /* @escapeNotVerified */ echo __('Nombre/Razón social') ?></strong>
+                    </td>
+                    <td width="30" align="center" style="padding: 3px 0px !important;">
+                        <span>:</span>
+                    </td>
+                    <td style="padding: 3px 0px !important;">
+                        <?php echo trim($comprobanteInfo['cliente_denominacion']);  ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 3px 0px !important;">
+                        <strong><?php /* @escapeNotVerified */ echo __('Documento') ?></strong>
+                    </td>
+                    <td width="30" align="center" style="padding: 3px 0px !important;">
+                        <span>:</span>
+                    </td>
+                    <td style="padding: 3px 0px !important;">
+                          <?php echo trim($comprobanteInfo['cliente_numero_de_documento']);  ?>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td style="padding: 3px 0px !important;">
+                        <strong><?php /* @escapeNotVerified */ echo __('Dirección Fiscal') ?></strong>
+                    </td>
+                    <td width="30" align="center" style="padding: 3px 0px !important;">
+                        <span>:</span>
+                    </td>
+                    <td style="padding: 3px 0px !important;">
+                          <?php echo trim($comprobanteInfo['cliente_direccion']);  ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        
+                        <a href="<?PHP echo $data['enlace_del_pdf']; ?>" target="_blank"> Ver documento </a>
+                    </td>
+                </tr>
+            </table>
+
+          
+  
+        </div>
+
+    </div>
+
+<?php endif; ?>
+
+
+
+
+
+
+
+ 

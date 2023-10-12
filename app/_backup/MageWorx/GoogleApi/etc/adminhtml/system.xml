@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageworx" sortOrder="2001">
+            <label>MageWorx</label>
+        </tab>
+        <section id="mageworx_google_api" translate="label" type="text" sortOrder="10" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Google API</label>
+            <tab>mageworx</tab>
+            <resource>MageWorx_GoogleApi::config_locations</resource>
+            <group id="map" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Google Map API Settings]]></label>
+                <field id="map_api_key" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Google Maps API Key]]></label>
+                    <comment><![CDATA[Get API key from <a href="https://cloud.google.com/maps-platform/" target="_blank" >Google Maps Platform</a>]]></comment>
+                </field>
+                <field id="autocomplete_restrict_countries" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Show autocomplete results only from these countries]]></label>
+                    <comment><![CDATA[If you select specific countries, the chosen countries only will be used in the search functionality. You can choose up to 5 countries or leave blank to show results from all countries.]]></comment>
+                    <source_model>MageWorx\Locations\Model\Source\Country</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

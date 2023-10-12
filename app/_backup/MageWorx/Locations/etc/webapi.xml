@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!--Get All Existing Locations Codes -->
+    <route url="/V1/mwlocations" method="GET">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="getAllCodes"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Create Location By Code
+        Expected param: 'location' (array)
+                            Required location fields is 'code', 'name', 'store_ids', 'country_id',
+                                                        'region',  'city', 'address', 'postcode'
+        Note: use ',' as delimiter for 'product_skus' and 'store_ids' field
+     -->
+    <route url="/V1/mwlocations/create" method="POST">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="createWithSpecifiedCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Get Location by Code-->
+    <route url="/V1/mwlocations/:code" method="GET">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="getByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Get Location by Id-->
+    <route url="/V1/mwlocations/getById/:id" method="GET">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Update Location
+     Expected param: 'data' (array)
+     Note: use ',' as delimiter for 'product_skus' and 'store_ids' field
+     -->
+    <route url="/V1/mwlocations/update/:code" method="POST">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="saveByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Update Location Working Hours
+     Expected params:  'everyday'(array) or 'monday' (array) or
+     Example
+     "monday": {
+	        "from": "5:00 am",
+	        "to": "10:00 pm",
+	        "off": 0,
+	        "has_lunch_time": 1,
+	        "lunch_from": "5:00 am",
+	        "lunch_to": "10:00 pm"
+        }
+     -->
+    <route url="/V1/mwlocations/updateWorkingHours/:code" method="POST">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="updateWorkingHoursByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Delete Location by Code-->
+    <route url="/V1/mwlocations/:code" method="DELETE">
+        <service class="MageWorx\Locations\Api\LocationRepositoryInterface" method="deleteByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Add Products to Location
+        Note: use ',' as delimiter for 'product_skus'
+        Note: this function work only for locations with 'assign_type' = 'specific_products'
+    -->
+    <route url="/V1/mwlocations/addProducts/:code" method="POST">
+        <service class="MageWorx\Locations\Api\LocationManagementInterface" method="addProductsToLocation"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Delete Products from Location
+        Note: use ',' as delimiter for 'product_skus'
+        Note: this function work only for locations with 'assign_type' = 'specific_products'
+    -->
+    <route url="/V1/mwlocations/deleteProducts/:code" method="POST">
+        <service class="MageWorx\Locations\Api\LocationManagementInterface" method="deleteProductsFromLocation"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Delete All Old Products and Add New Products To Location
+        Note: use ',' as delimiter for 'product_skus'
+        Note: this function work only for locations with 'assign_type' = 'specific_products'
+    -->
+    <route url="/V1/mwlocations/updateProducts/:code" method="POST">
+        <service class="MageWorx\Locations\Api\LocationManagementInterface" method="updateProductInLocation"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Create Source For Location By Location Code
+    -->
+    <route url="/V1/mwlocations/createSource/:locationCode" method="POST">
+        <service class="MageWorx\Locations\Api\LocationSourceManagementInterface" method="createLocationSourceByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+
+    <!--Assign Source For Location By Location Code
+            Expected param: 'source_code' (string) - use 'create_new_source' to create source for location
+            Possible param: 'transfer_products' (true/false) - transfer products from location to new source
+            Note: 'transfer_products' function work only for creating new source 'source_code' = 'create_new_source'
+    -->
+    <route url="/V1/mwlocations/assignSource/:locationCode" method="POST">
+        <service class="MageWorx\Locations\Api\LocationSourceManagementInterface" method="assignSourceToLocationByCode"/>
+        <resources>
+            <resource ref="MageWorx_Locations::locations" />
+        </resources>
+    </route>
+</routes>

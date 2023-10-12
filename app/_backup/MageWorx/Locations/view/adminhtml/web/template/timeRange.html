@@ -1,0 +1,275 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+
+<span class="mw-before-time-picker">
+     <!-- ko i18n: 'From'--><!-- /ko -->
+</span>
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameFromHour,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: fromHour
+    "
+>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select> :
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameFromMinute,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: fromMinute
+"
+>
+    <option value="00">00</option>
+    <option value="05">05</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="25">25</option>
+    <option value="30">30</option>
+    <option value="35">35</option>
+    <option value="40">40</option>
+    <option value="45">45</option>
+    <option value="50">50</option>
+    <option value="55">55</option>
+</select>
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameFromDayPart,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: fromDayPart
+"
+>
+    <option value="am">am</option>
+    <option value="pm">pm</option>
+</select>
+<br />
+<span class="mw-before-time-picker mw-before-time-picker-to">
+    <!-- ko i18n: 'To'--><!-- /ko -->
+</span>
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameToHour,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: toHour
+    "
+>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select> :
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameToMinute,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: toMinute
+"
+>
+    <option value="00">00</option>
+    <option value="05">05</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="25">25</option>
+    <option value="30">30</option>
+    <option value="35">35</option>
+    <option value="40">40</option>
+    <option value="45">45</option>
+    <option value="50">50</option>
+    <option value="55">55</option>
+</select>
+<select class="admin__control-select" data-bind="
+    attr: {
+        name: nameToDayPart,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: toDayPart
+"
+>
+    <option value="am">am</option>
+    <option value="pm">pm</option>
+</select>
+<div class="mw-lunch-time">
+    <span class="mw-lunch-time-title">
+        <!-- ko i18n: 'Lunch Time'--><!-- /ko -->
+    </span>
+    <br />
+    <span class="mw-before-time-picker">
+        <!-- ko i18n: 'From'--><!-- /ko -->
+    </span>
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchFromHour,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchFromHour
+"
+    >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select> :
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchFromMinute,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchFromMinute
+"
+    >
+        <option value="00">00</option>
+        <option value="05">05</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <option value="55">55</option>
+    </select>
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchFromDayPart,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchFromDayPart
+"
+    >
+        <option value="am">am</option>
+        <option value="pm">pm</option>
+    </select>
+    <br />
+    <span class="mw-before-time-picker mw-before-time-picker-to">
+        <!-- ko i18n: 'To'--><!-- /ko -->
+    </span>
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchToHour,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchToHour
+"
+    >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select> :
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchToMinute,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchToMinute
+"
+    >
+        <option value="00">00</option>
+        <option value="05">05</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        <option value="55">55</option>
+    </select>
+    <select class="admin__control-select" data-bind="
+    attr: {
+        name: nameLunchToDayPart,
+        id: uid,
+        disabled: disabled,
+        'aria-describedby': noticeId
+    },
+    hasFocus: focused,
+    value: lunchToDayPart
+"
+    >
+        <option value="am">am</option>
+        <option value="pm">pm</option>
+    </select>
+</div>

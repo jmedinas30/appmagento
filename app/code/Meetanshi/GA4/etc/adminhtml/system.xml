@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="meetanshi" class="meetanshi" translate="label" sortOrder="100">
+            <label></label>
+        </tab>
+        <section id="mt_ga4" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>GA4</label>
+            <tab>meetanshi</tab>
+            <resource>Meetanshi_GA4::ga4</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GA4</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="gt_jscode" translate="label" type="textarea" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Tag Manager JS Code</label>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="gt_nonjscode" translate="label" type="textarea" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Tag Manager Non-JS Code</label>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="product_identifier" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Identifier</label>
+                    <source_model>Meetanshi\GA4\Model\Config\Source\Identifier</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="product_brand" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Product Brand</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="product_brand_attribute" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Brand Attribute</label>
+                    <source_model>Meetanshi\GA4\Model\Config\Source\ProductAtrribute</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/product_brand">1</field>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="enable_variant" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Variant</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="order_total" translate="label" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Success Page Total Calculation</label>
+                    <source_model>Meetanshi\GA4\Model\Config\Source\OrderTotal</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="exclude_order_trans" translate="label" type="select" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Tax From Transaction</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/order_total">grandtotal</field>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="exclude_shipping_trans" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Shipping From Transaction</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/order_total">grandtotal</field>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="exclude_shipping_includetax" translate="label" type="select" sortOrder="205" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Shipping Including Tax</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/exclutax_shipping">1</field>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="success_path" translate="label" type="textarea" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Success Page Paths</label>
+                    <comment><![CDATA[If you are using custom checkout, and the success page path is different from the default magento path: 'checkout/onepage/success', you can list it here to make sure the Transaction data is sent to GTM.
+                        If you have different success pages you can separate them with ",".
+                        Ex: checkout/onestepcheckout/success, checkout/mycustomcheckout/success]]></comment>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="exclude_order_zero" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude Orders with 0 value</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="measure_product_click" translate="label" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Measure Product Clicks</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This option allows ‘Product Click’ tracking on Category Page , Search results page and Related/Cross-sell/Up-sell product grids.]]></comment>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="child_parent" translate="label" type="select" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Child vs Parent</label>
+                    <source_model>Meetanshi\GA4\Model\Config\Source\ChildParent</source_model>
+                    <comment><![CDATA[Send Parent Id or Child id cart, checkout and thank you page]]></comment>
+                    <depends>
+                        <field id="mt_ga4/general/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="gtm_api" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>GTM API Configuration</label>
+                <depends>
+                    <field id="mt_ga4/general/enable">1</field>
+                </depends>
+                <field id="account_id" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account ID</label>
+                    <comment><![CDATA[<strong>For Example</strong>: 700374935. Check usage <a href="#">here</a>]]></comment>
+                </field>
+                <field id="container_id" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Container ID</label>
+                    <comment><![CDATA[<strong>For Example</strong>: 2293555. Check usage <a href="#">here</a>]]></comment>
+                </field>
+                <field id="measurement_id" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Measurement ID</label>
+                    <comment><![CDATA[<strong>For Example</strong>: G-123456789]]></comment>
+                </field>
+            </group>
+
+            <group id="json_export" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Json Export Options</label>
+                <depends>
+                    <field id="mt_ga4/general/enable">1</field>
+                </depends>
+                <field id="public_id" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Public ID</label>
+                    <comment><![CDATA[<strong>For Example</strong>: GTM-12X123]]></comment>
+                </field>
+                <field id="generate_json" translate="label" type="button" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label></label>
+                    <frontend_model>Meetanshi\GA4\Block\System\Config\Button</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,10 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Locations */
+?>
+<div class="mw-sl__content mw-sl__content--map-top mw-sl__content--map-hidden">
+    <?= /* @noEscape */  $block->getLocationsWrapperHtml('list_without_map'); ?>
+</div>
+<script type="text/javascript">
+    var mwLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getLocationsIds()))?>');
+    var availableLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getAvailableLocationsIds()))?>');
+</script>

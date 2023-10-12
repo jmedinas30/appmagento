@@ -1,0 +1,92 @@
+<?php
+
+?>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */
+            echo __('Información de facturación electrónica') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+            <table id="datos" width="100%">
+                <tbody>
+                <tr style="font-weight: bold">
+                    <td width="80" align="center">
+                        #
+                    </td>
+                    <td>
+                        <?php /* @escapeNotVerified */
+                        echo __('Tipo') ?>
+                    </td>
+                    <td align="center">
+                        <?php /* @escapeNotVerified */
+                        echo __('Número') ?>
+                    </td>
+                    <td align="center">
+                        <?php /* @escapeNotVerified */
+                        echo __('Cliente') ?>
+                    </td>
+                    <td align="center">
+                        <?php /* @escapeNotVerified */
+                        echo __('Documento') ?>
+                    </td>
+                    <td align="center">
+                        <?php /* @escapeNotVerified */
+                        echo __('Dirección fiscal') ?>
+                    </td>
+                    <td>
+                        <?php /* @escapeNotVerified */
+                        echo __('Código único') ?>
+                    </td>
+                    <td>
+                        <?php /* @escapeNotVerified */
+                        echo __('PDF') ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80" align="center">
+                        #
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <div align="center" style="margin-top: 15px;">
+                            <a href="" target="_blank">
+                                <button class="action-default scalable action-save action-secondary">
+                                    Ver PDF
+                                </button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+
+
+    </div>
+</section>
+
+<style>
+    #datos	{border:1px solid #ccc;padding:10px;}
+    #datos tr:nth-child(even) {background:#ccc;}
+    #datos td {padding:5px;}
+</style>

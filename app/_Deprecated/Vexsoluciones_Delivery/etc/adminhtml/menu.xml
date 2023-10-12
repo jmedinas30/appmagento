@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+
+
+		<add id="Vexsoluciones_Delivery::deliverymenu"
+			 title="Delivery"
+			 module="Magento_Backend"
+			 sortOrder="22"
+			 resource="Vexsoluciones_Delivery::deliverymenu" />
+		
+
+
+
+			<add id="Vexsoluciones_Delivery::sectionreglas"
+				 title="Costo de envios"
+				 module="Vexsoluciones_Delivery" 
+				 sortOrder="0"
+				 parent="Vexsoluciones_Delivery::deliverymenu"
+				 resource="Vexsoluciones_Delivery::deliverymenu" />
+
+				<add id="Vexsoluciones_Delivery::listasector"
+					 title="Lista"
+					 module="Vexsoluciones_Delivery" 
+					 sortOrder="0"
+					 parent="Vexsoluciones_Delivery::sectionreglas"
+					 action="vexsoluciones_delivery/sector"
+					 resource="Vexsoluciones_Delivery::sectionreglas" />
+
+
+			
+
+	</menu>
+</config>

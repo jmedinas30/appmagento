@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="mageworxpickup" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>MageWorx Pickup In Store</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Method Name</label>
+                </field>
+                <field id="price" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Price</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Calculate Handling Fee</label>
+                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                </field>
+                <field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Handling Fee</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title</label>
+                </field>
+                <field id="sallowspecific" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="91" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Ship to Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="92" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                </field>
+                <field id="specificerrmsg" translate="label" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Displayed Error Message</label>
+                </field>
+            </group>
+        </section>
+        <section id="mageworx_locations" translate="label" type="text" sortOrder="100" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <field id="email_template" translate="label comment" type="select" sortOrder="48" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Email Template for Pickup Orders]]></label>
+                    <comment><![CDATA[This setting allows you to assign a separate order confirmation email template, which will be sent to your customers, if they place the order with Pickup method. This email will be sent instead of the standard email. Leave empty to disable this feature. You can use the following variables in email template: ]]></comment>
+                    <source_model>MageWorx\Pickup\Model\Source\EmailTemplates</source_model>
+                    <frontend_model>MageWorx\Pickup\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                </field>
+                <field id="success_page_block" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Static Block for Success Page]]></label>
+                    <comment><![CDATA[This setting allows you to choose a static block, which will be shown at "Thank you" page, if the Pickup method is used. You can use the following variables in static block: ]]></comment>
+                    <source_model>MageWorx\Pickup\Model\Source\Blocks</source_model>
+                    <frontend_model>MageWorx\Pickup\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                </field>
+                <field id="enable_ready_for_pickup" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable 'Ready For Pickup'</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This setting allows you to enable the 'Ready for pickup' functionality for the orders. You will be able to send a notification to your customers, when their orders are ready for pickup.]]></comment>
+                </field>
+                <field id="email_template_ready_for_pickup" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Email Template for 'Ready For Pickup']]></label>
+                    <comment><![CDATA[This setting allows you to select a template for the email, which will be sent to the customers, when you click on "Ready for pickup" button. Available variables:]]></comment>
+                    <source_model>MageWorx\Pickup\Model\Source\EmailTemplates</source_model>
+                    <frontend_model>MageWorx\Pickup\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                    <depends>
+                        <field id="enable_ready_for_pickup">1</field>
+                    </depends>
+                </field>
+                <field id="email_to_store" translate="label comment" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Send Email to Store]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This setting enables the order email notifications to the store, which was selected for the pickup. The notification will be sent to the store's email address.]]></comment>
+                </field>
+                <field id="email_to_store_template" translate="label comment" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Store Email Notification]]></label>
+                    <comment><![CDATA[This setting allows you to set the email template, which will be sent to the store, if new order with the pickup option is placed.]]></comment>
+                    <source_model>MageWorx\Pickup\Model\Source\EmailTemplates</source_model>
+                    <depends>
+                        <field id="email_to_store">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="checkout" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Checkout Page Settings]]></label>
+                <field id="layout" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Popup Layout On Checkout]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\LayoutPreview</frontend_model>
+                    <source_model>MageWorx\StoreLocator\Model\Source\Layout</source_model>
+                    <comment><![CDATA[Note: If map not available 'Store List Without Map' will be use]]></comment>
+                </field>
+                <field id="order_out_of_stock" translate="label comment" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Allow To Pickup Out Of Stock Products]]></label>
+                    <comment><![CDATA[If enabled, the stores without the certain products will be visible for selection on the checkout page. It might be helpful, if you can delivery the ordered products to other stores.]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

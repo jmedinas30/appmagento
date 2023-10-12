@@ -1,0 +1,16 @@
+<?php
+/** @var $block \Meetanshi\GA4\Block\ProductPage */
+
+/** @var $helper \Meetanshi\GA4\Helper\Data */
+$helper = $this->helper('Meetanshi\GA4\Helper\Data');
+?>
+<?php if ($helper->isEnable()):
+    if ($block->getProductId()) :
+        $script = $block->getProductData();
+    ?>
+    <script>
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push(<?php echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($script); ?>);
+    </script>
+    <?php endif; ?>
+<?php endif; ?>

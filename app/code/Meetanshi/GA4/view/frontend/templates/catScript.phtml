@@ -1,0 +1,62 @@
+<?php
+
+/** @var \Meetanshi\GA4\Helper\Data $ga4Helper */
+$ga4Helper = $this->helper('Meetanshi\GA4\Helper\Data');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+
+if ($category != null) {
+    $categoryName = $category->getName();
+    $catId = $category->getId();
+}else{
+    $categoryName = 'Search Result';
+    $catId = 0;
+}
+
+if ($ga4Helper->isMeasureProductLinks()) :?>
+    <script>
+        require(
+            [
+                'jquery',
+                'mage/url',
+                'Magento_Checkout/js/model/full-screen-loader'
+            ],
+            function ($, url, fullScreenLoader) {
+                $(document).ready(function ($) {
+                    var categoryId = '<?php echo $catId;?>';
+
+                    setTimeout(function () {
+
+                        $('.product-items li.item.product-item').each(function(i)
+                        {
+                            var val = $(this).find(".product-item-info .product-item-details .product-item-actions .actions-secondary > a.gaclick").attr('onclick');
+
+                            $(this).find(".product-item-info a.product-item-photo").attr('onclick', val);
+                            $(this).find(".product-item-info .product-item-details a.product-item-link").attr('onclick', val);
+                        });
+
+                        var listUrl = url.build('ga4/index/categorypage?cat='+categoryId);
+
+                        $.ajax({
+                            url: listUrl,
+                            type: 'GET',
+                            data: categoryId,
+                            success: function (response) {
+                                fullScreenLoader.stopLoader();
+                                jQuery('body').append(response.listData);
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                fullScreenLoader.stopLoader();
+                                //self.addError(thrownError);
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false
+                        });
+                    }, 3500);
+                });
+            });
+    </script>
+<?php endif;?>
+

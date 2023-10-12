@@ -1,0 +1,220 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Adminhtml\MapPopup */
+$coordinates = $block->getMapCenter();
+?>
+
+<div id="mwGetCoordinatesModal" class="modal" style="display: none">
+    <div class="modal-content">
+        <div class="column-left">
+            <br><br>
+            <div class="mw-map-data-row mw-map-data-row-long">
+                <div class="value">
+                    <input name="search_text" class="mw-input-text admin__control-text" id="mw-sl_search_text" type="text" value="<?=
+                    $block->escapeHtml($block->getCurrentPlaceName()) ?>"/>
+
+                    <div class="mw-sl__input__backdrop"></div>
+                </div>
+            </div>
+            <table class="mw-map-data">
+                <tr class="mw-map-data-row">
+                    <br><br>
+                    <td class="label">
+                        <label for="mw_locator_zoom_value"><?= $block->escapeHtml(__('Zoom level')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <div class="slidecontainer">
+                            <div class="mw_locator_zoom_value"><?= $block->escapeHtml(__('Country'))?></div>
+                            <div class="mw_locator_zoom_value">&nbsp;</div>
+                            <div class="mw_locator_zoom_value"><?= $block->escapeHtml(__('City'))?></div>
+                            <div class="mw_locator_zoom_value">&nbsp;</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_zoom"></label>
+                    </td>
+                    <td class="value">
+                        <div class="slidecontainer">
+                            <input type="range" min="2" max="20" value="<?= $block->getDefaultScale()?>" class="slider" id="mw_locator_zoom">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                    </td>
+                    <td class="value">
+                        <div class="slidecontainer">
+                            <div class="mw_locator_zoom_value">&nbsp;</div>
+                            <div class="mw_locator_zoom_value"><?= $block->escapeHtml(__('Region'))?></div>
+                            <div class="mw_locator_zoom_value">&nbsp;</div>
+                            <div class="mw_locator_zoom_value"><?= $block->escapeHtml(__('Street'))?></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <span class="header"><?= $block->escapeHtml(__('Selected location')) ?>:</span>
+            <br><br>
+            <table class="mw-map-data">
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_country"><?= $block->escapeHtml(__('Country')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="mw_locator_country" name="mw_locator_country" class="input-text admin__control-text mw_country" disabled value=""><br><br>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_region"><?= $block->escapeHtml(__('State/region')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="mw_locator_region" name="mw_locator_region" class="input-text admin__control-text mw_administrative_area_level_1" disabled><br><br>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_city"><?= $block->escapeHtml(__('City')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="mw_locator_city" name="mw_locator_city" class="input-text admin__control-text mw_locality" disabled><br><br>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_latitude"><?= $block->escapeHtml(__('Latitude')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="mw_locator_latitude" name="mw_locator_latitude"
+                               class="input-text admin__control-text" disabled
+                               value=" <?= $block->escapeHtml($coordinates['lat'])?>"><br><br>
+                    </td>
+                </tr>
+                <tr class="mw-map-data-row">
+                    <td class="label">
+                        <label for="mw_locator_longitude"><?= $block->escapeHtml(__('Longitude')) ?>:</label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="mw_locator_longitude" name="mw_locator_longitude"
+                               class="input-text admin__control-text" disabled
+                               value="<?= $block->escapeHtml($coordinates['lng'])?>">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="map-block column-right">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+        <script>
+            var map;
+            var marker;
+            var geocoder;
+
+            function initialize() {
+                require(["jquery"], function ($) {
+                    initAutocomplete();
+                });
+                geocoder = new google.maps.Geocoder();
+                var center = new google.maps.LatLng({lat: <?= $block->escapeHtml($coordinates['lat'])?>, lng: <?= $block->escapeHtml($coordinates['lng'])?>});
+
+
+                var mapOptions = {
+                    center: center,
+                    zoom: <?= $block->escapeHtml($block->getMapZoom())?>,
+                    mapTypeId: google.maps.MapTypeId.roadmap,
+                    disableDefaultUI: true,
+                    zoomControl: true
+                }
+
+                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                marker = placeMarker(center, map);
+
+                map.addListener('click', function (e) {
+                    marker.setPosition(e.latLng);
+                    setCoordinates(e.latLng);
+                    setGoogleData(e.latLng);
+                });
+            }
+
+            function placeMarker(position, map) {
+                return new google.maps.Marker({
+                    position: position,
+                    map: map
+                });
+            }
+
+            function setCoordinates(latLng) {
+                jQuery("#mw_locator_latitude").val(latLng.lat());
+                jQuery("#mw_locator_longitude").val(latLng.lng());
+            }
+
+            function setGoogleData(latLng) {
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            fillFields(results[0]);
+                        }
+                    } else {
+                        console.log(status);
+                    }
+                })
+            }
+
+            function fillFields(result) {
+                result['address_components'].forEach( function (e) {
+                    switch (e['types'][0]) {
+                        case "locality":
+                            jQuery("#mw_locator_city").val(e['long_name']);
+                            break;
+                        case "administrative_area_level_1":
+                            jQuery("#mw_locator_region").val(e['long_name']);
+                            break;
+                        case "country":
+                            jQuery("#mw_locator_country").val(e['long_name']);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            }
+
+            require(["jquery"], function ($) {
+                <?php if ($coordinates['lat'] == 0 && $coordinates['lng'] == 0) : ?>
+                $(document).on('open_mw_map', function(event) {
+                    geocoder.geocode({
+                        'address': '<?= $block->escapeHtml(
+                            $block->getCurrentPlaceName()
+                        ) ?>'
+                    }, function (results, status) {
+                        if (status === 'OK') {
+                            center = results[0].geometry.location;
+                            map.setCenter(center);
+                            marker.setPosition(center);
+                            setCoordinates(center);
+                        } else {
+                            console.log('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                });
+                <?php endif; ?>
+
+                $(document).on('show_map_preview', function(event) {
+                    var coordinates = {
+                        lat: Number($("#mw_locator_latitude").val()),
+                        lng: Number($("#mw_locator_longitude").val())
+                    };
+                    var position = new google.maps.LatLng(coordinates);
+                    map.setCenter(position);
+                    map.setZoom(Number($("#mw_locator_zoom").val()));
+                });
+
+                $("#mw_locator_zoom").change(function(){
+                    map.setZoom(Number($("#mw_locator_zoom").val()));
+                });
+            });
+        </script>
+        <script src="<?= $block->escapeUrl($block->getScriptUrlWithParams())?>" async defer></script>

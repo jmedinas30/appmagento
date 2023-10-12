@@ -1,0 +1,85 @@
+<?php
+/** @var $block \Meetanshi\GA4\Block\System\Config\Button */
+$controller = $block->getCustomUrl();
+$btnUrl = $block->getCheckButton();
+echo $block->getButtonHtml();
+?>
+<input type="hidden" value="<?php echo $block->getFormKey(); ?>" name="api_form_key" id="api_form_key"/>
+<a id="download_ga4_json" target="_blank" href="<?php echo $block->getJsonDownload(); ?>"
+   class="action-default scalable  ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+   style="color: #eb5202;">
+    <span class="ui-button-text"><span><?php echo __("Download Json") ?></span></span>
+</a>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function ($) {
+        // $(document).ready(function(){
+
+        var formKey = $('#api_form_key');
+
+        jQuery.ajax({
+            url: '<?php echo $btnUrl ?>',
+            type: 'POST',
+            data: {
+                checkbtn: 1,
+                form_key: formKey.val()
+            },
+            showLoader: true,
+            asynchronous: false,
+            success: function (response) {
+                if (response.btn) {
+                    $('#download_ga4_json').show();
+                } else {
+                    $('#download_ga4_json').hide();
+                }
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+
+        var optionsForm = $('#config-edit-form');
+
+        var accountID = $('#mt_ga4_gtm_api_account_id'),
+            containerID = $('#mt_ga4_gtm_api_container_id'),
+            uaTrackingID = $('#mt_ga4_gtm_api_measurement_id'),
+            jsonExportPublicId = $("#mt_ga4_json_export_public_id");
+
+        function GenerateJson() {
+            jQuery.ajax({
+                url: '<?php echo $controller ?>',
+                data: {
+                    'form_key': formKey.val(),
+                    'account_id': accountID.val().trim(),
+                    'container_id': containerID.val().trim(),
+                    'ua_tracking_id': uaTrackingID.val().trim(),
+                    'public_id': jsonExportPublicId.val().trim(),
+                    'form_data': optionsForm.serialize()
+                },
+                type: "POST",
+                dataType: 'json',
+                showLoader: true,
+                asynchronous: true,
+                success: function (response) {
+                    if (response.jsonFileUrl) {
+                        $('#download_ga4_json').show();
+                    } else {
+                        $('#download_ga4_json').hide();
+                        alert(response.resMsg);
+                    }
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        }
+
+        jQuery('#download_ga4_json').hide();
+        jQuery('#generate_json').click(function () {
+            GenerateJson();
+        });
+        //  });
+    });
+</script>

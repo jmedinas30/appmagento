@@ -1,0 +1,20 @@
+<?php
+/** @var $block \MageWorx\Pickup\Block\Multishipping\FindAStore */
+?>
+<div id="mageworx-location-checkout-chooser" class="mw-store-locator-locations shipping_method-<?=
+$block->escapeHtmlAttr($block->getAddressId())
+?> mw-store-locator-multilocations">
+    <div class="mw-store-locator-locations">
+        <ul class="mw-sl__stores__list">
+            <li class="mw-sl__stores__list__item">
+                <div class="mw-sl__store__info"></div>
+            </li>
+        </ul>
+    </div>
+    <button type="button" id="showLocationButton-<?= $block->escapeHtmlAttr($block->getAddressId())?>"
+            class="showLocationButtonMultishipping"
+            data-mage-init='{"locations-modal": {"target": "#locationPopup", "addressId": "<?= $block->escapeHtmlAttr($block->getAddressId())?>"}}'>
+        <?= $block->escapeHtml(__('Select store for pickup...')) ?>
+    </button>
+</div>
+

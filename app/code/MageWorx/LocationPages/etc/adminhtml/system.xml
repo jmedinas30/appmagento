@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageworx" sortOrder="2001">
+            <label>MageWorx</label>
+        </tab>
+        <section id="mageworx_locations" translate="label" type="text" sortOrder="100" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <tab>mageworx</tab>
+            <group id="map" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <field id="run" translate="label comment" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Get Coordinates For Store Filter]]></label>
+                    <frontend_model>MageWorx\LocationPages\Block\Adminhtml\Config\GetCoordinatesForFilter</frontend_model>
+                    <comment><![CDATA[This feature helps reducing the number of requests to Google API by filling the missing coordinates for your filters by location from Google. These coordinates will be used to center the map on the front-end instead of retrieving them each time upon page load from Google.]]></comment>
+                    <depends>
+                        <field id="show_map">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="pages" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Store Pages]]></label>
+                <field id="base_path" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Base Path]]></label>
+                    <comment><![CDATA[If empty, 'stores' will be used.]]></comment>
+                    <validate>validate-identifier</validate>
+                </field>
+                <field id="url_path" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Store URL Path]]></label>
+                    <source_model>MageWorx\LocationPages\Model\Source\UrlPath</source_model>
+                </field>
+                <field id="url_key" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Store URL Key]]></label>
+                    <validate>validate-no-empty</validate>
+                    <source_model>MageWorx\LocationPages\Model\Source\UrlKey</source_model>
+                </field>
+                <field id="create_redirects" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Create Redirect From Old Urls]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If enabled, redirect from old page url to new will be created for each store every time when settings 'Base Path', 'Store URL Path', 'Store URL Key' changed.]]></comment>
+                </field>
+                <field id="add_breadcrumbs" translate="label comment" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Add Breadcrumbs]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_products" translate="label comment" type="select" sortOrder="110" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Show Products On Store Page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If enabled, the available products will be shown on the store page.]]></comment>
+                </field>
+                <field id="layout" translate="label comment" type="select" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Layout]]></label>
+                    <depends>
+                        <field id="show_products">1</field>
+                    </depends>
+                    <source_model>MageWorx\LocationPages\Model\Source\Layout</source_model>
+                </field>
+                <field id="include_ln" translate="label comment" type="select" sortOrder="130" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Include Navigation]]></label>
+                    <depends>
+                        <field id="show_products">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="display_mode" translate="label comment" type="select" sortOrder="140" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display Mode]]></label>
+                    <depends>
+                        <field id="show_products">1</field>
+                    </depends>
+                    <source_model>MageWorx\LocationPages\Model\Source\DisplayMode</source_model>
+                </field>
+                <field id="default_sort" translate="label comment" type="select" sortOrder="160" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default Product Listing Sort By]]></label>
+                    <depends>
+                        <field id="show_products">1</field>
+                    </depends>
+                    <source_model>MageWorx\LocationPages\Model\Source\Sortby</source_model>
+                </field>
+                <field id="default_meta_robots" translate="label comment" type="select" sortOrder="170" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Meta Robots</label>
+                    <source_model>MageWorx\Locations\Model\Source\MetaRobots</source_model>
+                </field>
+                <field id="add_to_sitemap" translate="label comment" type="select" sortOrder="180" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Add to Sitemap]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>MageWorx\LocationPages\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                    <comment><![CDATA[This setting is activated if %1 or %2 is installed.]]></comment>
+                    <attribute type="comment_args">
+                        <link_1><![CDATA[<a href="https://marketplace.magento.com/mageworx-module-seosuiteultimate.html" target="_blank">MageWorx SEO Suite</a>]]></link_1>
+                        <link_2><![CDATA[<a href="https://marketplace.magento.com/mageworx-module-sitemapsuitemeta.html" target="_blank">Sitemap Suite</a>]]></link_2>
+                    </attribute>
+                </field>
+            </group>
+            <group id="list" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Country, Region, City Pages]]></label>
+                <field id="meta_robots" translate="label comment" type="select" sortOrder="210" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Meta Robots</label>
+                    <source_model>MageWorx\Locations\Model\Source\MetaRobots</source_model>
+                </field>
+                <field id="meta_title" translate="label comment" type="text" sortOrder="220" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Meta Title]]></label>
+                    <comment><![CDATA[Use %1 to add current page name]]></comment>
+                    <attribute type="comment_args">
+                        <link_1><![CDATA[[name]]]></link_1>
+                    </attribute>
+                    <frontend_model>MageWorx\LocationPages\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                </field>
+                <field id="meta_description" translate="label comment" type="textarea" sortOrder="230" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Meta Description]]></label>
+                    <comment><![CDATA[Use %1 to add current page name. Maximum 255 chars. Meta Description should optimally be between 150-160 characters]]></comment>
+                    <attribute type="comment_args">
+                        <link_1><![CDATA[[name]]]></link_1>
+                    </attribute>
+                    <frontend_model>MageWorx\LocationPages\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                </field>
+                <field id="meta_keywords" translate="label comment" type="textarea" sortOrder="240" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Meta Keywords]]></label>
+                    <comment><![CDATA[Use %1 to add current page name]]></comment>
+                    <attribute type="comment_args">
+                        <link_1><![CDATA[[name]]]></link_1>
+                    </attribute>
+                    <frontend_model>MageWorx\LocationPages\Block\Adminhtml\Config\Field\ExtendedComment</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

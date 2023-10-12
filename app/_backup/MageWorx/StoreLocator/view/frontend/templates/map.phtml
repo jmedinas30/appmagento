@@ -1,0 +1,178 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Map */
+$locations = $block->getLocations();
+if ($block->isShowMap()) : ?>
+    <div class="mw-sl__map" id="mw-sl-map"></div>
+    <script>
+        var map, geocoder;
+        var markers = [];
+        var locations = [];
+        var center = {'lat' : 0, 'lng' : 0};
+        var zoom = <?= $block->escapeJs($block->getMapZoom())?>;
+
+        function createMarker(location) {
+            return new google.maps.Marker({
+                position: location,
+                icon: '<?= $block->escapeHtml($block->getMapIcon())?>',
+                map: map
+                <?php if (count($locations) > 255) :?>
+                    , optimized: false
+                <?php endif; ?>
+            });
+        }
+
+        function initialize() {
+            var restriction;
+            <?php $countries = $block->getCountriesForAutocomplete();
+            if ($countries) :?>
+            var countries = JSON.parse('<?= $block->escapeJs(json_encode($block->getCountriesForAutocomplete()))?>');
+                restriction = {country: countries};
+            <?php endif; ?>
+
+            initAutocomplete(restriction);
+            geocoder = new google.maps.Geocoder();
+
+            <?php if ($block->getMapCenter()) :?>
+                center = new google.maps.LatLng(<?= $block->escapeHtml($block->getMapCenter())?>);
+            <?php elseif ($block->getDefaultPlace()) : ?>
+                geocoder.geocode({'address': '<?= $block->escapeHtml($block->getDefaultPlace()) ?>'}, function (results, status) {
+                    if (status === 'OK') {
+                        center = results[0].geometry.location;
+                        map.setCenter(center);
+                    } else {
+                        console.log('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            <?php endif; ?>
+
+            var mapOptions = {
+                center: center,
+                zoom: zoom,
+                mapTypeId: google.maps.MapTypeId.roadmap,
+                disableDefaultUI: true
+            };
+
+            //Create map
+            map = new google.maps.Map(document.getElementById("mw-sl-map"), mapOptions);
+
+            require(["jquery"], function ($) {
+                markers = [];
+                //Add markers on map
+                <?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+                foreach ($locations as $location) :
+                    if (!$block->isLocationCoordinateCorrect($location)) {
+                        continue;
+                    }?>
+                    locations['<?= $block->escapeJs($location->getId())?>'] = <?= $block->escapeHtml($block->getLocationCoordinate($location))?>;
+                    var marker_<?= $block->escapeJs($location->getId())?> = createMarker(locations['<?= $block->escapeJs($location->getId())?>']);
+                    //Add click action for marker
+                    marker_<?= $block->escapeJs($location->getId())?>.addListener('click', function () {
+                        map.setCenter(locations['<?= $block->escapeJs($location->getId())?>']);
+                        map.setZoom(zoom + 5);
+                        showLocationDetails('<?= $block->escapeJs($location->getId())?>');
+                    });
+                markers.push(marker_<?= $block->escapeJs($location->getId())?>);
+                <?php endforeach; ?>
+
+                //Group markers in clusters
+                //It's possible to change gridSize for better clusters size depending on stores count
+                var markerCluster = new MarkerClusterer(map, markers,
+                    {
+                        imagePath: '<?= $block->escapeJs($block->getClusterIcon())?>',
+                        gridSize: 30
+                    });
+
+                //Set center on pin when show store details
+                $(document).on('set_map_center_on_location', function(event) {
+                    var code = event.target.id;
+                    if (!code) {
+                        code = $(event.target).closest('div').attr('id');
+                    }
+
+                    map.setCenter(locations[code]);
+                    map.setZoom(zoom + 5);
+                });
+
+                //Add action on filter click
+                $(document).on('set_map_center_on_filter_item', function(event) {
+                    var code = event.target.id;
+                    if (code !== 'all_stores') {
+                        geocoder.geocode({'address': $(event.target).html()}, function (results, status) {
+                            if (status === 'OK') {
+                                map.setCenter(results[0].geometry.location);
+                                map.setZoom(zoom + 1);
+                            } else {
+                                console.log('Geocode was not successful for the following reason: ' + status);
+                            }
+                        });
+                    }
+                });
+
+                //Set map on default center by click on pin
+                $('.pin-to-center').click(function () {
+                    map.setCenter(center);
+                    map.setZoom(zoom);
+                });
+
+                //Set center on pin when show current position and add pin
+                $(document).on('show_current_position', function(event, coordinates) {
+                    var currentPosition = new google.maps.LatLng(coordinates);
+                    map.setCenter(currentPosition);
+                });
+
+                function showLocationDetails(code) {
+                    $('.mw-sl__stores__filters').removeClass('is-active');
+                    $('.mw-sl__stores__details').removeClass('is-active');
+                    $('.location-header').removeClass('is-active');
+                    $('#location-header').toggleClass('is-active');
+
+                    if ($('#location-details_' + code).length < 1) {
+                        var currentPage =  $('.current_page_type').attr('id');
+                        $.ajax({
+                            url: '<?= $block->escapeUrl($block->getBaseUrl());?>store_locator/location/locationdetail?_=' + new Date().getTime() + '&id=' + code
+                                + '&current_page=' + currentPage,
+                            type: 'POST',
+                            isAjax: true,
+                            dataType: 'html',
+                            showLoader: true,
+                            data: mwLocations,
+                            success: function (xhr, status, errorThrown) {
+                                if ($('#location_details').length > 0) {
+                                    $(xhr).appendTo('#location_details');
+                                } else {
+                                    $(xhr).appendTo('#location_details_' + code);
+                                }
+
+                                $('#location-details_' + code).toggleClass('is-active');
+                                $('#location-header').toggleClass('is-active');
+                                $('#location-header_' + code).toggleClass('is-active');
+                            },
+                            error: function (xhr, status, errorThrown) {
+                                console.log('There was an error loading stores\' data.');
+                                console.log(errorThrown);
+                            }
+                        });
+                    } else {
+                        $('#location-details_' + code).toggleClass('is-active');
+                        $('#location-header').toggleClass('is-active');
+                        $('#location-header_' + code).toggleClass('is-active');
+                    }
+                    $('.location-info-block_' + code).addClass('mw-store-locator-active-place');
+                    if ($('.mw-sl__content--map-top').length) {
+                        $('.location-info-block_' + code).insertBefore(jQuery('.mw-sl__stores__list__item').first());
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: jQuery(".mw-sl__stores__list").offset().top
+                        }, 500);
+                    }
+                }
+            });
+        }
+
+        require(["jquery"], function ($) {
+            $(document).on('map_initialize', function () {
+                initialize();
+            });
+        });
+    </script>
+
+<?php endif; ?>

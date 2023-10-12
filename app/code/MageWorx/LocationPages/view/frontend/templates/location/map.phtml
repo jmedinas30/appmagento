@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Location Page view template
+ *
+ * @var $block MageWorx\LocationPages\Block\Map
+ */
+/** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+$location = $block->getLocation();
+?>
+
+<?php if ($block->isShowMap()) : ?>
+    <div class="store-map">
+        <div class="mw-sl__map" id="mw-sl-map"></div>
+        <script>
+            function initialize() {
+                var location = <?= $block->escapeHtml($block->getLocationCoordinate($location))?>;
+                var mapOptions = {
+                    center: new google.maps.LatLng(location),
+                    zoom: 12,
+                    mapTypeId: google.maps.MapTypeId.roadmap,
+                    disableDefaultUI: true
+                };
+
+                var map = new google.maps.Map(document.getElementById("mw-sl-map"), mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    icon: '<?= $block->escapeHtml($block->getMapIcon())?>',
+                    map: map
+                });
+            }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=quarterly&key=<?= $block->escapeHtml($block->getApiKey())
+        ?>&callback=initialize"></script>
+    </div>
+<?php endif; ?>

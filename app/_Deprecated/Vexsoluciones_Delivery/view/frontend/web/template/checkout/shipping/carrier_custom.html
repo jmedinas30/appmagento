@@ -1,0 +1,32 @@
+<div id="contenido-carrier-programado" data-bind="visible: (selectedMethod()!=null && selectedMethod().indexOf('delivery_programado')==0)">
+    <h3>Seleccione una fecha</h3>
+    <div>
+    	
+    	<div class="fieldset">
+    		
+    		<div class="field">
+			    <label class="label"><span>Seleccione el dia</span></label>
+			    <div class="control">
+					<select class="select" id="select-dia-delivery">
+					</select>
+			    </div>
+			</div>
+
+			<div class="field">
+			    <label class="label"><span>Seleccione una hora</span></label>
+			    <div class="control">
+					<select class="select" id="select-hora-delivery"></select>
+			    </div>
+			</div>
+
+    	</div>
+
+    </div>
+</div>
+<style type="text/css">
+	#contenido-carrier-programado{
+		margin-top: 8px;
+		margin-bottom: 25px;
+	}
+	
+</style>

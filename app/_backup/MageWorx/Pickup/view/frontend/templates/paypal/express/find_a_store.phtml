@@ -1,0 +1,45 @@
+<?php
+/** @var $block \MageWorx\Pickup\Block\Paypal\Express\FindAStore */
+?>
+<div id="mageworx-location-checkout-chooser"
+     class="block mw-store-locator-locations mw-store-locator-paypal-express"
+     data-mage-init='{"collapsible":{"openedState": "active", "saveState": true}}'>
+    <div class="title" data-role="title">
+        <strong id="mageworx-location-checkout-chooser-heading" role="heading" aria-level="2">
+            <?= $block->escapeHtml(__('Please, select the store for pickup...')); ?>
+        </strong>
+    </div>
+    <div id="mageworx-location-checkout-chooser-summary" data-bind="scope:'mageworxpickup'"
+         class="content" data-role="content" aria-labelledby="block-mageworx-location-checkout-chooser-heading">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+                    {
+                        "#mageworx-location-checkout-chooser-summary": {
+                            "Magento_Ui/js/core/app": <?= /** @noEscape */ $block->getJsLayout(); ?>
+                        }
+                    }
+
+
+        </script>
+        <script type="text/javascript">
+            require([
+                "jquery",
+                "mage/adminhtml/form"
+            ], function ($) {
+                updateStoreLocation();
+
+                $('#shipping-method').on('change', function () {
+                    updateStoreLocation();
+                });
+
+                function updateStoreLocation() {
+                    if ($('#shipping-method').val() === 'mageworxpickup_mageworxpickup') {
+                        $('#mageworx-location-checkout-chooser').show();
+                    } else {
+                        $('#mageworx-location-checkout-chooser').hide();
+                    }
+                };
+            });
+        </script>
+    </div>
+</div>

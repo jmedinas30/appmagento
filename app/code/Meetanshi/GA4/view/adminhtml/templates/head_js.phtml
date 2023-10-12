@@ -1,0 +1,12 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+$helper = $this->helper('Meetanshi\GA4\Helper\Data');
+?>
+<?php if ($helper->isEnable()) : ?>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
+    <?php echo $helper->getGAJSCode(); ?>
+<?php endif; ?>

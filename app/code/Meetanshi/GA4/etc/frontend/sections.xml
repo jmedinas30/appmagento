@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <!-- cart Product -->
+    <action name="checkout/cart/add">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="wishlist/index/add">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="catalog/product_compare/add">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="wishlist/index/allcart">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="wishlist/index/cart">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="checkout/cart/configure">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="checkout/sidebar/removeItem">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="ga4_customer_section"/>
+    </action>
+    <!-- checkout -->
+    <action name="rest/*/V1/carts/*/shipping-information">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/shipping-information">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="rest/*/V1/carts/*/payment-information">
+        <section name="ga4_customer_section"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/payment-information">
+        <section name="ga4_customer_section"/>
+    </action>
+</config>

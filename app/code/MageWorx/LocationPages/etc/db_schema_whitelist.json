@@ -1,0 +1,21 @@
+{
+    "mageworx_location_entity": {
+        "column": {
+            "location_page_path": true
+        }
+    },
+    "mageworx_location_list": {
+        "column": {
+            "id": true,
+            "name": true,
+            "type": true,
+            "parent_id": true,
+            "path": true,
+            "latitude": true,
+            "longitude": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

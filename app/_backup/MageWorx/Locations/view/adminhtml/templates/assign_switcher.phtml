@@ -1,0 +1,99 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+/** @var \MageWorx\Locations\Block\Adminhtml\Location\Edit\AssignSwitcher $block */
+
+?>
+<script>
+    require([
+        "jquery",
+        "mage/adminhtml/form"
+    ], function (jQuery) {
+        setTimeout(function () {
+            var assignType = jQuery('.mageworx_assign_type .admin__control-select');
+            var productTable = jQuery('#mageworx_location_products');
+            var applyByCrone = jQuery('.mageworx_apply_by_cron');
+            var sourcesCodes = jQuery('.mageworx_source_code .admin__control-select');
+            var sources = jQuery('.mageworx_source_code');
+            var transferField = jQuery('.mageworx_transfer_products');
+            var condition = jQuery('.rule-tree');
+            var assignTypeElement = document.getElementById(assignType.attr('id'));
+            var sourcesCodesElement = document.getElementById(sourcesCodes.attr('id'));
+            var currentSource = '<?= $block->getCurrentSourceCode()?>';
+
+            assignUpdate();
+            sourceUpdate();
+
+            assignType.on('change', function () {
+                assignUpdate();
+            });
+
+            sourcesCodes.on('change', function () {
+                sourceUpdate();
+            });
+
+            /**
+             * Update on 'Choose Source' changed
+             */
+            function sourceUpdate() {
+                if (assignTypeElement.value === 'products_from_source') {
+                    if (sourcesCodesElement.value === 'create_new_source') {
+                        hideAllExcept(sources, transferField);
+                    } else if (sourcesCodesElement.value === currentSource) {
+                        hideAllExcept(sources, productTable);
+                    } else {
+                        hideAllExcept(sources);
+                    }
+                }
+            }
+
+            /**
+             * Update on Assign Type' changed
+             */
+            function assignUpdate() {
+                if (assignTypeElement.value === 'condition') {
+                    hideAllExcept(condition);
+                } else if (assignTypeElement.value === 'specific_products') {
+                    hideAllExcept(productTable);
+                } else if (assignTypeElement.value === 'products_from_source') {
+                    sourceUpdate();
+                } else {
+                    hideAllExcept();
+                }
+            }
+
+            /**
+             * Hide fields
+             */
+            function hideAllExcept(exception = null, exception2 = null) {
+                if (condition !== exception && condition !== exception2) {
+                    condition.hide();
+                    applyByCrone.hide();
+                } else {
+                    condition.show();
+                    applyByCrone.show();
+                }
+
+                if (productTable !== exception && productTable !== exception2) {
+                    productTable.hide();
+                } else {
+                    productTable.show();
+                }
+
+                if (sources !== exception && sources !== exception2) {
+                    sources.hide();
+                } else {
+                    sources.show();
+                }
+
+                if (transferField !== exception && transferField !== exception2) {
+                    transferField.hide();
+                } else {
+                    transferField.show();
+                }
+            }
+        }, 500);
+    });
+</script>

@@ -1,0 +1,14 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Locations */
+?>
+<div class="mw-sl__content mw-sl__content--map-top">
+    <?= /* @noEscape */  $block->getLocationsMapHtml(); ?>
+    <?= /* @noEscape */  $block->getLocationsWrapperHtml('list'); ?>
+</div>
+<script type="text/javascript">
+    var mwLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getLocationsIds()))?>');
+    var isWorkingHoursEnabled =  <?= /* @noEscape */ (int)$block->isWorkingHoursEnabled(); ?>;
+    var availableLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getAvailableLocationsIds()))?>');
+</script>
+
+<?= /* @noEscape */$block->getGoogleMapScript(); ?>

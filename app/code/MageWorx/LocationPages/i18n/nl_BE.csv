@@ -1,0 +1,69 @@
+Load Coordinates,Laad Coördinaten
+Home,Thuis
+Go to Home Page,Ga naar de startpagina
+Filter list successfully loaded...,Filterlijst succesvol geladen...
+There are no filter without coordinates.,Er zijn geen filters zonder coördinaten.
+We can't find a page for default store view.,We kunnen geen pagina vinden voor de standaard winkelweergave.
+We can't find a store.,We kunnen geen winkel vinden.
+Could not save coordinates for next places: ,Kon geen coördinaten opslaan voor volgende locaties:
+Empty data,Lege gegevens
+Could not save the locationList: %1,Kon de locatielijst niet opslaan: %1
+Could not delete the locationList: %1,Kon de locatielijst niet verwijderen: %1
+Grid,Raster
+List,Lijst
+-- Please Select --,-- Selecteer alstublieft --
+Empty,Leeg
+1 column,1 kolom
+2 columns with left bar,2 kolommen met linker zijbalk
+2 columns with right bar,2 kolommen met rechter zijbalk
+3 columns,3 kolommen
+Store Address,Winkeladres
+Store Name,Winkelnaam
+Store Code,Winkelcode
+Country,Land
+Region,Regio
+City,Stad
+Location Pages,Locatiepagina's
+View,Bekijk
+There are %1 places with empty coordinates in database.,Er zijn %1 plaatsen met lege coördinaten in de database.
+"Click this button to load coordinates for places. They will be used at map filter(by country, state, city).","Klik op deze knop om coördinaten voor plaatsen te laden. Ze worden gebruikt bij de kaartfilter (op land, staat, stad)."
+coordinates successfully saved.,Coördinaten succesvol opgeslagen.
+"Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality","Sla alstublieft de Google Maps Api Key op in de ""MageWorx -> Google Api"" sectie om deze functionaliteit te gebruiken."
+Get direction,Routebeschrijving krijgen
+Store description,Winkelbeschrijving
+Instagram icon,Instagram-pictogram
+Facebook icon,Facebook-pictogram
+Whatsapp icon,WhatsApp-pictogram
+Skype icon,Skype-pictogram
+frontend_label,frontend_label
+In Stock,Op voorraad
+Out Of Stock,Niet op voorraad
+Hours,Uren
+Closed,Gesloten
+Lunch time,Lunchtijd
+Get Coordinates For Store Filter,Coördinaten ophalen voor winkelfilter
+Save the settings prior to load coordinates.,Sla de instellingen op voordat u coördinaten laadt.
+Store Pages,Winkelpagina's
+Base Path,Basispad
+"If empty, 'stores' will be used.","Als leeg, wordt 'winkels' gebruikt."
+Store URL Path,Winkel-URL-pad
+Store URL Key,Winkel-URL-sleutel
+Create Redirect From Old Urls,Maak omleiding vanaf oude URL's
+"If enabled, redirect from old page url to new will be created for each store every time when settings 'Base Path', 'Store URL Path', 'Store URL Key' changed.","Indien ingeschakeld, wordt er elke keer dat de instellingen 'Basispad', 'Winkel-URL-pad' of 'Winkel-URL-sleutel' wijzigen, een omleiding gemaakt van de oude paginakoppeling naar de nieuwe voor elke winkel."
+Add Breadcrumbs,Voeg broodkruimels toe
+Show Products On Store Page,Toon producten op de winkelpagina
+"If enabled, the available products will be shown on the store page.","Als ingeschakeld, worden de beschikbare producten getoond op de winkelpagina."
+Layout,Indeling
+Include Navigation,Inclusief navigatie
+Display Mode,Weergavemodus
+Default Product Listing Sort By,Standaard sorteren op productvermelding
+Default Meta Robots,Standaard Meta Robots
+Add to Sitemap,Toevoegen aan Sitemap
+This setting is activated if %1 or %2 is installed.,Deze instelling is geactiveerd als %1 of %2 is geïnstalleerd.
+"Country, Region, City Pages","Land-, Regio- en Stadpagina's"
+Meta Robots,Meta Robots
+Meta Title,Meta Titel
+Use %1 to add current page name,Gebruik %1 om de huidige paginanaam toe te voegen
+Meta Description,Meta Beschrijving
+Use %1 to add current page name. Maximum 255 chars. Meta Description should optimally be between 150-160 characters,Gebruik %1 om de huidige paginanaam toe te voegen. Maximaal 255 tekens. Meta Beschrijving moet optimaal tussen de 150-160 tekens zijn
+Meta Keywords,Meta Keywords

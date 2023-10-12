@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MageWorx_Locations::stores" title="MageWorx Stores" module="MageWorx_Locations" sortOrder="100"
+             parent="Magento_Backend::stores" resource="MageWorx_Locations::stores"/>
+        <add id="MageWorx_Locations::locations" title="MageWorx Stores" module="MageWorx_Locations" sortOrder="10"
+             parent="MageWorx_Locations::stores" action="mageworx_locations/location/index/"
+             resource="MageWorx_Locations::locations"/>
+        <add id="MageWorx_Locations::settings" title="Settings" module="MageWorx_Locations" sortOrder="50"
+             parent="MageWorx_Locations::stores" action="adminhtml/system_config/edit/section/mageworx_locations/"
+             resource="Magento_Config::config"/>
+        <add id="MageWorx_Locations::datatransfer" title="Import/Export MageWorx Stores" sortOrder="50"
+             module="MageWorx_Locations" parent="Magento_Backend::system_convert" action="mageworx_locations/datatransfer/importExport"
+             resource="MageWorx_Locations::datatransfer"/>
+    </menu>
+</config>

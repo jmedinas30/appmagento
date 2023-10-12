@@ -1,0 +1,28 @@
+<?php
+
+/** @var $block \Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare */
+
+/** @var \Meetanshi\GA4\Helper\Data $ga4Helper */
+$ga4Helper = $this->helper('Meetanshi\GA4\Helper\Data');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+$escaper = $objectManager->get('Magento\Framework\Escaper');
+
+if ($category != null) {
+    $categoryName = $category->getName();
+}else{
+    $categoryName = 'Search Result';
+}
+$iterator = 2;
+$product = $block->getProduct();
+
+if ($ga4Helper->isMeasureProductLinks() && $ga4Helper->isEnable()) :?>
+<a <?php if ($ga4Helper->isMeasureProductLinks()) :
+        echo $ga4Helper->addProductClick($product, $iterator-1, '', $categoryName);
+    endif; ?> href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>"
+        class="gaclick product-item-link"
+        tabindex="-1">
+</a>
+<?php
+endif;

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name ="checkout_type_multishipping_create_orders_single">
+        <observer name="mageworx_pickup_save_location_on_order" instance="MageWorx\Pickup\Observer\AddLocationToOrderMultishipping" />
+    </event>
+    <!-- Add store locator info to the new order email -->
+    <event name="email_order_set_template_vars_before">
+        <observer name="add_store_locator_info_to_email"
+                  instance="MageWorx\Pickup\Observer\AddLocationInfoToOrderEmail" />
+    </event>
+    <event name="sales_order_save_commit_after">
+        <observer name="send_email_to_store"
+                  instance="MageWorx\Pickup\Observer\SendEmailToStore" />
+    </event>
+</config>

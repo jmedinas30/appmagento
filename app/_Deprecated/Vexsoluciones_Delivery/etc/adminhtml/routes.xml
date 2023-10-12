@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blog
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="admin">
+		<route id="vexsoluciones_delivery" frontName="vexsoluciones_delivery">
+			<module name="vexsoluciones_delivery" />
+		</route>
+	</router>
+</config>

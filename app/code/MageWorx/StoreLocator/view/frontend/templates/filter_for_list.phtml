@@ -1,0 +1,86 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Filter */
+?>
+<div class="mw-sl__stores mw-filter_for_list">
+    <div class="mw-sl__stores__header">
+        <div class="mw-sl__stores__header__item mw-sl__stores__header__item_pin">
+            <i class="mw-sl__icon--pin">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/pin.svg'));?>"
+                     alt="<?= $block->escapeHtml(__('Pin icon'))?>"/>
+            </i></div>
+        <div class="mw-sl__stores__header__item">
+            <p id="sl__stores__current_place" class="mw-sl__stores__current"><?= $block->escapeHtml($block->getCurrentPlaceName()); ?></p>
+            <p class="mw-sl__stores__current mw-store-locator-inactive-place mw-sl__stores__current_all_stores">
+                <?= $block->escapeHtml(__('All Stores')); ?>
+            </p>
+            <?php foreach ($block->getParentFilterList() as $place) :?>
+                <p class="mw-sl__stores__current mw-store-locator-inactive-place mw-sl__stores__current_<?= $block->escapeHtml($place->getId()); ?>">
+                    <?= $block->escapeHtml($block->getPlaceNameWithRegion($place)); ?>
+                </p>
+            <?php endforeach; ?></div>
+    </div>
+    <div class="mw-sl__stores__filters">
+        <ul class="mw-sl__stores__details__icons">
+            <li class="mw-sl__stores__filters__item mw-sl__stores__filters__item-map">
+                <select name="mw-sl__stores__filter" id="mw-sl__stores__filters" class="mw-sl__select" style="width: 100%">
+                    <option value="all_stores" id="all_stores">
+                        <?= $block->escapeHtml(__('All Stores')); ?>
+                    </option>
+                    <?php foreach ($block->getParentFilterList() as $place) : ?>
+                        <option value="<?= $block->escapeHtml($place->getId()); ?>"
+                                id="mw-<?= $block->escapeHtml($place->getId()); ?>">
+                            <?= $block->escapeHtml($block->getPlaceNameWithRegion($place)); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </li>
+            <li class="mw-sl__stores__filters__item mw-sl__stores__filters__item-map mw-extra_attr">
+                <div class="mw-extra_attr_columns">
+                    <ul class="mw-sl__stores__details__icons" style="min-width: 300px;">
+                        <?php foreach ($block->getExtraAttributes() as $attribute) : ?>
+                            <li class="mw-sl__stores__details__website"  style="width: 50%;">
+                                <input type="checkbox"
+                                       id="<?= $block->escapeHtml($attribute['attribute_code']); ?>"
+                                       style="margin: 0 5px 0 0; position: inherit;">
+                                <i class="mw-sl__icon mw-sl__icon--website">
+                                    <?php $icon = $block->getAttributeIcon($attribute['attribute_code']);
+                                    if ($icon): ?>
+                                        <img src="<?= $block->escapeUrl($icon); ?>"
+                                             alt="<?= $block->escapeHtml(__($attribute['frontend_label'])) ?>"/>
+                                    <?php endif;?>
+                                </i>
+                                <span><?= $block->escapeHtml(__($attribute['frontend_label'])) ?><span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </li>
+            <li class="mw-sl__stores__details__website mw-sl__stores__filters__item" style="width: 100%;">
+                <a class="mw-sl__clear_all__submit"> <?= $block->escapeHtml(__('Clear all')) ?></a>
+                <button class="mw-sl__apply__submit"><?= $block->escapeHtml(
+                        __('Apply')
+                    ) ?></button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?= $block->getJsLink() ?>"></script>
+<script>
+    var locations = [];
+    var placesCoordinates = [];
+    //Add markers on map
+    <?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+    $locations = $block->getLocations();
+
+    foreach ($locations as $location) :?>
+    locations['<?= /** @noEscape */ (int)$location->getId()?>'] = <?= $block->escapeHtml($block->getLocationCoordinate($location))?>;
+    <?php endforeach; ?>
+
+    <?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+    $places = $block->getParentFilterList();
+
+    foreach ($places as $place) :?>
+    placesCoordinates['<?= /** @noEscape */ (int)$place->getId()?>'] = <?= $block->escapeHtml($block->getLocationCoordinate($place))?>;
+    <?php endforeach; ?>
+</script>

@@ -1,0 +1,74 @@
+
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice" style="display: flex;align-items: center;">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label style="" data-bind="attr: {'for': getCode()}" class="label">
+            <span  data-bind="text: getTitle()"></span>
+        </label>
+        <img src="" data-bind="attr: { src: window.checkoutConfig.imagen_pagoefectivo }" style="display: inline-block;height: 42px;margin-left: 15px;">
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div style="font-size: 15px; margin-bottom: 15px;">
+            
+            <div style="margin-bottom: 10px;" data-bind="html: window.checkoutConfig.pagoefectivo_detalle">
+                
+            </div>
+
+        </div>
+        <div class="fieldset" style="margin-bottom: 17px;">
+            
+            
+            <div class="field" style="margin-bottom: 10px;">
+                <label class="label">Tipo de documento</label>
+                <div class="control">
+                    <select style="width: 270px;max-width: 100%;" id="tipo_pagoefectivo"  name="tipo">
+                        <option value="DNI">Documento nacional de identidad</option>
+                        <option value="PAR">Partida</option>
+                        <option value="PAS">Pasaporte</option>
+                        <option value="LMI">Libreta militar</option>
+                        <option value="NAN">Otros</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field" style="margin-bottom: 10px;">
+                <label class="label">Número de documento de identidad</label>
+                <div class="control">
+                    <input style="width: 270px;max-width: 100%;" id="documento_pagoefectivo" type="text" name="documento">
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

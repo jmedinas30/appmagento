@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <delivery>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Vexsoluciones\Delivery\Model\Carrier\Delivery</model>
+                <type>I</type>
+                <specific_error_msg>No esta disponible</specific_error_msg>
+
+                <express>0</express>
+                <programado>0</programado>
+                <regular2>0</regular2>
+
+            </delivery>
+        </carriers>
+    </default>
+</config>

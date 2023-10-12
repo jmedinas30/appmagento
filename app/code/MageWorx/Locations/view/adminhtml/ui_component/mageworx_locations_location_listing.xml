@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                mageworx_locations_location_listing.mageworx_locations_location_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/edit"/>
+                <class>primary</class>
+                <label translate="true">Add Store</label>
+            </button>
+        </buttons>
+        <spinner>mageworx_locations_location_listing_columns</spinner>
+        <deps>
+            <dep>mageworx_locations_location_listing.mageworx_locations_location_listing_data_source
+            </dep>
+        </deps>
+    </settings>
+    <dataSource name="mageworx_locations_location_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>MageWorx_Locations::locations</aclResource>
+        <dataProvider class="MageWorxLocationsLocationGridDataProvider"
+                      name="mageworx_locations_location_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+            <filterSelect name="is_active" provider="${ $.parentName }">
+                <settings>
+                    <options class="MageWorx\Locations\Model\Source\Status"/>
+                    <caption translate="true">Select...</caption>
+                    <label translate="true">Status</label>
+                    <dataScope>is_active</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <massaction name="listing_massaction">
+            <action name="enable">
+                <settings>
+                    <url path="mageworx_locations/location/massEnable"/>
+                    <type>enable</type>
+                    <label translate="true">Enable</label>
+                </settings>
+            </action>
+            <action name="disable">
+                <settings>
+                    <url path="mageworx_locations/location/massDisable"/>
+                    <type>disable</type>
+                    <label translate="true">Disable</label>
+                </settings>
+            </action>
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected stores?</message>
+                        <title translate="true">Delete</title>
+                    </confirm>
+                    <url path="mageworx_locations/location/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="createSource">
+                <settings>
+                    <url path="mageworx_locations/location/massCreateSource"/>
+                    <type>createSource</type>
+                    <label translate="true">Create Source(With Products From Store)</label>
+                    <confirm>
+                        <message translate="true">Are you sure you want to create sources for selected stores?</message>
+                        <title translate="true">Create Source(With Products From Store)</title>
+                    </confirm>
+                </settings>
+            </action>
+            <action name="createSourceWithoutProducts">
+                <settings>
+                    <url path="mageworx_locations/location/massCreateSourceWithoutProducts"/>
+                    <type>createSourceWithoutProducts</type>
+                    <label translate="true">Create Source(Without Products)</label>
+                    <confirm>
+                        <message translate="true">Are you sure you want to create sources for selected stores?</message>
+                        <title translate="true">Create Source(Without Products)</title>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="mageworx_locations_location_listing_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        mageworx_locations_location_listing.mageworx_locations_location_listing.mageworx_locations_location_listing_columns_editor
+                    </item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>55</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="code">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Code</label>
+            </settings>
+        </column>
+        <column name="source_code">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Source Code</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="is_active" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="MageWorx\Locations\Model\Source\Status"/>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="is_pickup_available" component="Magento_Ui/js/grid/columns/select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Available for pickup</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Magento\Eav\Model\Entity\Attribute\Source\Boolean"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="is_working_hours_enabled" component="Magento_Ui/js/grid/columns/select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Working Hours Enabled</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="Magento\Eav\Model\Entity\Attribute\Source\Boolean"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="timezone" component="Magento_Ui/js/grid/columns/select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Timezone</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <settings>
+                <options class="MageWorx\Locations\Model\Source\Timezone"/>
+                <dataType>select</dataType>
+            </settings>
+        </column>
+        <column name="country_id" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="MageWorx\Locations\Model\Source\Country"/>
+                <dataType>select</dataType>
+                <filter>select</filter>
+                <label translate="true">Country</label>
+            </settings>
+        </column>
+        <column name="region" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="MageWorx\Locations\Model\Source\Region"/>
+                <dataType>select</dataType>
+                <filter>text</filter>
+                <label translate="true">Region</label>
+            </settings>
+        </column>
+        <column name="city">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">City</label>
+            </settings>
+        </column>
+        <column name="address">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Address</label>
+            </settings>
+        </column>
+        <column name="postcode">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Postcode</label>
+            </settings>
+        </column>
+        <column name="store_ids" class="MageWorx\Locations\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="order">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Order</label>
+            </settings>
+        </column>
+        <column name="date_created">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Created</label>
+            </settings>
+        </column>
+        <column name="date_modified">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Modified</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="MageWorx\Locations\Ui\Component\Listing\Column\LocationActions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

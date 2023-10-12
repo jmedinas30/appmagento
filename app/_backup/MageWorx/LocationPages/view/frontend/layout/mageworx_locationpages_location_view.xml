@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+       <!-- <css src="Magento_Swatches::css/swatches.css"/>-->
+        <css src="MageWorx_LocationPages::styles.css"/>
+        <css src="MageWorx_LocationPages::location_styles.css"/>
+        <css src="MageWorx_StoreLocator::location-styles.css"/>
+        <css src="MageWorx_StoreLocator::styles.css"/>
+        <link src="MageWorx_StoreLocator::js/locator.js"/>
+        <link src="MageWorx_StoreLocator::js/markerClusterer.js"/>
+    </head>
+    <body>
+        <referenceContainer name="page.messages">
+            <block class="MageWorx\LocationPages\Block\Location" name="mageworx_locationpage"
+                   template="MageWorx_LocationPages::location/content.phtml">
+            </block>
+        </referenceContainer>
+        <attribute name="class" value="page-with-filter"/>
+        <referenceContainer name="sidebar.main">
+            <block class="MageWorx\LocationPages\Block\Navigation\Location" name="catalog.leftnav" before="-"
+                   template="Magento_LayeredNavigation::layer/view.phtml"
+                   ifconfig="mageworx_locations/pages/include_ln">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalog.navigation.state"
+                       as="state"
+                       ifconfig="catalog/frontend/show_swatches_in_product_list"/>
+                <block class="MageWorx\LocationPages\Block\Navigation\FilterRenderer"
+                       name="catalog.navigation.renderer" as="renderer"
+                       template="Magento_LayeredNavigation::layer/filter.phtml"/>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <block class="Magento\Framework\View\Element\Template" name="catalog.compare.sidebar"
+                   template="Magento_Catalog::product/compare/sidebar.phtml"
+                   ifconfig="mageworx_locations/pages/show_products">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="compareProducts" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block class="MageWorx\LocationPages\Block\Customer\Sidebar"
+                   name="wishlist_sidebar"
+                   as="wishlist"
+                   template="Magento_Wishlist::sidebar.phtml"
+                   ifconfig="mageworx_locations/pages/show_products"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="MageWorx\LocationPages\Block\Location" name="mageworx_locationpage.products"
+                   template="MageWorx_LocationPages::location/products.phtml"
+                   ifconfig="mageworx_locations/pages/show_products">
+                <block class="MageWorx\LocationPages\Block\Location\ProductList"
+                       name="mageworx_location.products.list" as="product_list"
+                       template="Magento_Catalog::product/list.phtml">
+                    <container name="category.product.list.additional" as="additional"/>
+                    <block class="Magento\Framework\View\Element\RendererList"
+                           name="category.product.type.details.renderers" as="details.renderers">
+                        <block class="Magento\Framework\View\Element\Template"
+                               name="category.product.type.details.renderers.default" as="default"/>
+                    </block>
+                    <block class="Magento\Catalog\Block\Product\ProductList\Item\Container"
+                           name="category.product.addto" as="addto">
+                        <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                               name="category.product.addto.compare" as="compare"
+                               template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                    </block>
+                    <block class="MageWorx\LocationPages\Block\Location\ProductList\Toolbar"
+                           name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                        <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName">
+                        <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                    </action>
+                </block>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="product.info.main">
+            <block class="MageWorx\LocationPages\Block\Location\ProductList\Product\StockStatus" name="mageworx_location.product_status"
+                   before="product.info.price"
+                   template="MageWorx_LocationPages::location/product_status.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

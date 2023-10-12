@@ -1,0 +1,18 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\LocationsList */
+$locations = $block->getLocations();
+?>
+<div class="mw-sl__stores__list" id="mw-sl__stores__list_block">
+    <ul>
+        <?php /** @var $location \MageWorx\Locations\Api\Data\LocationInterface $location */
+        if (count($locations)) :
+            foreach ($locations as $location) : ?>
+                <?= /* @noEscape */
+                $block->getLocationInfoForListHtml($location); ?>
+            <?php endforeach; ?>
+            <div class="mw-sl__no-stores" style="display: none"><?= $block->escapeHtml(__('No stores found.')); ?></div>
+        <?php else : ?>
+            <div class="mw-sl__no-stores"><?= $block->escapeHtml(__('No stores found.')); ?></div>
+        <?php endif; ?>
+    </ul>
+</div>

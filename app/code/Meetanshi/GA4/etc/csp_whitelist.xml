@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="mt_gtmanager_gtm" type="host">*.googletagmanager.com</value>
+                <value id="mt_googletagmanager_gtm" type="host">https://www.googletagmanager.com</value>
+                <value id="mt_tagmanager_gtm" type="host">tagmanager.google.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="mt_gtm_analyticss" type="host">*.google-analytics.com</value>
+                <value id="mt_gtm_analytics" type="host">https://www.google-analytics.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

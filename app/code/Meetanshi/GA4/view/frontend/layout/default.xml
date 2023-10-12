@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Meetanshi\GA4\Block\Head\Gtm" name="meetanshi_gtm_js" before="-" template="Meetanshi_GA4::head_js.phtml" ifconfig="mt_ga4/general/enable"/>
+        </referenceBlock>
+        <referenceContainer name="after.body.start">
+            <block name="meetanshi_gtm_nonjs" class="Meetanshi\GA4\Block\Head\Gtm" template="Meetanshi_GA4::nonjs.phtml" before="-" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+        <container name="ga4.before.body.end" as="ga4_before_body_end" label="GA4 Before Body End" after="before.body.end">
+            <block ifconfig="mt_ga4/general/enable" class="Magento\Framework\View\Element\Template" name="meetanshi_ga4_footer" after="-" template="Meetanshi_GA4::ga4_footer.phtml"/>
+        </container>
+
+        <referenceBlock name="category.product.addto">
+            <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare" name="category.addto"  after="compare" template="Meetanshi_GA4::custom.phtml" ifconfig="mt_ga4/general/enable"/>
+        </referenceBlock>
+
+        <referenceBlock name="catalogsearch.product.addto">
+            <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare" name="search.addto"  after="compare" template="Meetanshi_GA4::custom.phtml" ifconfig="mt_ga4/general/enable"/>
+        </referenceBlock>
+
+        <!--<referenceBlock name="category.products.list">-->
+        <referenceContainer name="category.product.list.additional">
+            <block class="Magento\Catalog\Block\Category\View" name="custom.cate" template="Meetanshi_GA4::catScript.phtml" after="-" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+
+        <!-- product clicks for cross, related, upsell -->
+        <referenceBlock name="checkout.cart.crosssell">
+            <action method="setTemplate" ifconfig="mt_ga4/general/enable">
+                <argument name='template' xsi:type='string'>Meetanshi_GA4::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.upsell">
+            <action method="setTemplate" ifconfig="mt_ga4/general/enable">
+                <argument name='template' xsi:type='string'>Meetanshi_GA4::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="catalog.product.related">
+            <action method="setTemplate" ifconfig="mt_ga4/general/enable">
+                <argument name='template' xsi:type='string'>Meetanshi_GA4::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <!-- product clicks for cross, related, upsell -->
+    </body>
+</page>

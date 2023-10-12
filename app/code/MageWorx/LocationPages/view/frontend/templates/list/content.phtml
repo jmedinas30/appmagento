@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Location List view template
+ *
+ * @var $block MageWorx\LocationPages\Block\LocationList
+ */
+/** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+$location = $block->getCurrentLocationList();
+$children = $block->getChildLocations(); ?>
+<div id="mw-store-locator-countries">
+    <ul class="mw-sl__countries-list">
+        <?php if (count($children)) :
+            foreach ($children as $item) : ?>
+                <li class="mw-sl__countries-list__item">
+                    <a href="<?= $block->escapeUrl($item->getFullUrl()) ?>"><?= $block->escapeHtml($item->getName()) ?>
+                        <?php if ($item->getLocationCount()) : ?>
+                        <span class="mw-sl__countries-list__count">(<?= $block->escapeHtml($item->getLocationCount())?>)</span></a>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+</div>

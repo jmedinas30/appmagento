@@ -1,0 +1,69 @@
+Load Coordinates,Koordinaten laden
+Home,Startseite
+Go to Home Page,Zur Startseite gehen
+Filter list successfully loaded...,Filterliste erfolgreich geladen...
+There are no filter without coordinates.,Es gibt keine Filter ohne Koordinaten.
+We can't find a page for default store view.,Wir können keine Seite für die Standard-Store-Ansicht finden.
+We can't find a store.,Wir können keinen Laden finden.
+Could not save coordinates for next places: ,Konnte Koordinaten für die folgenden Orte nicht speichern:
+Empty data,Leere Daten
+Could not save the locationList: %1,Konnte die Standortliste nicht speichern: %1
+Could not delete the locationList: %1,Konnte die Standortliste nicht löschen: %1
+Grid,Raster
+List,Liste
+-- Please Select --,-- Bitte auswählen --
+Empty,Leer
+1 column,1 Spalte
+2 columns with left bar,2 Spalten mit linker Leiste
+2 columns with right bar,2 Spalten mit rechter Leiste
+3 columns,3 Spalten
+Store Address,Filialadresse
+Store Name,Filialname
+Store Code,Filialcode
+Country,Land
+Region,Region
+City,Stadt
+Location Pages,Seiten für Standorte
+View,Anzeigen
+There are %1 places with empty coordinates in database.,Es gibt %1 Orte mit leeren Koordinaten in der Datenbank.
+"Click this button to load coordinates for places. They will be used at map filter(by country, state, city).","Klicken Sie auf diese Schaltfläche, um Koordinaten für Orte zu laden. Sie werden beim Kartenfilter (nach Land, Bundesland, Stadt) verwendet."
+coordinates successfully saved.,Koordinaten erfolgreich gespeichert.
+"Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality","Bitte speichern Sie den Google Maps API-Schlüssel im Abschnitt ""MageWorx -> Google API"", um diese Funktion zu verwenden."
+Get direction,Wegbeschreibung erhalten
+Store description,Filialbeschreibung
+Instagram icon,Instagram-Symbol
+Facebook icon,Facebook-Symbol
+Whatsapp icon,Whatsapp-Symbol
+Skype icon,Skype-Symbol
+frontend_label,Frontend-Label
+In Stock,Auf Lager
+Out Of Stock,Nicht auf Lager
+Hours,Öffnungszeiten
+Closed,Geschlossen
+Lunch time,Mittagspause
+Get Coordinates For Store Filter,Koordinaten für Filialfilter abrufen
+Save the settings prior to load coordinates.,"Speichern Sie die Einstellungen, bevor Sie die Koordinaten laden."
+Store Pages,Filialseiten
+Base Path,Basispfad
+"If empty, 'stores' will be used.","Wenn leer, wird 'stores' verwendet."
+Store URL Path,Filial-URL-Pfad
+Store URL Key,Filial-URL-Schlüssel
+Create Redirect From Old Urls,Weiterleitungen von alten URLs erstellen
+"If enabled, redirect from old page url to new will be created for each store every time when settings 'Base Path', 'Store URL Path', 'Store URL Key' changed.","Wenn aktiviert, wird bei jeder Änderung der Einstellungen 'Basispfad', 'Filial-URL-Pfad' oder 'Filial-URL-Schlüssel' eine Weiterleitung von der alten Seiten-URL zur neuen für jede Filiale erstellt."
+Add Breadcrumbs,Breadcrumb hinzufügen
+Show Products On Store Page,Produkte auf der Filialseite anzeigen
+"If enabled, the available products will be shown on the store page.","Wenn aktiviert, werden die verfügbaren Produkte auf der Filialseite angezeigt."
+Layout,Layout
+Include Navigation,Navigation einbeziehen
+Display Mode,Anzeigemodus
+Default Product Listing Sort By,Standard-Sortierung für Produktlisten
+Default Meta Robots,Standard-Meta-Robots
+Add to Sitemap,Zur Sitemap hinzufügen
+This setting is activated if %1 or %2 is installed.,"Diese Einstellung ist aktiviert, wenn %1 oder %2 installiert ist."
+"Country, Region, City Pages","Seiten für Land, Region und Stadt"
+Meta Robots,Meta-Robots
+Meta Title,Meta-Titel
+Use %1 to add current page name,"Verwenden Sie %1, um den aktuellen Seitennamen hinzuzufügen"
+Meta Description,Meta-Beschreibung
+Use %1 to add current page name. Maximum 255 chars. Meta Description should optimally be between 150-160 characters,"Verwenden Sie %1, um den aktuellen Seitennamen hinzuzufügen. Maximal 255 Zeichen. Die Meta-Beschreibung sollte idealerweise zwischen 150-160 Zeichen liegen."
+Meta Keywords,Meta-Schlüsselwörter

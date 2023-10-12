@@ -1,0 +1,174 @@
+Conditions (don't add conditions to show all products),"Bedingungen (fügen Sie keine Bedingungen hinzu, um alle Produkte anzuzeigen)"
+Conditions,Bedingungen
+Delete,Löschen
+Are you sure you want to delete store?,"Sind Sie sicher, dass Sie den Store löschen möchten?"
+ID,ID
+Name,Name
+SKU,SKU
+Visibility,Sichtbarkeit
+Status,Status
+Price,Preis
+Sku,Artikelnummer
+Source Quantity,Quellmenge
+Save Store,Store speichern
+Import/Export MageWorx Stores,MageWorx Stores importieren/exportieren
+%1 stores were successfully created.,%1 Stores wurden erfolgreich erstellt.
+%1 rows were successfully imported.,%1 Zeilen wurden erfolgreich importiert.
+%1 errors generated. See system.log file for more information.,%1 Fehler generiert. Siehe system.log-Datei für weitere Informationen.
+Invalid file upload attempt,Ungültiger Datei-Upload-Versuch
+MageWorx Stores,MageWorx Stores
+Locations,Standorte
+The store has been deleted.,Der Store wurde gelöscht.
+We can't find a store to delete.,Wir können keinen Store zum Löschen finden.
+The store has been disabled.,Der Store wurde deaktiviert.
+We can't find a store to disable.,Wir können keinen Store zum Deaktivieren finden.
+Store,Store
+New Store,Neuer Store
+The store no longer exists.,Der Store existiert nicht mehr.
+The store has been enabled.,Der Store wurde aktiviert.
+We can't find a store to enable.,Wir können keinen Store zum Aktivieren finden.
+An error occurred while creating sources.,Beim Erstellen der Quellen ist ein Fehler aufgetreten.
+A total of %1 sources have been created.,Insgesamt wurden %1 Quellen erstellt.
+An error occurred while deleting record(s).,Beim Löschen von Datensätzen ist ein Fehler aufgetreten.
+A total of %1 record(s) have been deleted.,Insgesamt wurden %1 Datensätze gelöscht.
+An error occurred while disabling stores.,Beim Deaktivieren von Stores ist ein Fehler aufgetreten.
+A total of %1 stores have been disabled.,Insgesamt wurden %1 Stores deaktiviert.
+An error occurred while enabling stores.,Beim Aktivieren von Stores ist ein Fehler aufgetreten.
+A total of %1 stores have been enabled.,Insgesamt wurden %1 Stores aktiviert.
+"Store ""%1"" was successfully saved.","Store ""%1"" wurde erfolgreich gespeichert."
+Invalid file upload attempt.,Ungültiger Datei-Upload-Versuch.
+Data for import not found.,Daten für den Import nicht gefunden.
+. ' is required column(s).',. ' ist Pflichtspalte(n).'
+"There is no location with ""code""=%1 on default store view","Es gibt keinen Standort mit ""code""=%1 in der Standard-Store-Ansicht"
+Not enough data for import in this row.,Nicht genügend Daten für den Import in dieser Zeile.
+Store with code %1 don't exist,Store mit Code %1 existiert nicht
+%1' is a required property or value is invalid,%1' ist eine Pflichteigenschaft oder der Wert ist ungültig
+Open,Öffnet
+closes,Schließt
+Closed,Geschlossen
+opens,Öffnet
+"Field ""%1"" is required and cannot be empty.","Feld ""%1"" ist erforderlich und darf nicht leer sein."
+Could not save the location: %1,Der Standort konnte nicht gespeichert werden: %1
+"A location with code ""%1"" already exists.","Ein Standort mit dem Code ""%1"" existiert bereits."
+"Requested Location with ""code=%1"" doesn't exist","Angeforderter Standort mit ""code=%1"" existiert nicht"
+Could not delete the location: %1,Der Standort konnte nicht gelöscht werden: %1
+Requested Location doesn't exist,Angeforderter Standort existiert nicht
+Timezone value is invalid.,Zeitzonenwert ist ungültig.
+Meta Robots value is invalid.,Meta Robots-Wert ist ungültig.
+"Source ""%1"" for store %2 already created.","Quelle ""%1"" für Store %2 bereits erstellt."
+"Postcode is required field. Please, save store with postcode before create new source.","Postleitzahl ist ein Pflichtfeld. Bitte speichern Sie den Store mit Postleitzahl, bevor Sie eine neue Quelle erstellen."
+All Products,Alle Produkte
+By Condition,Nach Bedingung
+Specific Products,Bestimmte Produkte
+Products From Source,Produkte aus Quelle
+Customer location,Kundenstandort
+Default location,Standardstandort
+No Regions,Keine Regionen
+Create New Source,Neue Quelle erstellen
+Enable,Aktivieren
+Disable,Deaktivieren
+Use default,Standard verwenden
+Monday,Montag
+Tuesday,Dienstag
+Wednesday,Mittwoch
+Thursday,Donnerstag
+Friday,Freitag
+Saturday,Samstag
+Sunday,Sonntag
+Everyday,Jeden Tag
+Per Day Of Week,Pro Wochentag
+Open 24 hours a day,Rund um die Uhr geöffnet
+Edit,Bearbeiten
+"Delete ""${ $.$data.name}""","Löschen ""${ $.$data.name}"""
+Learn more about store attributes,Erfahren Sie mehr über Store-Attribute
+Import Stores,Stores importieren
+Export Only Default Values,Nur Standardwerte exportieren
+Yes,Ja
+No,Nein
+Export Stores,Stores exportieren
+This operation can take a long time in case you have a lot of stores,"Dieser Vorgang kann lange dauern, wenn Sie viele Stores haben"
+Download example CSV file,Beispiel-CSV-Datei herunterladen
+Download,Herunterladen
+From,Von
+To,Bis
+Lunch Time,Mittagspause
+Store Locator,Store Locator
+General,Allgemein
+Enable Working Hours,Arbeitszeiten aktivieren
+This setting allows you to show/hide the store's working hours. You also can hide working hours per store.,"Diese Einstellung ermöglicht es Ihnen, die Arbeitszeiten des Stores anzuzeigen/auszublenden. Sie können auch die Arbeitszeiten pro Store ausblenden."
+Back,Zurück
+General Information,Allgemeine Informationen
+Store Name,Store-Name
+Store Code,Store-Code
+Store View,Store-Ansicht
+Active,Aktiv
+Available for pickup,Abholung verfügbar
+Sort Order,Sortierreihenfolge
+"Allowed file types: jpeg, gif, png.","Erlaubte Dateitypen: jpeg, gif, png."
+Image,Bild
+Address,Adresse
+Timezone,Zeitzone
+"This setting allows you to set the timezone of the current store. ""Use default"" uses the timezone, set in Magento configuration.","Diese Einstellung ermöglicht es Ihnen, die Zeitzone des aktuellen Stores festzulegen. ""Standard verwenden"" verwendet die in der Magento-Konfiguration festgelegte Zeitzone."
+Country,Land
+State/Province,Bundesland/Provinz
+City,Stadt
+Zip Code,Postleitzahl
+Phone,Telefon
+Email,E-Mail
+Website,Website
+Facebook,Facebook
+Skype,Skype
+Instagram,Instagram
+WhatsApp,WhatsApp
+Working hours,Arbeitszeiten
+Has Lunch Time,Mittagspause vorhanden
+Sunday Day Off,Sonntag frei
+Sunday Has Lunch Time,Sonntag hat Mittagspause
+Monday Day Off,Montag frei
+Monday Has Lunch Time,Montag hat Mittagspause
+Tuesday Day Off,Dienstag frei
+Tuesday Has Lunch Time,Dienstag hat Mittagspause
+Wednesday Day Off,Mittwoch frei
+Wednesday Has Lunch Time,Mittwoch hat Mittagspause
+Thursday Day Off,Donnerstag frei
+Thursday Has Lunch Time,Donnerstag hat Mittagspause
+Friday Day Off,Freitag frei
+Friday Has Lunch Time,Freitag hat Mittagspause
+Saturday Day Off,Samstag frei
+Saturday Has Lunch Time,Samstag hat Mittagspause
+Products in store,Produkte im Store
+Assign Type,Zuweisungstyp
+Apply Condition By Cron,Bedingung per Cron anwenden
+"You can select an existing inventory source and the products will be loaded from the chosen source. If you choose to create a new inventory source for the current location, the source will be created automatically after saving the location. If you had assigned products to the location, you can transfer them to the new inventory source by selecting the check-box ""Transfer previously selected products to the new inventory source""","Sie können eine vorhandene Lagerquelle auswählen, und die Produkte werden aus der gewählten Quelle geladen. Wenn Sie sich entscheiden, eine neue Lagerquelle für den aktuellen Standort zu erstellen, wird die Quelle automatisch nach dem Speichern des Standorts erstellt. Wenn Sie Produkte dem Standort zugewiesen hatten, können Sie sie auf die neue Lagerquelle übertragen, indem Sie das Kontrollkästchen ""Zuvor ausgewählte Produkte auf die neue Lagerquelle übertragen"" auswählen."
+Choose Source,Quelle auswählen
+Transfer previously selected products to the new inventory source,Zuvor ausgewählte Produkte auf die neue Lagerquelle übertragen
+Store Page Setting,Store-Seiteneinstellung
+Meta Title,Meta-Titel
+Meta Description,Meta-Beschreibung
+Meta Keywords,Meta-Schlüsselwörter
+Meta Robots,Meta Robots
+Store attributes,Store-Attribute
+Gas Station,Tankstelle
+ATM,Geldautomat
+Pharmacy,Apotheke
+Tire center,Reifenzentrum
+Food court,Food Court
+Curbside pickup,Abholung am Straßenrand
+Parking,Parkplatz
+Amazon returns,Amazon-Retouren
+Delivery & pickup,Lieferung & Abholung
+Optical department,Optische Abteilung
+Add Store,Store hinzufügen
+Select...,Auswählen...
+Are you sure you want to delete selected stores?,"Sind Sie sicher, dass Sie ausgewählte Stores löschen möchten?"
+Create Source(With Products From Store),Quelle erstellen (mit Produkten aus dem Store)
+Are you sure you want to create sources for selected stores?,"Sind Sie sicher, dass Sie Quellen für ausgewählte Stores erstellen möchten?"
+Create Source(Without Products),Quelle erstellen (ohne Produkte)
+Code,Code
+Source Code,Quellcode
+Working Hours Enabled,Arbeitszeiten aktiviert
+Region,Bundesland/Provinz
+Postcode,Postleitzahl
+Order,Bestellung
+Created,Erstellt
+Modified,Geändert

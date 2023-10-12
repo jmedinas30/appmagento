@@ -1,0 +1,129 @@
+"Open map","Open map"
+"Store List Without Map","Store List Without Map"
+"Store List Before Map","Store List Before Map"
+"Store List After Map","Store List After Map"
+"Store Filter On Map","Store Filter On Map"
+"Store Filter Left Side Of Map","Store Filter Left Side Of Map"
+Miles,Miles
+Kilometers,Kilometers
+World,World
+Country,Country
+Region,Region
+City,City
+Disable,Disable
+"Stock Status","Stock Status"
+"Available Quantity","Available Quantity"
+Simple,Simple
+Detailed,Detailed
+"Store locator","Store locator"
+"Choose store coordinates:","Choose store coordinates:"
+"Get from address","Get from address"
+"or choose on map:","or choose on map:"
+"Please, update your GeoIP city database in System -> Configuration -> MageWorx -> GeoIP","Please, update your GeoIP city database in System -> Configuration -> MageWorx -> GeoIP"
+"Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality","Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality"
+Preview,Preview
+"Selected location","Selected location"
+State/region,State/region
+Latitude,Latitude
+Longitude,Longitude
+"In Stock","In Stock"
+"Out Of Stock","Out Of Stock"
+Route,Route
+"Available stores are loading ...","Available stores are loading ..."
+"View all stores","View all stores"
+"Pin icon","Pin icon"
+"All Stores","All Stores"
+"Filter icon","Filter icon"
+Back,Back
+"Store Page","Store Page"
+"No stores found.","No stores found."
+frontend_label,frontend_label
+"Clear all","Clear all"
+Apply,Apply
+"Select store","Select store"
+"Requested quantity for added product(s) is not available","Requested quantity for added product(s) is not available"
+"In-store pickup is not available","In-store pickup is not available"
+"Phone icon","Phone icon"
+"Mail icon","Mail icon"
+"Website icon","Website icon"
+"Instagram icon","Instagram icon"
+"Facebook icon","Facebook icon"
+"Whatsapp icon","Whatsapp icon"
+"Skype icon","Skype icon"
+"Watch icon","Watch icon"
+"Working hours","Working hours"
+Closed,Closed
+"Lunch time","Lunch time"
+attribute_code,attribute_code
+"Details icon","Details icon"
+Details,Details
+"Location icon","Location icon"
+radius,radius
+Edit,Edit
+Reset,Reset
+Search,Search
+OR,OR
+"Use my current location","Use my current location"
+"Radius to search","Radius to search"
+"Geolocation is not supported by this browser.","Geolocation is not supported by this browser."
+"My location","My location"
+"API Geolocation error.","API Geolocation error."
+"Could not load geo position.","Could not load geo position."
+"Browser geolocation timeout error. ","Browser geolocation timeout error. "
+"Could not load geo position. ","Could not load geo position. "
+"Geo position unavailable.","Geo position unavailable."
+"Could not load geo position from browser.","Could not load geo position from browser."
+"Select location from the map","Select location from the map"
+"Select this location","Select this location"
+"Store Locator","Store Locator"
+General,General
+"Default map view","Default map view"
+"This setting defines the default map and address view at the ‘Find a store’ page and in ‘Find a store’ pop-ups. “Customer location” zooms the map to a customer location detected by GeoIP. “Default location” zooms the map to a location according to the “Default scale” settings. If the customer location cannot be determined for some reasons, the default location is used.","This setting defines the default map and address view at the ‘Find a store’ page and in ‘Find a store’ pop-ups. “Customer location” zooms the map to a customer location detected by GeoIP. “Default location” zooms the map to a location according to the “Default scale” settings. If the customer location cannot be determined for some reasons, the default location is used."
+"Default scale","Default scale"
+"Default country","Default country"
+"Default region","Default region"
+"Default city","Default city"
+"Select from map","Select from map"
+"Default Latitude","Default Latitude"
+"Default Longitude","Default Longitude"
+"Map Settings","Map Settings"
+"Display map","Display map"
+"Marker Icon","Marker Icon"
+"Allowed file types: PNG, GIF, JPG, JPEG.","Allowed file types: PNG, GIF, JPG, JPEG."
+"Filter Settings","Filter Settings"
+"Enable ""Use my current location""","Enable ""Use my current location"""
+"Predefined Radius Values","Predefined Radius Values"
+"You can add comma separated values for drop-down of 'Radius to search'.","You can add comma separated values for drop-down of 'Radius to search'."
+"Radius Unit","Radius Unit"
+"Default Radius","Default Radius"
+"This value determines the default radius to display the available store. It helps to improve the front-end performance if there are many stores in the system. The default radius is calculated a customer's location or a default location in the following priority:
+                            </br> - Customer location by IP
+                            </br> - Customer location from browser
+                            </br> - Default location from configuration if unable to determine a customer's location using two options mentioned above.
+                            </br></br>Leave empty or '0' to show all stores by default.","This value determines the default radius to display the available store. It helps to improve the front-end performance if there are many stores in the system. The default radius is calculated a customer's location or a default location in the following priority:
+                            </br> - Customer location by IP
+                            </br> - Customer location from browser
+                            </br> - Default location from configuration if unable to determine a customer's location using two options mentioned above.
+                            </br></br>Leave empty or '0' to show all stores by default."
+"Product Page","Product Page"
+"Display block on product page","Display block on product page"
+"Stores display mode","Stores display mode"
+"Display stock status as","Display stock status as"
+"This setting allows you to display either the stock status (in stock, out of stock) or the available quantity of the product in the store.","This setting allows you to display either the stock status (in stock, out of stock) or the available quantity of the product in the store."
+"Quantity message","Quantity message"
+"This setting allows you to change the message to display the available quantity of the current product in each store. If the product is out of stock in the certain store, ""out of stock"" status will be displayed.","This setting allows you to change the message to display the available quantity of the current product in each store. If the product is out of stock in the certain store, ""out of stock"" status will be displayed."
+"Default stores amount","Default stores amount"
+"'Find a store' message","'Find a store' message"
+"Use [count] to show available stores count","Use [count] to show available stores count"
+"Not available in stores message","Not available in stores message"
+"Select options message","Select options message"
+"Display available places names","Display available places names"
+Image,Image
+"Allowed file types: PNG, GIF, JPG, JPEG. Use icon with size 32x32 or smaller","Allowed file types: PNG, GIF, JPG, JPEG. Use icon with size 32x32 or smaller"
+"Popup Layout","Popup Layout"
+"Note: If map not available 'Store List Without Map' will be use","Note: If map not available 'Store List Without Map' will be use"
+"Find a Store Page","Find a Store Page"
+"Display link in header","Display link in header"
+"Link title","Link title"
+"Link URL","Link URL"
+"Page Layout","Page Layout"

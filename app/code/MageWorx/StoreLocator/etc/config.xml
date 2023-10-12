@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageworx_locations>
+            <general>
+                <default_country>US</default_country>
+                <default_region>New York</default_region>
+                <default_city>New York</default_city>
+                <default_scale>13</default_scale>
+            </general>
+            <product_page>
+                <show_locations_on_product>1</show_locations_on_product>
+                <stores_display_mode>simple</stores_display_mode>
+                <qty_message>[stock] items available</qty_message>
+                <default_stores_amount>5</default_stores_amount>
+                <locations_on_product_text>Available in [count] stores in </locations_on_product_text>
+                <locations_on_product_select_option_text>Select the options to see availability in stores</locations_on_product_select_option_text>
+                <locations_on_product_not_available_text>This product is unavailable for pickup</locations_on_product_not_available_text>
+                <show_locations_name>1</show_locations_name>
+                <popup_layout>list_without_map</popup_layout>
+            </product_page>
+            <link_settings>
+                <show_link>1</show_link>
+                <link_title>Find a store</link_title>
+                <link_url>mw-store-locator</link_url>
+                <page_layout>list_without_map</page_layout>
+            </link_settings>
+            <map>
+                <show_map>1</show_map>
+                <show_filters_on_map>1</show_filters_on_map>
+            </map>
+            <filter>
+                <use_current_location>1</use_current_location>
+                <radius_values>25,50,100</radius_values>
+                <radius_unit>miles</radius_unit>
+                <default_radius_value>0</default_radius_value>
+                <filter_by>city</filter_by>
+            </filter>
+        </mageworx_locations>
+        <mageworx_geoip>
+            <geoip_database>
+                <database_type>2</database_type>
+            </geoip_database>
+        </mageworx_geoip>
+    </default>
+</config>

@@ -1,0 +1,70 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Catalog\Product\FindAStore */
+$locations = $block->getLocations(); ?>
+<div class="location-button-header">
+         <span class="icon_location">
+             <img src="<?= $block->escapeUrl($block->getLocationOnProductImageUrl()) ?>">
+         </span>
+    <span class="location-button__text">
+            <?php if (count($locations)) : ?>
+                <?= $block->escapeHtml($block->getLocationOnProductText()); ?>
+            <?php else : ?>
+                <?= $block->escapeHtml($block->getLocationOnProductNotAvailableText()); ?>
+            <?php endif; ?>
+        </span>
+</div>
+<?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+if (count($locations) && $block->isLocationsNamesEnabled()) : ?>
+    <div class="location-button__places_list_block">
+        <ul class="location-button__places_list">
+            <?php foreach ($block->getLocations() as $location) : ?>
+                <li class="places_list_item">
+                    <?= /* @noEscape */
+                    $block->getLocationPageLink($location, $location->getName()) ?>
+                    <?php if ($block->getDisplayStockStatus() === 1) : ?>
+                        <?php if ($block->isProductInStock($location)) : ?>
+                            <span class="places_list_item_stock_in-stock">
+                            <span class="in-stock"><?= $block->escapeHtml(__('In Stock')) ?></span>
+                            <img src="<?= $block->escapeUrl(
+                                $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/in-stock.svg')
+                                      ) ?>">
+                        </span>
+                        <?php else : ?>
+                            <span class="places_list_item_stock_out-of-stock">
+                            <span class="out-of-stock"><?= $block->escapeHtml(__('Out Of Stock')) ?></span>
+                            <img src="<?= $block->escapeUrl(
+                                $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/out-of-stock.svg')
+                                      ) ?>">
+                        </span>
+                        <?php endif; ?>
+                    <?php elseif ($block->getDisplayStockStatus() === 2) : ?>
+                        <?php if ($block->isProductInStock($location) && $block->getProductQty($location)) : ?>
+                            <span class="places_list_item_stock_in-stock">
+                            <span class="in-stock"><?= $block->escapeHtml($block->getQtyMessage($location)) ?></span>
+                            <img src="<?= $block->escapeUrl(
+                                $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/in-stock.svg')
+                                      ) ?>">
+                        </span>
+                        <?php else : ?>
+                            <span class="places_list_item_stock_out-of-stock">
+                            <span class="out-of-stock"><?= $block->escapeHtml(__('Out Of Stock')) ?></span>
+                            <img src="<?= $block->escapeUrl(
+                                $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/out-of-stock.svg')
+                                      ) ?>">
+                        </span>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="places_list_address"><?= $block->escapeHtml(
+                        $location->getAddress() . ', ' . $location->getCity(). ', ' .
+                        $block->getLocationsRegion($location) . ', ' .$location->getPostcode()
+                        . ', ' . __($location->getCountry())) ?>
+                        <a href="<?= $block->escapeUrl($block->getRouteUrl($location)); ?>"
+                           target="_blank"><?= $block->escapeHtml(__('Route')) ?></a></div>
+                </li>
+            <?php endforeach; ?>
+            <div id="showLocationButtonPlace"></div>
+        </ul>
+    </div>
+<?php endif; ?>
+
+

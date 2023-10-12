@@ -1,0 +1,174 @@
+Conditions (don't add conditions to show all products),Voorwaarden (voeg geen voorwaarden toe om alle producten te tonen)
+Conditions,Voorwaarden
+Delete,Verwijderen
+Are you sure you want to delete store?,Weet u zeker dat u de winkel wilt verwijderen?
+ID,ID
+Name,Naam
+SKU,SKU
+Visibility,Zichtbaarheid
+Status,Status
+Price,Prijs
+Sku,Artikelnummer
+Source Quantity,Bronhoeveelheid
+Save Store,Winkel opslaan
+Import/Export MageWorx Stores,Importeren/Exporteren MageWorx Winkels
+%1 stores were successfully created.,%1 winkels zijn succesvol aangemaakt.
+%1 rows were successfully imported.,%1 rijen zijn succesvol geïmporteerd.
+%1 errors generated. See system.log file for more information.,%1 fouten gegenereerd. Zie het systeemlogboek voor meer informatie.
+Invalid file upload attempt,Ongeldige bestand upload poging
+MageWorx Stores,MageWorx Winkels
+Locations,Locaties
+The store has been deleted.,De winkel is verwijderd.
+We can't find a store to delete.,We kunnen geen winkel vinden om te verwijderen.
+The store has been disabled.,De winkel is uitgeschakeld.
+We can't find a store to disable.,We kunnen geen winkel vinden om uit te schakelen.
+Store,Winkel
+New Store,Nieuwe Winkel
+The store no longer exists.,De winkel bestaat niet meer.
+The store has been enabled.,De winkel is ingeschakeld.
+We can't find a store to enable.,We kunnen geen winkel vinden om in te schakelen.
+An error occurred while creating sources.,Er is een fout opgetreden bij het maken van bronnen.
+A total of %1 sources have been created.,In totaal zijn %1 bronnen aangemaakt.
+An error occurred while deleting record(s).,Er is een fout opgetreden bij het verwijderen van record(s).
+A total of %1 record(s) have been deleted.,In totaal zijn %1 record(s) verwijderd.
+An error occurred while disabling stores.,Er is een fout opgetreden bij het uitschakelen van winkels.
+A total of %1 stores have been disabled.,In totaal zijn %1 winkels uitgeschakeld.
+An error occurred while enabling stores.,Er is een fout opgetreden bij het inschakelen van winkels.
+A total of %1 stores have been enabled.,In totaal zijn %1 winkels ingeschakeld.
+"Store ""%1"" was successfully saved.","Winkel ""%1"" is succesvol opgeslagen."
+Invalid file upload attempt.,Ongeldige bestand upload poging.
+Data for import not found.,Geen gegevens gevonden voor import.
+. ' is required column(s).',. ' is vereist kolom(men).'
+"There is no location with ""code""=%1 on default store view","Er is geen locatie met ""code""=%1 op de standaardwinkelweergave"
+Not enough data for import in this row.,Onvoldoende gegevens voor import in deze rij.
+Store with code %1 don't exist,Winkel met code %1 bestaat niet
+%1' is a required property or value is invalid,%1' is een vereiste eigenschap of de waarde is ongeldig
+Open,Open
+closes,sluit
+Closed,Gesloten
+opens,geopend
+"Field ""%1"" is required and cannot be empty.","Veld ""%1"" is vereist en mag niet leeg zijn."
+Could not save the location: %1,Kan de locatie niet opslaan: %1
+"A location with code ""%1"" already exists.","Een locatie met code ""%1"" bestaat al."
+"Requested Location with ""code=%1"" doesn't exist","Aangevraagde locatie met ""code=%1"" bestaat niet"
+Could not delete the location: %1,Kan de locatie niet verwijderen: %1
+Requested Location doesn't exist,Aangevraagde locatie bestaat niet
+Timezone value is invalid.,Tijdszone waarde is ongeldig.
+Meta Robots value is invalid.,Waarde voor Meta Robots is ongeldig.
+"Source ""%1"" for store %2 already created.","Bron ""%1"" voor winkel %2 is al aangemaakt."
+"Postcode is required field. Please, save store with postcode before create new source.",Postcode is een verplicht veld. Sla de winkel op met postcode voordat u een nieuwe bron maakt.
+All Products,Alle producten
+By Condition,Op voorwaarde
+Specific Products,Specifieke producten
+Products From Source,Producten uit bron
+Customer location,Klantlocatie
+Default location,Standaardlocatie
+No Regions,Geen Regio's
+Create New Source,Nieuwe bron maken
+Enable,Inschakelen
+Disable,Uitschakelen
+Use default,Standaard gebruiken
+Monday,Maandag
+Tuesday,Dinsdag
+Wednesday,Woensdag
+Thursday,Donderdag
+Friday,Vrijdag
+Saturday,Zaterdag
+Sunday,Zondag
+Everyday,Elke dag
+Per Day Of Week,Per dag van de week
+Open 24 hours a day,24 uur per dag open
+Edit,Bewerken
+"Delete ""${ $.$data.name}""","Verwijderen ""${ $.$data.name}"""
+Learn more about store attributes,Meer informatie over winkelattributen
+Import Stores,Winkels importeren
+Export Only Default Values,Alleen standaardwaarden exporteren
+Yes,Ja
+No,Nee
+Export Stores,Winkels exporteren
+This operation can take a long time in case you have a lot of stores,Deze bewerking kan lang duren als u veel winkels heeft
+Download example CSV file,Voorbeeld CSV-bestand downloaden
+Download,Download
+From,Van
+To,Tot
+Lunch Time,Lunchtijd
+Store Locator,Winkelzoeker
+General,Algemeen
+Enable Working Hours,Werkuren inschakelen
+This setting allows you to show/hide the store's working hours. You also can hide working hours per store.,Deze instelling stelt u in staat om de werkuren van de winkel te tonen/verbergen. U kunt ook de werkuren per winkel verbergen.
+Back,Terug
+General Information,Algemene informatie
+Store Name,Winkelnaam
+Store Code,Winkelcode
+Store View,Winkelweergave
+Active,Actief
+Available for pickup,Beschikbaar voor afhaling
+Sort Order,Sorteervolgorde
+"Allowed file types: jpeg, gif, png.","Toegestane bestandstypen: jpeg, gif, png."
+Image,Afbeelding
+Address,Adres
+Timezone,Tijdszone
+"This setting allows you to set the timezone of the current store. ""Use default"" uses the timezone, set in Magento configuration.","Deze instelling stelt u in staat om de tijdszone van de huidige winkel in te stellen. ""Standaard gebruiken"" gebruikt de tijdszone die is ingesteld in de Magento-configuratie."
+Country,Land
+State/Province,Staat/Provincie
+City,Stad
+Zip Code,Postcode
+Phone,Telefoon
+Email,E-mail
+Website,Website
+Facebook,Facebook
+Skype,Skype
+Instagram,Instagram
+WhatsApp,WhatsApp
+Working hours,Werkuren
+Has Lunch Time,Lunchtijd aanwezig
+Sunday Day Off,Zondag vrij
+Sunday Has Lunch Time,Zondag heeft lunchtijd
+Monday Day Off,Maandag vrij
+Monday Has Lunch Time,Maandag heeft lunchtijd
+Tuesday Day Off,Dinsdag vrij
+Tuesday Has Lunch Time,Dinsdag heeft lunchtijd
+Wednesday Day Off,Woensdag vrij
+Wednesday Has Lunch Time,Woensdag heeft lunchtijd
+Thursday Day Off,Donderdag vrij
+Thursday Has Lunch Time,Donderdag heeft lunchtijd
+Friday Day Off,Vrijdag vrij
+Friday Has Lunch Time,Vrijdag heeft lunchtijd
+Saturday Day Off,Zaterdag vrij
+Saturday Has Lunch Time,Zaterdag heeft lunchtijd
+Products in store,Producten in de winkel
+Assign Type,Toewijzingstype
+Apply Condition By Cron,Voorwaarde toepassen via Cron
+"You can select an existing inventory source and the products will be loaded from the chosen source. If you choose to create a new inventory source for the current location, the source will be created automatically after saving the location. If you had assigned products to the location, you can transfer them to the new inventory source by selecting the check-box ""Transfer previously selected products to the new inventory source""","U kunt een bestaande voorraadbron selecteren en de producten worden geladen uit de gekozen bron. Als u ervoor kiest om een nieuwe voorraadbron aan te maken voor de huidige locatie, wordt de bron automatisch aangemaakt na het opslaan van de locatie. Als u producten aan de locatie had toegewezen, kunt u ze overzetten naar de nieuwe voorraadbron door het selectievakje ""Eerder geselecteerde producten overzetten naar de nieuwe voorraadbron"" aan te vinken."
+Choose Source,Bron kiezen
+Transfer previously selected products to the new inventory source,Eerder geselecteerde producten overzetten naar de nieuwe voorraadbron
+Store Page Setting,Winkel Pagina Instelling
+Meta Title,Meta Titel
+Meta Description,Meta Beschrijving
+Meta Keywords,Meta Sleutelwoorden
+Meta Robots,Meta Robots
+Store attributes,Winkelattributen
+Gas Station,Tankstation
+ATM,Geldautomaat
+Pharmacy,Apotheek
+Tire center,Bandencentrum
+Food court,Foodcourt
+Curbside pickup,Aan de weg afhalen
+Parking,Parkeren
+Amazon returns,Amazon retouren
+Delivery & pickup,Levering & afhaling
+Optical department,Optische afdeling
+Add Store,Winkel toevoegen
+Select...,Selecteren...
+Are you sure you want to delete selected stores?,Weet u zeker dat u geselecteerde winkels wilt verwijderen?
+Create Source(With Products From Store),Bronnen maken(Met producten uit winkel)
+Are you sure you want to create sources for selected stores?,Weet u zeker dat u bronnen wilt aanmaken voor geselecteerde winkels?
+Create Source(Without Products),Bronnen maken(Zonder producten)
+Code,Code
+Source Code,Broncode
+Working Hours Enabled,Werkuren inschakelen
+Region,Regio
+Postcode,Postcode
+Order,Bestellen
+Created,Aangemaakt
+Modified,Gewijzigd

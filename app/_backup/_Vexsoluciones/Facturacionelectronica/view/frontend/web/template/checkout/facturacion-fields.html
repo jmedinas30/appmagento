@@ -1,0 +1,43 @@
+
+<div class="payment_factura" data-bind="visible: enablePlugin">
+
+	<div >
+		<input type="checkbox" name="require_factura"  data-bind="checked: requiereFactura"  /> <b> Requiere factura </b>
+	</div>
+
+	<div class="payment_factura_container" data-bind="fadeVisible: requiereFactura">
+
+		<div class="msmError" data-bind="fadeVisible: datosIncompletos" style="display: block;margin: 10px 0;color: red;">
+			Por favor complete los campos requeridos (*)
+		</div>
+		<div class="msmError" data-bind="fadeVisible: datosIncompletos2" style="display: block;margin: 10px 0;color: red;">
+			Por favor complete los 11 digitos del RUC (*)
+		</div>
+		<div>
+			<div class="field required">
+				<span class="label"> RUC </span>
+				<div class="control">
+					<input class="txtPaymentFactura" id="facturacion-ruc" type="text" name="ruc" maxlength="11" data-bind="value: documento" data-validate='{"minlength":10}' />
+				</div>
+			</div>
+
+			<div class="field required">
+				<span class="label"> Raz&oacute;n social </span>
+				<div class="control">
+					<input class="txtPaymentFactura" id="facturacion-razon" type="text" name="razon_social" maxlength="50"  data-bind="value: denominacion" readonly="readonly" />
+				</div>
+			</div>
+
+			<div class="field required">
+				<span class="label"> Direcci&oacute;n Fiscal </span>
+				<div class="control">
+					<input class="txtPaymentFactura" id="facturacion-direccion" type="text" name="direccion_fiscal" maxlength="50"  data-bind="value: direccionFiscal" readonly="readonly" />
+				</div>
+			</div>
+			<hr>
+		</div>
+
+
+	</div>
+
+</div>

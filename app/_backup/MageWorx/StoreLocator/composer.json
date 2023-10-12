@@ -1,0 +1,24 @@
+{
+    "name": "mageworx/module-storelocator",
+    "description": "Store Locator for Magento 2",
+    "require": {
+        "magento/module-catalog" : ">=103.0.0 <105",
+        "magento/module-store" : ">=101.0.0 <102",
+        "magento/module-ui" : ">=101.1.0 <102",
+        "mageworx/module-geoip" : ">=2.3.0",
+        "mageworx/module-googleapi" : ">=1.1.0",
+        "mageworx/module-locations" : ">=1.4.0"
+    },
+    "type": "magento2-module",
+    "version": "1.7.2",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MageWorx\\StoreLocator\\": ""
+        }
+    }
+}

@@ -1,0 +1,54 @@
+"Are you sure you want to send a ""Ready For Pickup"" email to customer?","Sind Sie sicher, dass Sie eine ""Bereit zur Abholung""-E-Mail an den Kunden senden möchten?"
+Ready For Pickup,Bereit zur Abholung
+The email has been sent successfully.,Die E-Mail wurde erfolgreich versendet.
+The email wasn't sent.,Die E-Mail wurde nicht versendet.
+Order id is incorrect.,Bestellnummer ist inkorrekt.
+"Sorry, but we can't find store with all product from your cart.","Entschuldigung, aber wir können keinen Laden mit allen Produkten aus Ihrem Warenkorb finden."
+Without CMS Block,Ohne CMS-Block
+Please select,Bitte auswählen
+"Please, choose store for Pickup shipping method",Bitte wählen Sie eine Filiale für die Abholversandart
+The store for pickup is missing. Select the store and try again.,Die Abhol-Filiale fehlt. Wählen Sie die Filiale aus und versuchen Sie es erneut.
+Source code for Pickup shipping method should be %1,Quellcode für die Abholversandart sollte %1 sein
+Please select store for pickup...,Bitte wählen Sie eine Filiale für die Abholung...
+There are no available stores for pickup,Es gibt keine verfügbaren Filialen zur Abholung
+Select store for pickup...,Filiale für die Abholung auswählen...
+"Please, select the store for pickup...",Bitte wählen Sie die Filiale für die Abholung aus...
+Your %store_name order confirmation,Ihre Bestellbestätigung von %store_name
+"%customer_name,","%customer_name,"
+Thank you for your order from %store_name.,Vielen Dank für Ihre Bestellung bei %store_name.
+"You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","Sie können den Status Ihrer Bestellung überprüfen, indem Sie sich in Ihr Konto <a href=""%account_url"">einloggen</a>."
+"If you have questions about your order, you can email us at <a href=""mailto:%store_email"">%store_email</a>","Wenn Sie Fragen zu Ihrer Bestellung haben, können Sie uns per <a href=""mailto:%store_email"">%store_email</a>"
+"Your Order <span class=""no-link"">#%increment_id</span>","Ihre Bestellung <span class=""no-link"">#%increment_id</span>"
+"Placed on <span class=""no-link"">%created_at</span>","Platziert am <span class=""no-link"">%created_at</span>"
+Billing Info,Rechnungsinformationen
+Payment Method,Zahlungsmethode
+Your %store_name order is ready for pickup,Ihre Bestellung bei %store_name ist zur Abholung bereit
+Your order is ready for pickup.,Ihre Bestellung ist zur Abholung bereit.
+Selected store isn't available. Select the other store and try again.,Die ausgewählte Filiale ist nicht verfügbar. Wählen Sie eine andere Filiale aus und versuchen Sie es erneut.
+MageWorx Pickup In Store,MageWorx Abholung im Geschäft
+Enabled,Aktiviert
+Method Name,Methodenname
+Price,Preis
+Calculate Handling Fee,Verarbeitungsgebühr berechnen
+Handling Fee,Bearbeitungsgebühr
+Sort Order,Sortierreihenfolge
+Title,Titel
+Ship to Applicable Countries,Anwendbare Länder für Versand
+Ship to Specific Countries,Versand in bestimmte Länder
+Show Method if Not Applicable,"Methode anzeigen, wenn nicht anwendbar"
+Displayed Error Message,Angezeigte Fehlermeldung
+Email Template for Pickup Orders,E-Mail-Vorlage für Abholaufträge
+"This setting allows you to assign a separate order confirmation email template, which will be sent to your customers, if they place the order with Pickup method. This email will be sent instead of the standard email. Leave empty to disable this feature. You can use the following variables in email template:","Diese Einstellung ermöglicht es Ihnen, eine separate E-Mail-Bestätigungsvorlage zuzuweisen, die an Ihre Kunden gesendet wird, wenn sie die Bestellung mit der Abholoption aufgeben. Diese E-Mail wird anstelle der Standard-E-Mail gesendet. Lassen Sie das Feld leer, um diese Funktion zu deaktivieren. Sie können die folgenden Variablen in der E-Mail-Vorlage verwenden:"
+Static Block for Success Page,Statischer Block für die Erfolgseite
+"This setting allows you to choose a static block, which will be shown at ""Thank you"" page, if the Pickup method is used. You can use the following variables in static block:","Diese Einstellung ermöglicht es Ihnen, einen statischen Block auszuwählen, der auf der ""Vielen Dank""-Seite angezeigt wird, wenn die Abholoption verwendet wird. Sie können die folgenden Variablen im statischen Block verwenden:"
+Enable 'Ready For Pickup',Für Abholung bereit' aktivieren
+Email Template for 'Ready For Pickup',E-Mail-Vorlage für 'Für Abholung bereit'
+"This setting allows you to select a template for the email, which will be sent to the customers, when you click on ""Ready for pickup"" button. Available variables:","Diese Einstellung ermöglicht es Ihnen, eine Vorlage für die E-Mail auszuwählen, die an die Kunden gesendet wird, wenn Sie auf die Schaltfläche ""Für Abholung bereit"" klicken. Verfügbare Variablen:"
+Send Email to Store,E-Mail an die Filiale senden
+Store Email Notification,E-Mail-Benachrichtigung an die Filiale
+"This setting allows you to set the email template, which will be sent to the store, if new order with the pickup option is placed.","Diese Einstellung ermöglicht es Ihnen, die E-Mail-Vorlage festzulegen, die an die Filiale gesendet wird, wenn eine neue Bestellung mit der Abholoption aufgegeben wird."
+Checkout Page Settings,Einstellungen der Kassenseite
+Popup Layout On Checkout,Pop-up-Layout bei der Kasse
+Note: If map not available 'Store List Without Map' will be use,"Hinweis: Wenn keine Karte verfügbar ist, wird ""Filialliste ohne Karte"" verwendet."
+Allow To Pickup Out Of Stock Products,Abholung von nicht vorrätigen Produkten erlauben
+"If enabled, the stores without the certain products will be visible for selection on the checkout page. It might be helpful, if you can delivery the ordered products to other stores.","Wenn diese Option aktiviert ist, werden die Filialen ohne bestimmte Produkte auf der Kassenseite zur Auswahl angezeigt. Dies kann hilfreich sein, wenn Sie die bestellten Produkte an andere Filialen liefern können."

@@ -1,0 +1,12 @@
+<?php
+    $order = $block->getDataOrder();
+    $payment = $order->getPayment();
+
+
+    if($payment->getMethod()=="pagoefectivo_pay"){ 
+        $cipUrl = $payment->getAdditionalInformation('cip_url');
+        echo '<iframe id="vexpeIframe" src="'.$cipUrl.'" width="100%" style="min-height:2160px;" target="_self" scrolling="no" frameborder="0"> 
+            <p>Su navegador no soporta iframes.</p> 
+        </iframe>';
+
+    }

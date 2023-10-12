@@ -1,0 +1,106 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+/** @var $block MageWorx\Locations\Block\Adminhtml\Location\Edit\Regions */
+?>
+<script>
+    require([
+        "jquery",
+        "uiRegistry",
+        "mage/adminhtml/form",
+        "domReady!"
+    ], function (jQuery, uiRegistry) {
+        setTimeout(function () {
+            var regionsByCountry = <?= /** @noEscape */ $block->getRegionsByCountry() ?>;
+            var country = jQuery('.mageworx_country .admin__control-select');
+            var region = jQuery('.mageworx_region .admin__control-select');
+            var mageworxWorkingHoursType = jQuery('.mageworx_working_hours_type .admin__control-select');
+            var mageworxDays = jQuery('.mageworx_days');
+            var mageworxEveryday = jQuery('.mageworx_everyday');
+            var dayOff = jQuery('.mageworx_day_off .admin__actions-switch-checkbox');
+            var hasLunchTime = jQuery('.mageworx_day_has_lunch_time .admin__actions-switch-checkbox');
+
+            function updateRegions() {
+                region.empty();
+                var val = 0;
+                jQuery.each(regionsByCountry[country.val()], function (key, value) {
+                    if (val == 0) {
+                        val = key;
+                    }
+                    region.append(jQuery("<option></option>")
+                        .attr("value", key).text(value));
+                });
+                uiRegistry.get('index=region').value(val);
+            }
+
+            country.change(function () {
+                updateRegions();
+            });
+
+            function updateWorkingHours() {
+                if (mageworxWorkingHoursType.val() == 'everyday') {
+                    mageworxDays.hide();
+                    mageworxEveryday.show();
+                } else if (mageworxWorkingHoursType.val() == 'per_day_of_week') {
+                    mageworxDays.show();
+                    mageworxEveryday.hide();
+                } else {
+                    mageworxDays.hide();
+                    mageworxEveryday.hide();
+                }
+
+                dayOff.each(function () {
+                    updateWorkingHoursByDayOfWeek(this, true);
+                });
+
+                hasLunchTime.each(function () {
+                    updateLunchTime(this, true);
+                });
+            }
+
+            updateWorkingHours();
+
+            mageworxWorkingHoursType.change(function () {
+                updateWorkingHours();
+            });
+
+            function updateWorkingHoursByDayOfWeek(current, onlyHide = false) {
+                var currentId = current.id;
+                if (current.checked) {
+                    let parent = jQuery('#' + currentId).parents('div');
+
+                    parent.next('.mageworx_days').hide();
+                    parent.next().next('.mageworx_days').hide();
+                } else {
+                    if (!onlyHide) {
+                        let parent = jQuery('#' + currentId).parents('div');
+
+                        parent.next('.mageworx_days').show();
+                        parent.next().next('.mageworx_days').show();
+                    }
+                }
+            }
+
+            function updateLunchTime(current, onlyHide = false) {
+                var currentId = current.id;
+                if (current.checked) {
+                    if (!onlyHide) {
+                        jQuery('#' + currentId).parents('div').next('.mw-time-picker').find('.mw-lunch-time').show();
+                    }
+                } else {
+                    jQuery('#' + currentId).parents('div').next('.mw-time-picker').find('.mw-lunch-time').hide();
+                }
+            }
+
+            dayOff.change(function (data) {
+                updateWorkingHoursByDayOfWeek(data.currentTarget);
+            });
+
+            hasLunchTime.change(function (data) {
+                updateLunchTime(data.currentTarget);
+            });
+        }, 500);
+    });
+</script>

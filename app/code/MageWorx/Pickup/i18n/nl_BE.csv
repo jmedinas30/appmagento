@@ -1,0 +1,54 @@
+"Are you sure you want to send a ""Ready For Pickup"" email to customer?","Bent u zeker dat u een ""Klaar om af te halen"" e-mail naar de klant wilt sturen?"
+Ready For Pickup,Klaar om af te halen
+The email has been sent successfully.,De e-mail is succesvol verzonden.
+The email wasn't sent.,De e-mail is niet verzonden.
+Order id is incorrect.,Bestel-ID is incorrect.
+"Sorry, but we can't find store with all product from your cart.","Sorry, maar we kunnen geen winkel vinden met alle producten uit uw winkelwagen."
+Without CMS Block,Zonder CMS-blok
+Please select,Maak alstublieft een keuze
+"Please, choose store for Pickup shipping method",Selecteer alstublieft een winkel voor de Afhalen verzendmethode
+The store for pickup is missing. Select the store and try again.,De afhaalwinkel ontbreekt. Selecteer de winkel en probeer opnieuw.
+Source code for Pickup shipping method should be %1,Broncode voor de Afhalen verzendmethode moet %1 zijn
+Please select store for pickup...,Selecteer alstublieft een winkel om af te halen...
+There are no available stores for pickup,Er zijn geen beschikbare afhaalwinkels
+Select store for pickup...,Selecteer een winkel om af te halen...
+"Please, select the store for pickup...",Selecteer alstublieft de winkel om af te halen...
+Your %store_name order confirmation,Uw orderbevestiging bij %store_name
+"%customer_name,","%customer_name,"
+Thank you for your order from %store_name.,Bedankt voor uw bestelling bij %store_name.
+"You can check the status of your order by <a href=""%account_url"">logging into your account</a>.","U kunt de status van uw bestelling bekijken door in te <a href=""%account_url"">loggen op uw account</a>."
+"If you have questions about your order, you can email us at <a href=""mailto:%store_email"">%store_email</a>","Als u vragen heeft over uw bestelling, kunt u ons mailen op <a href=""mailto:%store_email"">%store_email</a>"
+"Your Order <span class=""no-link"">#%increment_id</span>","Uw Order <span class=""no-link"">#%increment_id</span>"
+"Placed on <span class=""no-link"">%created_at</span>","Geplaatst op <span class=""no-link"">%created_at</span>"
+Billing Info,Factuurgegevens
+Payment Method,Betalingsmethode
+Your %store_name order is ready for pickup,Uw order bij %store_name staat klaar om af te halen
+Your order is ready for pickup.,Uw order staat klaar om af te halen.
+Selected store isn't available. Select the other store and try again.,Geselecteerde winkel is niet beschikbaar. Selecteer een andere winkel en probeer opnieuw.
+MageWorx Pickup In Store,MageWorx Afhalen in de winkel
+Enabled,Ingeschakeld
+Method Name,Methode Naam
+Price,Prijs
+Calculate Handling Fee,Verwerkingskosten berekenen
+Handling Fee,Verwerkingskosten
+Sort Order,Sorteervolgorde
+Title,Titel
+Ship to Applicable Countries,Verzenden naar toepasselijke landen
+Ship to Specific Countries,Verzenden naar specifieke landen
+Show Method if Not Applicable,Methode tonen indien niet van toepassing
+Displayed Error Message,Weergegeven foutbericht
+Email Template for Pickup Orders,E-mailtemplate voor Afhaalbestellingen
+"This setting allows you to assign a separate order confirmation email template, which will be sent to your customers, if they place the order with Pickup method. This email will be sent instead of the standard email. Leave empty to disable this feature. You can use the following variables in email template:","Deze instelling stelt u in staat om een apart e-mailtemplate voor orderbevestiging toe te wijzen, dat naar uw klanten wordt verzonden als ze de bestelling plaatsen met de Afhaal methode. Deze e-mail wordt in plaats van de standaard e-mail verzonden. Laat leeg om deze functie uit te schakelen. U kunt de volgende variabelen in het e-mailtemplate gebruiken:"
+Static Block for Success Page,Statisch blok voor Succespagina
+"This setting allows you to choose a static block, which will be shown at ""Thank you"" page, if the Pickup method is used. You can use the following variables in static block:","Deze instelling stelt u in staat om een statisch blok te kiezen dat wordt weergegeven op de ""Bedankt"" pagina als de Afhaal methode wordt gebruikt. U kunt de volgende variabelen in het statische blok gebruiken:"
+Enable 'Ready For Pickup',Klaar om af te halen' inschakelen
+Email Template for 'Ready For Pickup',E-mailtemplate voor 'Klaar om af te halen'
+"This setting allows you to select a template for the email, which will be sent to the customers, when you click on ""Ready for pickup"" button. Available variables:","Deze instelling stelt u in staat om een template te selecteren voor de e-mail die naar de klanten wordt verzonden wanneer u op de knop ""Klaar om af te halen"" klikt. Beschikbare variabelen:"
+Send Email to Store,E-mail naar winkel sturen
+Store Email Notification,E-mailmelding aan de winkel
+"This setting allows you to set the email template, which will be sent to the store, if new order with the pickup option is placed.",Deze instelling stelt u in staat om het e-mailtemplate in te stellen dat naar de winkel wordt verzonden als er een nieuwe order met de afhaalmogelijkheid wordt geplaatst.
+Checkout Page Settings,Instellingen Afrekenpagina
+Popup Layout On Checkout,Pop-up lay-out op afrekenpagina
+Note: If map not available 'Store List Without Map' will be use,"Opmerking: Als de kaart niet beschikbaar is, wordt 'Winkellijst zonder kaart' gebruikt"
+Allow To Pickup Out Of Stock Products,Toestaan om producten die niet op voorraad zijn af te halen
+"If enabled, the stores without the certain products will be visible for selection on the checkout page. It might be helpful, if you can delivery the ordered products to other stores.","Indien ingeschakeld, worden de winkels zonder bepaalde producten zichtbaar voor selectie op de afrekenpagina. Het kan handig zijn als u de bestelde producten naar andere winkels kunt leveren."

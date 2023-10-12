@@ -1,0 +1,84 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Filter */
+$locations    = $block->getLocations();
+$defaultPlace = $block->getCurrentPlace();
+?>
+<div class="mw-sl__stores">
+    <div class="mw-sl__stores__header">
+        <div id="location-header" class="location-header is-active">
+            <div class="mw-sl__stores__header__item mw-sl__stores__header__item_pin pin-to-center">
+                <i class="mw-sl__icon--pin">
+                    <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/pin.svg')); ?>"
+                         alt="<?= $block->escapeHtml(__('Pin icon')) ?>"/>
+                </i>
+            </div>
+            <div class="mw-sl__stores__header__item">
+                <p id="sl__stores__current_place" class="mw-sl__stores__current"><?= $block->escapeHtml($block->getCurrentPlaceName()); ?></p>
+                <p class="mw-sl__stores__current mw-store-locator-inactive-place mw-sl__stores__current_all_stores">
+                    <?= $block->escapeHtml(__('All Stores')); ?>
+                </p>
+                <?php foreach ($block->getParentFilterList() as $code => $name) : ?>
+                    <p class="mw-sl__stores__current mw-store-locator-inactive-place mw-sl__stores__current_<?= $block->escapeHtml($code); ?>">
+                        <?= $block->escapeHtml($name); ?>
+                    </p>
+                <?php endforeach; ?>
+            </div>
+            <div class="mw-sl__stores__header__item">
+                <i class="mw-sl__icon mw-sl__icon--filter">
+                    <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/filter.svg')); ?>"
+                         alt="<?= $block->escapeHtml(__('Filter icon')) ?>"/>
+                </i>
+            </div>
+        </div>
+        <?php /** @var $location \MageWorx\Locations\Api\Data\LocationInterface $location */
+        foreach ($locations as $location) : ?>
+            <div class="location-header" id="location-header_<?= $block->escapeHtml($location->getId()) ?>">
+                <div class="mw-sl__stores__header__item mw-sl__stores__header__item_pin">
+                    <i class="mw-sl__icon--close">
+                        <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/back.svg')); ?>"/>
+                        <span><strong><?= $block->escapeHtml(__('Back'))?></strong></span>
+                    </i>
+                </div>
+                <div class="mw-sl__stores__header__item">
+                    <span class="mw-sl__store__info__name"><?= /* @noEscape */ $block->getLocationPageLink($location, __('Store Page'))?></span>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="mw-sl__stores__list" id="mw-sl__stores__list_block">
+        <ul>
+            <?php /** @var $location \MageWorx\Locations\Api\Data\LocationInterface $location */
+            if (count($locations)) :
+                foreach ($locations as $location) : ?>
+                    <?= /* @noEscape */ $block->getLocationInfoHtml($location); ?>
+                <?php endforeach;
+             else : ?>
+                <div class="mw-sl__no-stores"><?= $block->escapeHtml(__('There are no stores.'));?></div>
+            <?php endif?>
+        </ul>
+    </div>
+
+    <div class="mw-sl__stores__filters">
+        <ul>
+            <li class="mw-sl__stores__filters__item mw-sl__stores__filters__item-map" id="all_stores">
+                <?= $block->escapeHtml(__('All Stores')); ?>
+            </li>
+            <?php foreach ($block->getParentFilterList() as $code => $name) : ?>
+                <li class="mw-sl__stores__filters__item mw-sl__stores__filters__item-map" id="<?= $block->escapeHtml($block->prepareCode($code)) ?>">
+                    <?= $block->escapeHtml($name); ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div id="location_details"></div>
+</div>
+
+<script type="text/javascript" src="<?= $block->escapeUrl($block->getJsLink()) ?>"></script>
+<script>
+    var locations = [];
+    //Add markers on map
+    <?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+    foreach ($locations as $location) :?>
+    locations['<?= $block->escapeJs($location->getId())?>'] = <?= $block->escapeHtml($block->getLocationCoordinate($location))?>;
+    <?php endforeach; ?>
+</script>

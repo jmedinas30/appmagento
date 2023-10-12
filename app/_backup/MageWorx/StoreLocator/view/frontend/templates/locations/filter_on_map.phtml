@@ -1,0 +1,13 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Locations */
+?>
+<div class="mw-sl__content mw-sl__content-filter mw-sl__content-filter_on_map mw-sl__content--map-overlay">
+    <?= /* @noEscape */  $block->getLocationsMapHtml(); ?>
+    <?= /* @noEscape */  $block->getLocationsWrapperHtml('filter'); ?>
+</div>
+<script type="text/javascript">
+    var mwLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getLocationsIds()))?>');
+    var availableLocations = JSON.parse('<?= $block->escapeJs(json_encode($block->getAvailableLocationsIds()))?>');
+</script>
+
+<?= /* @noEscape */$block->getGoogleMapScript(); ?>

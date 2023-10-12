@@ -1,0 +1,134 @@
+.products-grid {
+    .product-item-info {
+        width: unset !important;
+        margin-bottom: 40px;
+
+        .reviews-actions {
+            display: none !important;
+        }
+
+        .image-product {
+            position: relative;
+            text-align: center;
+
+            .quickview-handler {
+                display: none;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                color: #222;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -25px;
+                margin-top: -25px;
+                background-color: #fff;
+                z-index: 120;
+                .border-radius(50%);
+                .box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+
+                span {
+                    display: none;
+                }
+
+                &:before {
+                    .icomoon(e937, 18px);
+                }
+            }
+        }
+
+        .product-item-photo {
+            display: block;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            line-height: 0;
+        }
+
+        .product-item-details {
+            padding-top: 10px;
+
+            .product-item-name {
+                margin: 0 0 4px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                a {
+                    padding: 6px 0;
+                }
+            }
+
+            .price-box {
+                margin: 5px 0 15px;
+
+                .price {
+                    font-size: 128.571%;
+                }
+            }
+
+            div[class^="swatch-opt-"] {
+                margin-bottom: 30px;
+            }
+
+            .product-item-actions {
+                margin: 0;
+
+                .actions-primary {
+                    vertical-align: top;
+
+                    .tocart {
+                        height: 40px;
+                        padding: 0 26px;
+                        background-color: #f3f3f3;
+                        color: #222;
+                    }
+                }
+
+                .actions-secondary {
+                    vertical-align: top;
+
+                    .action {
+                        background-color: #f3f3f3;
+                        display: block;
+                        float: left;
+                        margin-left: 5px;
+                        width: 40px;
+                        height: 40px;
+                        text-align: center;
+                        line-height: 40px;
+                        color: #222;
+                        .border-radius(4px);
+
+                        &:before {
+                            display: none;
+                        }
+
+                        &.towishlist:after {
+                            .icomoon(e93f, 14px);
+                        }
+
+                        &.tocompare:after {
+                            .icomoon(e953, 14px);
+                        }
+                    }
+                }
+            }
+
+            .swatch-option.color {
+                margin: 0 10px 0 3px;
+            }
+        }
+
+        &:hover {
+            .product-item-photo {
+                border-color: #222;
+            }
+
+            .quickview-handler {
+                display: block;
+            }
+        }
+    }
+}

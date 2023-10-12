@@ -1,0 +1,129 @@
+Open map,Open map
+Store List Without Map,Winkellijst zonder kaart
+Store List Before Map,Winkellijst voor kaart
+Store List After Map,Winkellijst na kaart
+Store Filter On Map,Winkel filter op kaart
+Store Filter Left Side Of Map,Winkel filter aan de linkerzijde van de kaart
+Miles,Mijlen
+Kilometers,Kilometers
+World,Wereld
+Country,Land
+Region,Regio
+City,Stad
+Disable,Uitschakelen
+Stock Status,Voorraadstatus
+Available Quantity,Beschikbare hoeveelheid
+Simple,Eenvoudig
+Detailed,Gedetailleerd
+Store locator,Winkelzoeker
+Choose store coordinates:,Kies winkelcoördinaten:
+Get from address,Haal op vanaf adres
+or choose on map:,of kies op de kaart:
+"Please, update your GeoIP city database in System -> Configuration -> MageWorx -> GeoIP",Werk alsjeblieft je GeoIP-stadsdatabase bij in Systeem -> Configuratie -> MageWorx -> GeoIP
+"Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality","Sla alsjeblieft je Google Maps Api-sleutel op in de ""MageWorx -> Google Api""-sectie om deze functionaliteit te gebruiken"
+Preview,Voorbeeld
+Selected location,Geselecteerde locatie
+State/region,Staat/regio
+Latitude,Breedtegraad
+Longitude,Lengtegraad
+In Stock,Op voorraad
+Out Of Stock,Niet op voorraad
+Route,Route
+Available stores are loading ...,Beschikbare winkels worden geladen ...
+View all stores,Bekijk alle winkels
+Pin icon,Pin-icoon
+All Stores,Alle Winkels
+Filter icon,Filter-icoon
+Back,Terug
+Store Page,Winkelpagina
+No stores found.,Geen winkels gevonden.
+frontend_label,frontend_label
+Clear all,Alles wissen
+Apply,Toepassen
+Select store,Selecteer winkel
+Requested quantity for added product(s) is not available,De gevraagde hoeveelheid voor toegevoegde product(en) is niet beschikbaar
+In-store pickup is not available,Afhalen in de winkel is niet beschikbaar
+Phone icon,Telefoon icoon
+Mail icon,Mail icoon
+Website icon,Website icoon
+Instagram icon,Instagram icoon
+Facebook icon,Facebook icoon
+Whatsapp icon,Whatsapp icoon
+Skype icon,Skype icoon
+Watch icon,Bekijk icoon
+Working hours,Openingstijden
+Closed,Gesloten
+Lunch time,Lunchtijd
+attribute_code,attribute_code
+Details icon,Details icoon
+Details,Details
+Location icon,Locatie icoon
+radius,Straal
+Edit,Bewerk
+Reset,Herstel
+Search,Zoeken
+OR,OF
+Use my current location,Gebruik mijn huidige locatie
+Radius to search,Straal om te zoeken
+Geolocation is not supported by this browser.,Geolocatie wordt niet ondersteund door deze browser.
+My location,Mijn locatie
+API Geolocation error.,Fout bij geolocatie via API.
+Could not load geo position.,Kan geopositie niet laden.
+Browser geolocation timeout error. ,Time-outfout bij geolocatie via browser.
+Could not load geo position. ,Kan geopositie niet laden.
+Geo position unavailable.,Geopositie niet beschikbaar.
+Could not load geo position from browser.,Kan geopositie niet laden vanuit de browser.
+Select location from the map,Selecteer locatie vanaf de kaart
+Select this location,Selecteer deze locatie
+Store Locator,Winkelzoeker
+General,Algemeen
+Default map view,Standaard kaartweergave
+"This setting defines the default map and address view at the ‘Find a store’ page and in ‘Find a store’ pop-ups. “Customer location” zooms the map to a customer location detected by GeoIP. “Default location” zooms the map to a location according to the “Default scale” settings. If the customer location cannot be determined for some reasons, the default location is used.","Deze instelling bepaalt de standaard kaart- en adresweergave op de pagina 'Zoek een winkel' en in pop-ups van 'Zoek een winkel'. ""Klantlocatie"" zoomt in op de kaart naar de locatie van de klant, gedetecteerd door GeoIP. ""Standaard locatie"" zoomt in op de kaart naar een locatie op basis van de instellingen voor ""Standaardschaal"". Als de klantlocatie om welke reden dan ook niet kan worden bepaald, wordt de standaardlocatie gebruikt."
+Default scale,Standaardschaal
+Default country,Standaardland
+Default region,Standaardregio
+Default city,Standaardstad
+Select from map,Selecteer vanaf de kaart
+Default Latitude,Standaard breedtegraad
+Default Longitude,Standaard lengtegraad
+Map Settings,Kaartinstellingen
+Display map,Toon kaart
+Marker Icon,Markerpictogram
+"Allowed file types: PNG, GIF, JPG, JPEG.","Toegestane bestandstypen: PNG, GIF, JPG, JPEG."
+Filter Settings,Filterinstellingen
+"Enable ""Use my current location""",Gebruik mijn huidige locatie inschakelen
+Predefined Radius Values,Vooraf gedefinieerde straalwaarden
+You can add comma separated values for drop-down of 'Radius to search'.,U kunt komma-gescheiden waarden toevoegen voor de vervolgkeuzelijst 'Straal om te zoeken'.
+Radius Unit,Straaleenheid
+Default Radius,Standaard Straal
+"This value determines the default radius to display the available store. It helps to improve the front-end performance if there are many stores in the system. The default radius is calculated a customer's location or a default location in the following priority:
+                            </br> - Customer location by IP
+                            </br> - Customer location from browser
+                            </br> - Default location from configuration if unable to determine a customer's location using two options mentioned above.
+                            </br></br>Leave empty or '0' to show all stores by default.","Deze waarde bepaalt de standaardstraal om de beschikbare winkel weer te geven. Het helpt de front-end prestaties te verbeteren als er veel winkels in het systeem zijn. De standaardstraal wordt berekend op basis van de locatie van de klant of een standaardlocatie volgens de prioriteit:
+                            </br> - Klantlocatie via IP
+                            </br> - Klantlocatie vanuit de browser
+                            </br> - Standaardlocatie uit de configuratie als de locatie van de klant niet kan worden bepaald met de twee genoemde opties hierboven.
+                            </br></br>Laat leeg of '0' om standaard alle winkels weer te geven."""
+Product Page,Productpagina
+Display block on product page,Toon blok op de productpagina
+Stores display mode,Winkelweergavemodus
+Display stock status as,Toon voorraadstatus als
+"This setting allows you to display either the stock status (in stock, out of stock) or the available quantity of the product in the store.","Deze instelling stelt u in staat om ofwel de voorraadstatus (op voorraad, niet op voorraad) ofwel de beschikbare hoeveelheid van het product in de winkel weer te geven."
+Quantity message,Hoeveelheidsbericht
+"This setting allows you to change the message to display the available quantity of the current product in each store. If the product is out of stock in the certain store, ""out of stock"" status will be displayed.","Deze instelling stelt u in staat om het bericht te wijzigen om de beschikbare hoeveelheid van het huidige product in elke winkel weer te geven. Als het product niet op voorraad is in een bepaalde winkel, wordt de status ""niet op voorraad"" weergegeven."
+Default stores amount,Standaard aantal winkels
+Find a store' message,Bericht 'Zoek een winkel'
+Use [count] to show available stores count,Gebruik [count] om het aantal beschikbare winkels te tonen
+Not available in stores message,Niet beschikbaar in winkelsbericht
+Select options message,Selecteer optiesbericht
+Display available places names,Weergave van beschikbare plaatsnamen
+Image,Afbeelding
+"Allowed file types: PNG, GIF, JPG, JPEG. Use icon with size 32x32 or smaller","Toegestane bestandstypen: PNG, GIF, JPG, JPEG. Gebruik pictogrammen van 32x32 of kleiner"
+Popup Layout,Pop-up-indeling
+Note: If map not available 'Store List Without Map' will be use,"Opmerking: Als de kaart niet beschikbaar is, wordt 'Winkellijst zonder kaart' gebruikt"
+Find a Store Page,Pagina 'Zoek een winkel'
+Display link in header,Link weergeven in koptekst
+Link title,Linktitel
+Link URL,Link-URL
+Page Layout,Pagina-indeling

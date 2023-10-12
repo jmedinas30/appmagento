@@ -1,0 +1,192 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/** @var \MageWorx\LocationPages\Block\Adminhtml\Config\GetCoordinatesForFilter $block */
+?>
+<?php if ($block->getApiKey()) : ?>
+    <?= $this->getButtonHtml(); ?>
+
+    <div id="get_coordinates_config" class="getcoordinates-message getcoordinates-message_hide message"
+         style="font-size: 12px; margin-top: 10px;">
+        <?php if ($block->getEmptyCoordinatesCount()): ?>
+            <?= $block->escapeHtml(
+                __(
+                    'You have %1 filters by location with empty coordinates.',
+                    $block->getEmptyCoordinatesCount()
+                )
+            ) ?>
+        <?php endif; ?>
+        <?= $block->escapeHtml(
+            __(
+                'Click this button to collect the coordinates for the filters from Google and load them to the database.'
+            )
+        ) ?>
+        <ul>
+        </ul>
+    </div>
+    <p class="note">
+        <span>
+            <?= $block->escapeHtml(
+                __(
+                    'Save the settings prior to load coordinates.'
+                )
+            ) ?>
+        </span>
+    </p>
+
+    <script type="text/javascript">
+        var placesCount = '<?= $block->escapeHtml($block->getEmptyCoordinatesCount())?>',
+            savedSuccessfully = 0;
+
+        function loadPlaces(btn, urlLoad, urlSave) {
+            require(['jquery', 'loader'], function ($) {
+                'use strict';
+                jQuery('#get_coordinates_config').loader();
+                jQuery('#get_coordinates_config').loader("show");
+            });
+
+            jQuery.ajax({
+                type: "get",
+                dataType: "json",
+                data: {form_key: window.FORM_KEY},
+                url: urlLoad,
+                showLoader: true,
+                success:
+                    function (r) {
+                        if (r.status) {
+                            if (Object.keys(r.list).length) {
+                                jQuery("#get_coordinates_config").removeClass("message-error");
+                                jQuery("#get_coordinates_config ul").append(
+                                    "<li>" + r.msg + "(" + Object.keys(r.list).length + ")" + "</li>"
+                                ).css("display", "block");
+
+                                getCoordinates(r.list, urlSave);
+                            } else {
+                                jQuery("#get_coordinates_config").addClass("message-success");
+                                jQuery("#get_coordinates_config ul").append(
+                                    "<li>" + r.msg + "</li>"
+                                ).css("display", "block");
+                                jQuery('#get_coordinates_config').loader("hide");
+
+                                return [];
+                            }
+                        } else {
+                            jQuery("#get_coordinates_config").addClass("message-error");
+                            jQuery("#get_coordinates_config ul").append(
+                                "<li>" + r.msg + "</li>"
+                            ).css("display", "block");
+                            jQuery('#get_coordinates_config').loader("hide");
+
+                            return [];
+                        }
+                    },
+                error: function (xhr, status, error) {
+                    jQuery("#get_coordinates_config").addClass("message-error");
+                    jQuery("#get_coordinates_config ul").append(
+                        "<li>" + xhr.responseText + "</li>"
+                    ).css("display", "block");
+                    jQuery('#get_coordinates_config').loader("hide");
+                }
+            }).done(function (data) {
+                return true;
+            });
+        }
+
+        /**
+         * @param list
+         * @param urlSave
+         */
+        function getCoordinates(list, urlSave) {
+            var placeId = 0;
+            var maxPlaces = list.length;
+            var geocoder = new google.maps.Geocoder();
+            var showResult = 0;
+
+            function geocode() {
+                var coordinates = [];
+                var delayFactor = 0;
+                if (placeId < maxPlaces) {
+                    geocoder.geocode({'address': list[placeId]['address']}, function (results, status) {
+                        if (status === 'OK') {
+                            coordinates = {
+                                'id': list[placeId]['id'],
+                                'lat': results[0].geometry.location.lat(),
+                                'lng': results[0].geometry.location.lng()
+                            };
+                            ++placeId;
+                            ++showResult;
+
+                            function saveCoordinates(url, data) {
+                                jQuery.ajax({
+                                    type: "post",
+                                    dataType: "json",
+                                    data: {form_key: window.FORM_KEY, data: data},
+                                    url: url,
+                                    success:
+                                        function (r) {
+                                            savedSuccessfully = savedSuccessfully + r.successfully;
+
+                                            if (r.err) {
+                                                jQuery("#get_coordinates_config ul").append(
+                                                    "<li>" + r.error_msg + "</li>"
+                                                ).css("display", "block");
+                                            }
+
+                                            if (showResult == 10) {
+                                                jQuery("#get_coordinates_config ul")
+                                                    .append("<li>" + savedSuccessfully + '/' + placesCount + ' ' +
+                                                        '' + '<?=__(
+                                                            'coordinates successfully saved.'
+                                                        )?>' + '</li>').css("display", "block");
+                                                showResult = 0;
+                                            }
+
+                                            geocode();
+                                        }
+                                });
+                            }
+
+                            saveCoordinates(urlSave, coordinates);
+                        } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                            console.log("Waiting for Limit for item: " + list[placeId]['address']);
+                            delayFactor++;
+                            setTimeout(function () {
+                                geocode();
+                            }, delayFactor * 1010);
+                        } else {
+                            //Show unknown google error
+                            jQuery("#get_coordinates_config").addClass("message-error");
+                            jQuery("#get_coordinates_config ul").append(
+                                "<li>" + list[placeId]['address'] + "(ID " + list[placeId]['id'] + "): Geocode was not successful for the following reason: " + status + "</li>"
+                            ).css("display", "block");
+                            ++placeId;
+
+                            geocode();
+                        }
+                    });
+                } else {
+                    if (savedSuccessfully) {
+                        jQuery("#get_coordinates_config ul")
+                            .append("<li>" + savedSuccessfully + '/' + placesCount + ' ' +
+                                '' + '<?=__(
+                                    'coordinates successfully saved.'
+                                )?>' + '</li>').css("display", "block");
+
+                        jQuery('#get_coordinates_config').loader("hide");
+                    }
+                }
+            }
+
+            geocode();
+        }
+    </script>
+<?php else: ?>
+    <div id="get_coordinates_config" class="getcoordinates-message getcoordinates-message_hide message">
+        <?= $block->escapeHtml(
+            __('Please, save Google Maps Api Key in the "MageWorx -> Google Api" section to use this functionality')
+        ) ?>
+    </div>
+<?php endif; ?>

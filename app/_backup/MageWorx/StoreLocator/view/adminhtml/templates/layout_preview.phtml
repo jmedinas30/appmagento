@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+/** @var $block MageWorx\StoreLocator\Block\Adminhtml\LayoutPreview */
+?>
+<br /><br />
+<div><strong><?= $block->escapeHtml(__('Preview'))?>:</strong></div>
+<br />
+<div id="preview_<?= $block->escapeHtml($block->getSettingId())?>">
+    <?php foreach ($block->getPreviewImages() as $code => $link) : ?>
+        <img class="mw_sl_preview_image" src="<?= $block->escapeHtml($link)?>"
+             alt="<?= /* @noEscape */ $code?>" id="image_<?= /* @noEscape */ $code?>">
+    <?php endforeach; ?>
+</div>
+
+<script>
+    require([
+        "jquery",
+        "mage/adminhtml/form"
+    ], function(jQuery){
+        var layout = jQuery('#<?= $block->escapeHtml($block->getSettingId())?>');
+
+        function updatePreview() {
+            jQuery('#preview_<?= $block->escapeHtml($block->getSettingId())?> .mw_sl_preview_image').hide();
+            jQuery('#preview_<?= $block->escapeHtml($block->getSettingId())?> #image_' + layout.val()).show();
+        }
+
+        updatePreview();
+
+        layout.change(function() {
+            updatePreview();
+        });
+    });
+</script>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageworx_locations>
+            <pages>
+                <base_path>stores</base_path>
+                <url_path>country,region,city</url_path>
+                <url_key>name,code,address</url_key>
+                <create_redirects>1</create_redirects>
+                <add_breadcrumbs>1</add_breadcrumbs>
+                <show_products>1</show_products>
+                <add_to_sitemap>1</add_to_sitemap>
+                <include_ln>0</include_ln>
+                <default_meta_robots>INDEX, FOLLOW</default_meta_robots>
+            </pages>
+            <list>
+                <meta_robots>INDEX, FOLLOW</meta_robots>
+            </list>
+        </mageworx_locations>
+    </default>
+</config>

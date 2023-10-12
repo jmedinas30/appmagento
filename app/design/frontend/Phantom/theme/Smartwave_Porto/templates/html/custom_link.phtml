@@ -1,0 +1,12 @@
+<?php $porto_helper = $this->helper('Smartwave\Porto\Helper\Data');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');?>
+
+<li><a href="<?php echo $porto_helper->getBaseLinkUrl(); ?>politicas-condiciones-uso">Políticas y condiciones de uso</a></li>
+
+<?php if($customerSession->isLoggedIn()): ?>
+    <li><a href="<?php echo $porto_helper->getBaseLinkUrl(); ?>customer/account/logout">Cerrar Sesión</a></li>
+<?php else: ?>
+    <li><a href="<?php echo $porto_helper->getBaseLinkUrl(); ?>customer/account/login">Iniciar sesión</a></li>
+    <li><a href="<?php echo $porto_helper->getBaseLinkUrl(); ?>customer/account/create">Crear una cuenta</a></li>
+<?php endif;?>

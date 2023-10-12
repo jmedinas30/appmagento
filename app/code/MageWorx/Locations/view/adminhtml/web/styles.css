@@ -1,0 +1,69 @@
+.mageworx-hidden-col {
+    display: none;
+}
+
+.map-block {
+    display: flex;
+    width: 100%;
+    height: 350px;
+}
+
+#map {
+    width: 650px;
+    height: 100%;
+    margin-top: 20px;
+}
+
+#mageworx_location_products {
+    display: none;
+}
+
+.rule-tree {
+    display: none;
+}
+
+.mageworx_apply_by_cron {
+    display: none;
+}
+
+.mageworx_location_description .mce-i-image {
+    display: none;
+}
+.mageworx_location_description .mce-i-link {
+    display: none;
+}
+
+.mageworx_location_description .action-add-image {
+    display: none;
+}
+
+.mw-time-picker select{
+    margin-bottom: 10px;
+}
+
+.mw-lunch-time-title {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+}
+
+.mw-before-time-picker {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+    margin-right: 10px;
+}
+
+.mw-before-time-picker-to {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 3.2rem;
+    margin-right: 30px;
+}
+
+.mageworx_transfer_products {
+    display: none;
+}

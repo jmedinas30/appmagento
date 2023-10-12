@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Magento\Sales\Block\Adminhtml\Order\View" name="meetanshi_admin_ga_js" before="-" template="Meetanshi_GA4::head_js.phtml" ifconfig="mt_ga4/general/enable"/>
+        </referenceBlock>
+        <referenceContainer name="after.body.start">
+            <block name="meetanshi_admin_ga_nonjs" class="Magento\Sales\Block\Adminhtml\Order\View" template="Meetanshi_GA4::nonjs.phtml" before="-" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Sales\Block\Adminhtml\Order\View" template="Meetanshi_GA4::cancel.phtml" name="meetanshi_ga4_cancel" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+    </body>
+</page>

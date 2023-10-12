@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright ©  MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_StoreLocator::config_styles.css"/>
+        <link src="MageWorx_StoreLocator::js/autocomplete.js"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block
+                    class="MageWorx\StoreLocator\Block\Adminhtml\MapPopup"
+                    name="mageworx.locations.getcentercoordinates.popup">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

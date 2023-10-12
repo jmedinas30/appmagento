@@ -1,0 +1,158 @@
+"Conditions (don't add conditions to show all products)","Conditions (don't add conditions to show all products)"
+Conditions,Conditions
+Delete,Delete
+"Are you sure you want to delete store?","Are you sure you want to delete store?"
+ID,ID
+Name,Name
+SKU,SKU
+Visibility,Visibility
+Status,Status
+Price,Price
+Sku,Sku
+"Source Quantity","Source Quantity"
+"Save Store","Save Store"
+"Import/Export MageWorx Stores","Import/Export MageWorx Stores"
+"%1 stores were successfully created.","%1 stores were successfully created."
+"%1 rows were successfully imported.","%1 rows were successfully imported."
+"%1 errors generated. See system.log file for more information.","%1 errors generated. See system.log file for more information."
+"Invalid file upload attempt","Invalid file upload attempt"
+"MageWorx Stores","MageWorx Stores"
+Locations,Locations
+"The store has been deleted.","The store has been deleted."
+"We can't find a store to delete.","We can't find a store to delete."
+"The store has been disabled.","The store has been disabled."
+"We can't find a store to disable.","We can't find a store to disable."
+Store,Store
+"New Store","New Store"
+"The store no longer exists.","The store no longer exists."
+"The store has been enabled.","The store has been enabled."
+"We can't find a store to enable.","We can't find a store to enable."
+"An error occurred while creating sources.","An error occurred while creating sources."
+"A total of %1 sources have been created.","A total of %1 sources have been created."
+"An error occurred while deleting record(s).","An error occurred while deleting record(s)."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"An error occurred while disabling stores.","An error occurred while disabling stores."
+"A total of %1 stores have been disabled.","A total of %1 stores have been disabled."
+"An error occurred while enabling stores.","An error occurred while enabling stores."
+"A total of %1 stores have been enabled.","A total of %1 stores have been enabled."
+"Store ""%1"" was successfully saved.","Store ""%1"" was successfully saved."
+"Invalid file upload attempt.","Invalid file upload attempt."
+"Data for import not found.","Data for import not found."
+". ' is required column(s).'",". ' is required column(s).'"
+"There is no location with ""code""=%1 on default store view","There is no location with ""code""=%1 on default store view"
+"Row data is incorrect - products from column product_skus don't exist in your store.","Row data is incorrect - products from column product_skus don't exist in your store."
+"Not enough data for import in this row.","Not enough data for import in this row."
+"Store with code %1 don't exist","Store with code %1 don't exist"
+"'%1' is a required property or value is invalid","'%1' is a required property or value is invalid"
+Open,Open
+closes,closes
+Closed,Closed
+opens,opens
+"Field ""%1"" is required and cannot be empty.","Field ""%1"" is required and cannot be empty."
+"Could not save the location: %1","Could not save the location: %1"
+"A location with code ""%1"" already exists.","A location with code ""%1"" already exists."
+"Requested Location with ""code=%1"" doesn't exist","Requested Location with ""code=%1"" doesn't exist"
+"Could not delete the location: %1","Could not delete the location: %1"
+"Requested Location doesn't exist","Requested Location doesn't exist"
+"Timezone value is invalid.","Timezone value is invalid."
+"Meta Robots value is invalid.","Meta Robots value is invalid."
+"Source ""%1"" for store %2 already created.","Source ""%1"" for store %2 already created."
+"Postcode is required field. Please, save store with postcode before create new source.","Postcode is required field. Please, save store with postcode before create new source."
+"All Products","All Products"
+"By Condition","By Condition"
+"Specific Products","Specific Products"
+"Products From Source","Products From Source"
+"No Regions","No Regions"
+"Create New Source","Create New Source"
+Enable,Enable
+Disable,Disable
+"Use default","Use default"
+Monday,Monday
+Tuesday,Tuesday
+Wednesday,Wednesday
+Thursday,Thursday
+Friday,Friday
+Saturday,Saturday
+Sunday,Sunday
+Everyday,Everyday
+"Per Day Of Week","Per Day Of Week"
+"Open 24 hours a day","Open 24 hours a day"
+Edit,Edit
+"Delete ""${ $.$data.name}""","Delete ""${ $.$data.name}"""
+"Import Stores","Import Stores"
+"Export Only Default Values","Export Only Default Values"
+Yes,Yes
+No,No
+"Export Stores","Export Stores"
+"This operation can take a long time in case you have a lot of stores","This operation can take a long time in case you have a lot of stores"
+"Download example CSV file","Download example CSV file"
+Download,Download
+From,From
+To,To
+"Lunch Time","Lunch Time"
+"Store Locator","Store Locator"
+General,General
+Back,Back
+"General Information","General Information"
+"Store Name","Store Name"
+"Store Code","Store Code"
+"Store View","Store View"
+Active,Active
+"Available for pickup","Available for pickup"
+"Sort Order","Sort Order"
+"Allowed file types: jpeg, gif, png.","Allowed file types: jpeg, gif, png."
+Image,Image
+Address,Address
+Timezone,Timezone
+"This setting allows you to set the timezone of the current store. ""Use default"" uses the timezone, set in Magento configuration.","This setting allows you to set the timezone of the current store. ""Use default"" uses the timezone, set in Magento configuration."
+Country,Country
+State/Province,State/Province
+City,City
+"Zip Code","Zip Code"
+Phone,Phone
+Email,Email
+Website,Website
+Facebook,Facebook
+Skype,Skype
+Instagram,Instagram
+WhatsApp,WhatsApp
+"Working hours","Working hours"
+"Has Lunch Time","Has Lunch Time"
+"Sunday Day Off","Sunday Day Off"
+"Sunday Has Lunch Time","Sunday Has Lunch Time"
+"Monday Day Off","Monday Day Off"
+"Monday Has Lunch Time","Monday Has Lunch Time"
+"Tuesday Day Off","Tuesday Day Off"
+"Tuesday Has Lunch Time","Tuesday Has Lunch Time"
+"Wednesday Day Off","Wednesday Day Off"
+"Wednesday Has Lunch Time","Wednesday Has Lunch Time"
+"Thursday Day Off","Thursday Day Off"
+"Thursday Has Lunch Time","Thursday Has Lunch Time"
+"Friday Day Off","Friday Day Off"
+"Friday Has Lunch Time","Friday Has Lunch Time"
+"Saturday Day Off","Saturday Day Off"
+"Saturday Has Lunch Time","Saturday Has Lunch Time"
+"Products in store","Products in store"
+"Assign Type","Assign Type"
+"Apply Condition By Cron","Apply Condition By Cron"
+"You can select an existing inventory source and the products will be loaded from the chosen source. If you choose to create a new inventory source for the current location, the source will be created automatically after saving the location. If you had assigned products to the location, you can transfer them to the new inventory source by selecting the check-box ""Transfer previously selected products to the new inventory source""","You can select an existing inventory source and the products will be loaded from the chosen source. If you choose to create a new inventory source for the current location, the source will be created automatically after saving the location. If you had assigned products to the location, you can transfer them to the new inventory source by selecting the check-box ""Transfer previously selected products to the new inventory source"""
+"Choose Source","Choose Source"
+"Transfer previously selected products to the new inventory source","Transfer previously selected products to the new inventory source"
+"Store Page Setting","Store Page Setting"
+"Meta Title","Meta Title"
+"Meta Description","Meta Description"
+"Meta Keywords","Meta Keywords"
+"Meta Robots","Meta Robots"
+"Add Store","Add Store"
+Select...,Select...
+"Are you sure you want to delete selected stores?","Are you sure you want to delete selected stores?"
+"Create Source(With Products From Store)","Create Source(With Products From Store)"
+"Are you sure you want to create sources for selected stores?","Are you sure you want to create sources for selected stores?"
+"Create Source(Without Products)","Create Source(Without Products)"
+Code,Code
+"Source Code","Source Code"
+Region,Region
+Postcode,Postcode
+Order,Order
+Created,Created
+Modified,Modified

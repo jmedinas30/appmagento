@@ -1,0 +1,39 @@
+<script>
+    require([
+        'jquery',
+        'Magento_Checkout/js/model/quote',
+        'Magento_Checkout/js/model/full-screen-loader',
+        'mage/url'
+    ], function ($, quote, fullScreenLoader, url) {
+        $(document).ready(function () {
+            url.setBaseUrl(BASE_URL);
+            var coupon = $('#coupon_code').val(),
+                quoteId = quote.getQuoteId(),
+                remove = $('#remove-coupon').val(),
+                couponUrl = url.build('ga4/index/coupon');
+
+            if (coupon !== null && coupon !== '') {
+                fullScreenLoader.startLoader();
+                $.ajax({
+                    url: couponUrl,
+                    type: 'GET',
+                    data: quoteId,
+                    success: function (response) {
+                        fullScreenLoader.stopLoader();
+                        jQuery('#coupon-ga4-m').remove();
+                        jQuery('body').append(response.cartData);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        fullScreenLoader.stopLoader();
+                        self.addError(thrownError);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            }else {
+                jQuery('#coupon-ga4-m').remove();
+            }
+        });
+    });
+</script>

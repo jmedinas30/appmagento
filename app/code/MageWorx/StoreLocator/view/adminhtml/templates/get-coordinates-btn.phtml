@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/** @var \MageWorx\StoreLocator\Block\Adminhtml\DefaultMapCenter $block */
+?>
+<?php if ($block->getApiKey()) : ?>
+    <button id="get_coordinates_config_btn"
+            title=" <?= $block->escapeHtml(__('Select from map')) ?>"
+            type="button" class="action-default scalable"
+            data-mage-init='{"mw-get-coordinates-modal": {"target": "#mwGetCoordinatesModal", "dataUrl": "<?php echo $block->getBaseUrl(); ?>"}}'>
+        <span>
+            <?= $block->escapeHtml(__('Select from map')) ?>
+        </span>
+    </button>
+    <br>
+    <br>
+    <div>
+        <?= $block->escapeHtml(__('Selected: ')) ?>
+        <span id="mw_locator_selected_location"><?= $block->escapeHtml($block->getSelectedLocation()) ?></span>
+    </div>
+<?php else: ?>
+    <div id="get_coordinates_config" class="getcoordinates-message getcoordinates-message_hide message">
+        <?= $block->escapeHtml(
+            __('Please, save Google Maps Api Key in the "MageWorx -> Google Api" section to use this functionality')
+        ) ?>
+    </div>
+<?php endif; ?>

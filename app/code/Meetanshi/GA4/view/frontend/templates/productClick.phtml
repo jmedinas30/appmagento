@@ -1,0 +1,54 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+/** @var \Meetanshi\GA4\Helper\Data $helper */
+$helper = $this->helper('Meetanshi\GA4\Helper\Data'); ?>
+<?php if($helper->isEnable()) : ?>
+    <?php $product = $this->getProduct(); ?>
+    <?php if (isset($product)) : ?>
+        <?php
+        $list = $this->getList();
+        $index = $this->getIndex();
+        $categoryName = $this->getCategoryName();
+
+        $result['event'] = 'select_item';
+        $result['item_list_name'] = $categoryName;
+        $result['ecommerce'] = [];
+        $result['ecommerce']['items'] = [];
+
+        $productSku = $product->getSku();
+        if ($helper->getProductIdentifier() == 1) {
+            $productSku = $product->getId();
+        }
+        $price = number_format((float)$product->getPriceInfo()->getPrice('final_price')->getValue(), 2, '.', '');
+
+        $productData['item_name'] = html_entity_decode($product->getName());
+        $productData['item_id'] = $productSku;
+        $productData['price'] = $price;
+
+        $brand = null;
+        if ($helper->isProductBrand()) {
+            /** @var $product \Magento\Catalog\Model\Product */
+            $attribute = $helper->getProductBrandAttribute();
+            if ($attribute != null)
+                $brand = $product->getAttributeText($attribute);
+            if ($brand == null) {
+                $brand = $product->getData($attribute);
+            }
+            $productData['item_brand'] = $brand;
+        }
+
+        if ($categoryName == ''){
+            $categoryName = $list;
+        }
+        $productCategoryIds = $product->getCategoryIds();
+        $productData['item_list_name'] = $categoryName;
+        $productData['item_list_id'] = sizeof($productCategoryIds) ? $productCategoryIds[0] : '';
+        $productData['currency'] = $helper->getCurrencyCode();
+
+        $result['ecommerce']['items'][] = $productData;
+        ?>
+        window.dataLayer.push(<?php echo str_replace('"',"'", $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($result)); ?>);
+    <?php endif; ?>
+<?php endif; ?>

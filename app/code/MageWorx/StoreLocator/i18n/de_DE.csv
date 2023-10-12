@@ -1,0 +1,129 @@
+Open map,Karte öffnen
+Store List Without Map,Winkelliste ohne Karte
+Store List Before Map,Winkelliste vor der Karte
+Store List After Map,Winkelliste nach der Karte
+Store Filter On Map,Winkelfilter auf der Karte
+Store Filter Left Side Of Map,Winkelfilter auf der linken Seite der Karte
+Miles,Meilen
+Kilometers,Kilometer
+World,Welt
+Country,Land
+Region,Region
+City,Stadt
+Disable,Deaktivieren
+Stock Status,Bestandstatus
+Available Quantity,Verfügbare Menge
+Simple,Einfach
+Detailed,Detailliert
+Store locator,Filialfinder
+Choose store coordinates:,Filialkoordinaten auswählen:
+Get from address,Von der Adresse holen
+or choose on map:,oder auf der Karte auswählen:
+"Please, update your GeoIP city database in System -> Configuration -> MageWorx -> GeoIP",Bitte aktualisieren Sie Ihre GeoIP-Stadt-Datenbank in System -> Konfiguration -> MageWorx -> GeoIP
+"Please, save Google Maps Api Key in the ""MageWorx -> Google Api"" section to use this functionality","Bitte speichern Sie den Google Maps-API-Schlüssel im Abschnitt ""MageWorx -> Google Api"", um diese Funktion zu nutzen"
+Preview,Vorschau
+Selected location,Ausgewählter Standort
+State/region,Bundesland/Region
+Latitude,Breitengrad
+Longitude,Längengrad
+In Stock,Auf Lager
+Out Of Stock,Nicht auf Lager
+Route,Route
+Available stores are loading ...,Verfügbare Geschäfte werden geladen ...
+View all stores,Alle Geschäfte anzeigen
+Pin icon,Pin-Symbol
+All Stores,Alle Geschäfte
+Filter icon,Filter-Symbol
+Back,Zurück
+Store Page,Filialseite
+No stores found.,Keine Geschäfte gefunden.
+frontend_label,frontend_label
+Clear all,Alle löschen
+Apply,Anwenden
+Select store,Filiale auswählen
+Requested quantity for added product(s) is not available,Angeforderte Menge für hinzugefügte Produkte ist nicht verfügbar
+In-store pickup is not available,Abholung im Geschäft nicht verfügbar
+Phone icon,Telefon-Symbol
+Mail icon,Mail-Symbol
+Website icon,Website-Symbol
+Instagram icon,Instagram-Symbol
+Facebook icon,Facebook-Symbol
+Whatsapp icon,Whatsapp-Symbol
+Skype icon,Skype-Symbol
+Watch icon,Uhr-Symbol
+Working hours,Öffnungszeiten
+Closed,Geschlossen
+Lunch time,Mittagspause
+attribute_code,attribute_code
+Details icon,Details-Symbol
+Details,Details
+Location icon,Ort-Symbol
+radius,Radius
+Edit,Bearbeiten
+Reset,Zurücksetzen
+Search,Suche
+OR,ODER
+Use my current location,Meinen aktuellen Standort verwenden
+Radius to search,Suchradius
+Geolocation is not supported by this browser.,Die Geolokalisierung wird von diesem Browser nicht unterstützt.
+My location,Mein Standort
+API Geolocation error.,API-Geolokalisierungsfehler.
+Could not load geo position.,Konnte die geografische Position nicht laden.
+Browser geolocation timeout error. ,Timeout-Fehler bei der Geolokalisierung durch den Browser.
+Could not load geo position. ,Konnte die geografische Position nicht laden.
+Geo position unavailable.,Geografische Position nicht verfügbar.
+Could not load geo position from browser.,Konnte die geografische Position nicht aus dem Browser laden.
+Select location from the map,Wählen Sie einen Standort auf der Karte aus
+Select this location,Wählen Sie diesen Standort aus
+Store Locator,Filialfinder
+General,Allgemein
+Default map view,Standard-Kartenansicht
+"This setting defines the default map and address view at the ‘Find a store’ page and in ‘Find a store’ pop-ups. “Customer location” zooms the map to a customer location detected by GeoIP. “Default location” zooms the map to a location according to the “Default scale” settings. If the customer location cannot be determined for some reasons, the default location is used.","Diese Einstellung definiert die Standard-Karten- und Adressansicht auf der Seite ""Filialfinder"" und in den Pop-ups ""Filialfinder"". ""Kundenstandort"" zoomt die Karte auf einen vom GeoIP erkannten Kundenstandort. ""Standardstandort"" zoomt die Karte auf einen Standort gemäß den Einstellungen für die ""Standard-Skala"". Wenn der Kundenstandort aus irgendeinem Grund nicht ermittelt werden kann, wird der Standardstandort verwendet."
+Default scale,Standard-Skala
+Default country,Standardland
+Default region,Standardregion
+Default city,Standardstadt
+Select from map,Von der Karte auswählen
+Default Latitude,Standard-Breitengrad
+Default Longitude,Standard-Längengrad
+Map Settings,Karteneinstellungen
+Display map,Karte anzeigen
+Marker Icon,Marker-Symbol
+"Allowed file types: PNG, GIF, JPG, JPEG.","Zugelassene Dateitypen: PNG, GIF, JPG, JPEG."
+Filter Settings,Filtereinstellungen
+"Enable ""Use my current location""",Verwenden Sie meinen aktuellen Standort aktivieren
+Predefined Radius Values,Vordefinierte Radiuswerte
+You can add comma separated values for drop-down of 'Radius to search'.,"Sie können kommagetrennte Werte für das Dropdown-Feld ""Suchradius"" hinzufügen."
+Radius Unit,Radius-Einheit
+Default Radius,Standard-Radius
+"This value determines the default radius to display the available store. It helps to improve the front-end performance if there are many stores in the system. The default radius is calculated a customer's location or a default location in the following priority:
+                            </br> - Customer location by IP
+                            </br> - Customer location from browser
+                            </br> - Default location from configuration if unable to determine a customer's location using two options mentioned above.
+                            </br></br>Leave empty or '0' to show all stores by default.","Dieser Wert bestimmt den Standard-Radius zur Anzeige des verfügbaren Geschäfts. Er trägt zur Verbesserung der Front-End-Leistung bei, wenn viele Geschäfte im System sind. Der Standardradius wird in folgender Priorität berechnet:
+                            </br> - Kundenstandort per IP
+                            </br> - Kundenstandort vom Browser
+                            </br> - Standardstandort aus der Konfiguration, wenn der Kundenstandort mit den beiden oben genannten Optionen nicht ermittelt werden kann.
+                            </br></br> Lassen Sie das Feld leer oder geben Sie '0' ein, um standardmäßig alle Geschäfte anzuzeigen."
+Product Page,Produktseite
+Display block on product page,Block auf der Produktseite anzeigen
+Stores display mode,Anzeigemodus der Geschäfte
+Display stock status as,Bestandsstatus anzeigen als
+"This setting allows you to display either the stock status (in stock, out of stock) or the available quantity of the product in the store.","Diese Einstellung ermöglicht es Ihnen, entweder den Bestandsstatus (auf Lager, nicht auf Lager) oder die verfügbare Menge des Produkts im Geschäft anzuzeigen."
+Quantity message,Mengenmeldung
+"This setting allows you to change the message to display the available quantity of the current product in each store. If the product is out of stock in the certain store, ""out of stock"" status will be displayed.","Diese Einstellung ermöglicht es Ihnen, die Meldung zur Anzeige der verfügbaren Menge des aktuellen Produkts in jedem Geschäft zu ändern. Wenn das Produkt in einem bestimmten Geschäft nicht vorrätig ist, wird der Status ""nicht vorrätig"" angezeigt."
+Default stores amount,Standardanzahl an Geschäften
+Find a store' message,"Meldung ""Filiale finden"""
+Use [count] to show available stores count,"Verwenden Sie [count], um die Anzahl der verfügbaren Geschäfte anzuzeigen"
+Not available in stores message,Nicht in den Geschäften verfügbar Meldung
+Select options message,Optionen auswählen Nachricht
+Display available places names,Verfügbare Ortsnamen anzeigen
+Image,Bild
+"Allowed file types: PNG, GIF, JPG, JPEG. Use icon with size 32x32 or smaller","Zugelassene Dateitypen: PNG, GIF, JPG, JPEG. Verwenden Sie ein Symbol mit einer Größe von 32x32 oder kleiner"
+Popup Layout,Popup-Layout
+Note: If map not available 'Store List Without Map' will be use,"Hinweis: Wenn die Karte nicht verfügbar ist, wird ""Winkelliste ohne Karte"" verwendet"
+Find a Store Page,"Seite ""Filiale finden"""
+Display link in header,Link im Header anzeigen
+Link title,Linktitel
+Link URL,Link-URL
+Page Layout,Seitenlayout

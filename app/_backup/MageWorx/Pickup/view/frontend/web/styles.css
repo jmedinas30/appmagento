@@ -1,0 +1,33 @@
+#mageworx-location-checkout-chooser .mw-sl__stores__details__route, #mageworx-location-checkout-chooser .mw-sl__store__select, #mageworx-location-checkout-chooser .mw-sl__store__details, #mageworx-location-checkout-chooser .mw-sl__icon .mw-sl__icon--close, #mageworx-location-checkout-chooser .mw-sl__stores__details__social_links_icons{
+    display: none;
+}
+
+#mageworx-location-checkout-chooser .mw-store-locator-locations .mw-sl__stores__list__item {
+    display: block;
+}
+
+#mageworx-location-checkout-chooser .mw-sl__store__info {
+    display: inline-block;
+    width: auto;
+}
+
+#mageworx-location-checkout-chooser .mw-sl__stores__details__description {
+    display: none;
+}
+
+#mageworx-location-checkout-chooser .mw-sl__stores__details__image__wrapper {
+    display: none;
+}
+
+#mageworx-location-checkout-chooser .mw-sl__stores__details__icons {
+    display: none;
+}
+
+.mw-store-locator-multilocations {
+    display: none;
+}
+
+
+.mw-store-locator-paypal-express button{
+    margin-top: 0px;
+}

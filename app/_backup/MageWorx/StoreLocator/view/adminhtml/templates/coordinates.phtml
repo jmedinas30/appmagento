@@ -1,0 +1,108 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/** @var $block \MageWorx\StoreLocator\Block\Adminhtml\Coordinates\Map */?>
+<?php if ($block->isShowMap()) : ?>
+<div class="admin__fieldset mageworx_admin__fieldset">
+    <div class="admin__field">
+        <div class="admin__field-label"><?= $block->escapeHtml(__('Choose store coordinates:')) ?></div>
+        <div class="admin__field-control">
+            <button type="button" id="from_address" onclick="getCoordinatesFromAddress()">
+                <span><?= $block->escapeHtml(__('Get from address')) ?></span>
+            </button>
+            <span> <?= $block->escapeHtml(__('or choose on map:')) ?></span>
+            <?php $coordinates = $block->getMapCenter();
+            if (!$coordinates['lat'] && !$coordinates['lng']) : ?>
+                <div class="mw-alert">
+                    <?= $block->escapeHtml(__('Please, update your GeoIP city database in System -> Configuration -> MageWorx -> GeoIP')) ?>
+                </div>
+            <?php endif; ?>
+            <div class="map-block">
+                <div id="map"></div>
+                <script>
+                    var map;
+                    var marker;
+                    var geocoder;
+
+                    function initialize()
+                    {
+                        var center = new google.maps.LatLng({lat: <?= $block->escapeHtml($coordinates['lat'])
+                        ?>, lng: <?= $block->escapeHtml($coordinates['lng'])
+?>});
+
+                        var mapOptions = {
+                            center: center,
+                            zoom: <?= $block->escapeHtml($block->getMapZoom())?>,
+                            mapTypeId: google.maps.MapTypeId.roadmap,
+                            disableDefaultUI: true
+                        }
+
+                        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                        geocoder = new google.maps.Geocoder();
+                        marker = placeMarker(center, map);
+                        setCoordinates(center);
+
+                        map.addListener('click', function(e) {
+                            marker.setPosition(e.latLng);
+                            setCoordinates(e.latLng);
+                        });
+                    }
+
+                    function placeMarker(position, map) {
+                        return new google.maps.Marker({
+                            position: position,
+                            map: map
+                        });
+                    }
+
+                    function setCoordinates(latLng) {
+                        require(["uiRegistry"], function (uiRegistry) {
+                            uiRegistry.get('index=latitude').value(latLng.lat());
+                            uiRegistry.get('index=longitude').value(latLng.lng());
+                        });
+                    }
+
+                    function getCoordinatesFromAddress() {
+                        require(["uiRegistry"], function (uiRegistry) {
+                            var region = jQuery('.mageworx_region .admin__control-select option:selected').text();
+
+                            if (region == '<?= \MageWorx\Locations\Model\Source\Region::NO_REGIONS ?>') {
+                                region = '';
+                            }
+
+                            var address = jQuery('.mageworx_country .admin__control-select option:selected').text() +
+                                ' ' + region + ' ' +  uiRegistry.get('index=city').value()  + ' ' +
+                                uiRegistry.get('index=address').value();
+
+                            geocoder.geocode( { 'address': address}, function(results, status) {
+                                if (status == 'OK') {
+                                    map.setCenter(results[0].geometry.location);
+                                    map.setZoom(17);
+
+                                    marker.setPosition(results[0].geometry.location);
+                                    setCoordinates(results[0].geometry.location);
+                                } else {
+                                    console.log('Geocode was not successful for the following reason: ' + status);
+                                }
+                            });
+                        });
+                    }
+
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=<?= $block->escapeHtml($block->getApiKey())
+                ?>&callback=initialize"></script>
+            </div>
+        </div>
+    </div>
+</div>
+<?php else : ?>
+ <script type="text/javascript">
+     require(["uiRegistry"], function (uiRegistry) {
+         uiRegistry.get('index=latitude').disabled(true);
+         uiRegistry.get('index=longitude').disabled(true);
+     });
+ </script>
+<?php endif; ?>

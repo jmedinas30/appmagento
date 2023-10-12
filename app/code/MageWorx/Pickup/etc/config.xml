@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <mageworxpickup>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>MageWorx\Pickup\Model\Carrier\PickupShipping</model>
+                <name>Pickup In Store</name>
+                <price>0.00</price>
+                <title>Pickup In Store</title>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <handling_type>F</handling_type>
+                <showmethod>1</showmethod>
+            </mageworxpickup>
+        </carriers>
+        <mageworx_locations>
+            <general>
+                <email_template>0</email_template>
+                <enable_ready_for_pickup>0</enable_ready_for_pickup>
+                <email_template_ready_for_pickup>mageworx_locations_general_email_template_ready_for_pickup</email_template_ready_for_pickup>
+                <success_page_block>0</success_page_block>
+                <email_to_store>0</email_to_store>
+            </general>
+            <checkout>
+                <order_out_of_stock>0</order_out_of_stock>
+            </checkout>
+        </mageworx_locations>
+    </default>
+</config>

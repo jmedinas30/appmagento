@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name ="mageworx_location_before_save">
+        <observer name="mageworx_location_save_url" instance="MageWorx\LocationPages\Observer\SaveLocationListUrl" />
+    </event>
+    <event name ="mageworx_location_after_save">
+        <observer name="mageworx_location_save_url" instance="MageWorx\LocationPages\Observer\SaveLocationUrl" />
+    </event>
+    <event name ="mageworx_location_after_delete">
+        <observer name="mageworx_location_save_url" instance="MageWorx\LocationPages\Observer\DeleteLocationUrl" />
+    </event>
+    <event name="layout_generate_blocks_after">
+        <observer name="mageworx_location_add_canonical" instance="MageWorx\LocationPages\Observer\AddCanonical"/>
+        <observer name="mageworx_location_add_robots" instance="MageWorx\LocationPages\Observer\AddRobots"/>
+    </event>
+    <event name="mageworx_xmlsitemap_add_generator">
+        <observer
+                name="mageworx_location_generate_sitemap"
+                instance="MageWorx\LocationPages\Observer\PrepareLocationDataForXmlSitemap"
+        />
+        <observer
+                name="mageworx_location_list_generate_sitemap"
+                instance="MageWorx\LocationPages\Observer\PrepareListDataForXmlSitemap"
+        />
+    </event>
+</config>

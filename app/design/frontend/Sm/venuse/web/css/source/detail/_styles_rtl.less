@@ -1,0 +1,131 @@
+/**
+ * Compare, wishlist, email to friend
+ */
+.product-info-main {
+    .product-options-wrapper {
+        .fieldset {
+            .label {
+                color: #222;
+            }
+        }
+    }
+
+    .product-social-links,
+    .product-addto-links {
+        .action {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-right: 5px;
+            padding: 0;
+            color: #222 !important;
+            background-color: #f3f3f3;
+            border: none !important;
+            text-align: center;
+            line-height: 40px;
+            .border-radius(4px);
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .stock.unavailable,
+    .stock.available {
+        margin-left: 23px;
+        margin-right: 0;
+    }
+
+    .stock.available:before {
+        margin-left: 2px;
+        vertical-align: middle;
+        top: -1px;
+        position: relative;
+        .icomoon(e92d, 14px);
+    }
+}
+
+.product-info-main .box-tocart, .product-options-bottom .box-tocart {
+    float: right;
+    display: inline-block;
+}
+
+.product-info-main .product-social-links {
+    float: right;
+    display: inline-block;
+    width: 140px;
+    vertical-align: top;
+    padding-top: 28px;
+}
+
+.product-info-main .box-tocart .field.qty, .product-options-bottom .box-tocart .field.qty {
+    padding-left: 10px;
+    padding-right: 0;
+    float: right;
+}
+
+.product-info-main .box-tocart .actions, .product-options-bottom .box-tocart .actions {
+    float: right;
+    padding-top: 28px !important;
+}
+
+.magnifier-preview {
+    right: 100% !important;
+    top: 0 !important;
+    margin-right: 20px;
+}
+
+/**
+ * Table attributes product
+ */
+
+.default-style .resp-tabs-list li {
+    float: right;
+    margin-left: 38px;
+}
+
+/**
+ * Related upsell crossell product slider
+ */
+
+.bottom-product-slider {
+    margin-bottom: 68px;
+
+    &:last-child {
+        margin-bottom: 80px;
+    }
+
+    .block-title {
+        padding-bottom: 13px;
+        margin-bottom: 30px !important;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+        }
+
+        strong {
+            font-size: 171.428%;
+            color: #222;
+            font-weight: 600;
+        }
+    }
+
+    .products-grid .product-item,
+    .products-grid .product-item-info {
+        margin-bottom: 0;
+    }
+
+    .nav-style-1 .owl-theme .owl-nav [class*="owl-"] {
+        top: 32%;
+    }
+}

@@ -1,0 +1,25 @@
+<?php
+/** @var  $helper \Meetanshi\GA4\Helper\Data */
+$helper = $this->helper('Meetanshi\GA4\Helper\Data');
+?>
+<?php if ($helper->isEnable()) : ?>
+    <?php if ($helper->isMoveJsBottom()) :
+        echo $helper->getGAJSCode(); ?>
+    <?php endif; ?>
+    <script>
+        require(['jquery','Magento_Customer/js/customer-data'],
+            function ($, customerData) {
+                $( document ).ajaxComplete(function( event, xhr, settings ) {
+                    if (settings.url.search('/customer\/section\/load/') > 0) {
+                        var response = xhr.responseJSON;
+                        if (response.ga4_customer_section) {
+                            var dataLayerSectionData = $.parseJSON(response.ga4_customer_section.datalayer);
+                            for (indx in dataLayerSectionData) {
+                                window.dataLayer.push(dataLayerSectionData[indx]);
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+<?php endif; ?>

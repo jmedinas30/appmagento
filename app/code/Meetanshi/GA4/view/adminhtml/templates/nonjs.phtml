@@ -1,0 +1,9 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php
+$helper = $this->helper('Meetanshi\GA4\Helper\Data');
+?>
+<?php if ($helper->isEnable()) : ?>
+    <?php echo $helper->getGANonJSCode(); ?>
+<?php endif; ?>

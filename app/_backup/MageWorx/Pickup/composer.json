@@ -1,0 +1,23 @@
+{
+    "name": "mageworx/module-pickup",
+    "description": "MageWorx Pickup for Magento 2",
+    "require": {
+        "magento/module-store" : ">=101.0.0 <102",
+        "magento/module-ui" : ">=101.1.0 <102",
+        "magento/module-sales" : ">=102.0.0 <104",
+        "mageworx/module-locations" : ">=1.4.0",
+        "mageworx/module-storelocator" : ">=1.3.0"
+    },
+    "type": "magento2-module",
+    "version": "1.6.4",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MageWorx\\Pickup\\": ""
+        }
+    }
+}

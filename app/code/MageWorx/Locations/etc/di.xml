@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="MageWorxLocationsGirdFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MageWorxLocationsLocationGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">MageWorx\Locations\Model\ResourceModel\Location\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MageWorxLocationsGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="MageWorx\Locations\Model\ResourceModel\Location\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageworx_location_entity</argument>
+            <argument name="resourceModel" xsi:type="string">MageWorx\Locations\Model\ResourceModel\Location</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mageworx_locations_location_listing_data_source" xsi:type="string">MageWorx\Locations\Model\ResourceModel\Location\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="MageWorx\Locations\Api\Data\LocationInterface"
+                type="MageWorx\Locations\Model\Location"/>
+    <preference for="MageWorx\Locations\Api\LocationRepositoryInterface"
+                type="MageWorx\Locations\Model\LocationRepository"/>
+    <preference for="MageWorx\Locations\Api\LocationManagementInterface"
+                type="MageWorx\Locations\Model\LocationManagement"/>
+    <preference for="MageWorx\Locations\Api\LocationSourceManagementInterface"
+                type="MageWorx\Locations\Model\LocationSourceManagement"/>
+    <type name="MageWorx\GeoIP\Model\Source\DbType">
+        <plugin name="mageworx_location_change_available_db_type"
+                type="MageWorx\Locations\Plugin\ChangeAvailableDbTypePlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="mageworx_location_save_new_product_sku"
+                type="MageWorx\Locations\Plugin\SaveNewProductSkuPlugin" sortOrder="1"/>
+    </type>
+    <virtualType name="MageWorx\Locations\Block\Adminhtml\Location\Edit\Attributes"
+                 type="\Magento\Backend\Block\Template"/>
+</config>

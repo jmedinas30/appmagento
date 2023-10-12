@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_load_before">
+        <observer name="mt_layout_check" instance="Meetanshi\GA4\Observer\UpdateLayoutObserver"/>
+    </event>
+    <event name="checkout_cart_add_product_complete">
+        <observer name="meetanshi_gtm_add_to_cart" instance="Meetanshi\GA4\Observer\AddToCartProductObserver"/>
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="meetanshi_ga4_remove_cart" instance="Meetanshi\GA4\Observer\QuoteRemoveProductObserver" />
+    </event>
+    <event name="wishlist_add_product">
+        <observer name="meetanshi_ga4_wishlist" instance="Meetanshi\GA4\Observer\AddProductToWishListObserver" />
+    </event>
+    <event name="catalog_product_compare_add_product">
+        <observer name="meetanshi_ga4_compare" instance="Meetanshi\GA4\Observer\AddProductToCompareObserver" />
+    </event>
+</config>

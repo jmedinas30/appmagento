@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageworx_locations>
+            <general>
+                <enable_working_hours>1</enable_working_hours>
+            </general>
+        </mageworx_locations>
+        <mageworx_geoip>
+            <geoip_database>
+                <database_type>2</database_type>
+            </geoip_database>
+        </mageworx_geoip>
+    </default>
+</config>

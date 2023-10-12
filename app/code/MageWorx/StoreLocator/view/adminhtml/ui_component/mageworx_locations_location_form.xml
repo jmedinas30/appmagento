@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="address_tab" sortOrder="110">
+        <container name="map" sortOrder="140">
+            <htmlContent name="html_content">
+                <block name="coordinate"
+                       class="MageWorx\StoreLocator\Block\Adminhtml\Coordinates\Map"
+                       template="MageWorx_StoreLocator::coordinates.phtml"
+                       ifconfig="mageworx_locations/map/show_map"/>
+            </htmlContent>
+        </container>
+        <field name="latitude" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Latitude</label>
+                <visible>true</visible>
+                <dataScope>latitude</dataScope>
+            </settings>
+        </field>
+        <field name="longitude" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Longitude</label>
+                <visible>true</visible>
+                <dataScope>longitude</dataScope>
+            </settings>
+        </field>
+
+    </fieldset>
+</form>

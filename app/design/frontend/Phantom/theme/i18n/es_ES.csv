@@ -1,0 +1,36 @@
+"Qty","Cant."
+"VAT Number","DNI",module,Magento_Backend
+"Validate VAT Number","Validar DNI",module,Magento_Customer
+"Error during VAT Number verification.","Error durante la verificación de DNI.",module,Magento_Customer
+"VAT Number is valid.","DNI válido.",module,Magento_Customer
+"VAT Number","DNI",module,Magento_Customer
+"Tax/VAT number","DNI / impuestos",module,Magento_Customer
+"Show VAT Number on Storefront","Mostrar DNI en tienda",module,Magento_Customer
+"To show VAT number on Storefront, set Show VAT Number on Storefront option to Yes.","Para mostrar DNI en tienda, establezca mostrar DNI en la opción de la tienda en sí.",module,Magento_Customer
+"Show Tax/VAT Number","Mostrar DNI / impuestos",module,Magento_Customer
+"Tax VAT Number","DNI",module,Magento_Customer
+"VAT Number","DNI",module,Magento_CustomerCustomAttributes
+"VAT Number","DNI",module,Magento_Email
+"Already have an account? Click here to login","Ya tienes una cuenta, inicia sesión"
+"Company","Lugar donde recibirá"
+"Alias de la dirección","Lugar donde recibirá"
+"Register for newsletter","Recibir newsletter"
+"Create account","Crear Cuenta"
+"View Cart","Ir a Carrito"
+"State/Province","Estado/Ciudad"
+"Place Order", "Finalizar Compra"
+"Proceed to Checkout", "Realizar Pedido"
+"You have no items in your shopping cart.","No tiene productos en su carrito."
+"The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.","Error al tratar de iniciar sesión, por favor trate nuevamente después"
+"Minimum length of this field must be equal or greater than %1 symbols. Leading and trailing spaces will be ignored", "La contraseña debe tener como mínimo %1 caracteres entre letras y números."
+"New Address","Nueva Dirección"
+"Ship Here","Enviar Aquí"
+"Sorry, no quotes are available for this order at this time","Espere un momento"
+"Select store for pickup...","Seleccionar Tienda"
+"Select store","Elegir Tienda"
+"Route","Ruta"
+"Details","Detalles"
+"Store Page","Tienda"
+"Working hours","Horario de Atención"
+"closes","cierra a las"
+

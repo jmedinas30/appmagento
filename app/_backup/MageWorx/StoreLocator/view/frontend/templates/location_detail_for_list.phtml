@@ -1,0 +1,162 @@
+<?php
+use MageWorx\Locations\Api\Data\LocationInterface;
+
+/** @var $block \MageWorx\StoreLocator\Block\LocationDetail */
+/** @var $location LocationInterface $location */
+$location = $block->getLocation(); ?>
+<div class="mw-sl__store__details__full" id="location-details_<?= $block->escapeHtml($location->getId()) ?>">
+    <ul class="mw-sl__stores__details__icons">
+        <li class="mw-sl__store__info__name"><?= /* @noEscape */
+            $block->getLocationPageLink($location, __('Store Page')) ?></li>
+        <?php if (($workingHours = $location->getFormattedWorkingHours())
+            || $location->getWorkingHoursType() == LocationInterface::WORKING_24_HOURS_A_DAY) : ?>
+            <li class="mw-sl__stores__details__hours"><i class="mw-sl__icon mw-sl__icon--watch">
+                    <img src="
+                        <?= $block->escapeUrl(
+                            $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/watch.svg')
+                        ); ?>"
+                         alt="<?= $block->escapeHtml(__('Watch icon')) ?>"/>
+                </i>
+                <table class="mw-sl__stores__details__hours__table">
+                    <tr>
+                        <th class="<?=
+                        $location->isOpenNow() ? 'mw-sl__store__info__open' : 'mw-sl__store__info__closed'
+                        ?>">
+                            <?= $block->escapeHtml(__('Working hours')) ?>
+                        </th>
+                        <td class="<?=
+                        $location->isOpenNow() ? 'mw-sl__store__info__open' : 'mw-sl__store__info__closed'
+                        ?>">
+                            <?= /* @noEscape */
+                            $location->getWorkingHoursInfo() ?>
+                        </td>
+                    </tr>
+                    <?php foreach ($workingHours as $day => $time) : ?>
+                        <tr>
+                            <th><?= $block->escapeHtml(__($day)) ?></th>
+                            <?php if ($time['off']) : ?>
+                                <td><?= $block->escapeHtml(__('Closed')) ?></td>
+                            <?php else : ?>
+                                <td>
+                                    <span><?= $block->escapeHtml($time['from'] . ' - ' . $time['to']) ?></span>
+                                    <?php if ($time['has_lunch_time']) : ?>
+                                        <span class="mw-sl__store__info__lunch-time">
+                                            <?= $block->escapeHtml('(' . __('Lunch time') . ' ' . $time['lunch_from'] . ' - ' . $time['lunch_to'] . ')') ?>
+                                        </span>
+                                    <?php endif ?>
+                                </td>
+                            <?php endif ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </li>
+        <?php endif; ?>
+        <?php if ($location->getPhoneNumber()) : ?>
+            <li class="mw-sl__stores__details__tel"><i class="mw-sl__icon mw-sl__icon--tel">
+                    <img src="<?= $block->escapeUrl(
+                        $block->getViewFileUrl(
+                            'MageWorx_StoreLocator::images/svg/phone.svg'
+                        )
+                              ); ?>"
+                         alt="<?= $block->escapeHtml(__('Phone icon')) ?>"/>
+                </i><a href="tel:<?= $block->escapeUrl($location->getPhoneNumber()); ?>">
+                    <?= $block->escapeHtml($location->getPhoneNumber()); ?>
+                </a>
+            </li>
+        <?php endif; ?>
+        <?php if ($location->getEmail()) : ?>
+            <li class="mw-sl__stores__details__email"><i class="mw-sl__icon mw-sl__icon--email">
+                    <img src="<?= $block->escapeUrl(
+                        $block->getViewFileUrl(
+                            'MageWorx_StoreLocator::images/svg/mail.svg'
+                        )
+                              ); ?>"
+                         alt="<?= $block->escapeHtml(__('Mail icon')) ?>"/>
+                </i>
+                <a href="mailto: <?= $block->escapeUrl($location->getEmail()); ?>"
+                   target="_blank">
+                    <?= $block->escapeHtml($location->getEmail()); ?>
+                </a>
+            </li>
+        <?php endif; ?>
+        <?php if ($location->getWebsiteUrl()) : ?>
+            <li class="mw-sl__stores__details__website"><i class="mw-sl__icon mw-sl__icon--website">
+                    <img src="<?= $block->escapeUrl(
+                        $block->getViewFileUrl(
+                            'MageWorx_StoreLocator::images/svg/www.svg'
+                        )
+                              ); ?>"
+                         alt="<?= $block->escapeHtml(__('Website icon')) ?>"/>
+                </i>
+                <a href="https://<?= $block->escapeUrl($location->getWebsiteUrl()); ?>"
+                   target="_blank">
+                    <?= $block->escapeHtml($location->getWebsiteUrl()); ?>
+                </a>
+            </li>
+        <?php endif; ?>
+        <li class="mw-sl__stores__details__socials">
+            <ul class="mw-sl__stores__details__socialslist">
+                <?php if ($location->getInstagram()) : ?>
+                    <li class="mw-sl__stores__details__socialslist__item">
+                        <a href="https://instagram.com/<?= $block->escapeUrl($location->getInstagram()); ?>"
+                           target="_blank">
+                            <i class="mw-sl__icon mw-sl__icon--instagram">
+                                <img src="<?= $block->escapeUrl(
+                                    $block->getViewFileUrl(
+                                        'MageWorx_StoreLocator::images/svg/instagram.svg'
+                                    )
+                                          ); ?>"
+                                     alt="<?= $block->escapeHtml(__('Instagram icon')) ?>"/>
+                            </i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($location->getFacebook()) : ?>
+                    <li class="mw-sl__stores__details__socialslist__item">
+                        <a href="https://facebook.com/<?= $block->escapeUrl($location->getFacebook()); ?>"
+                           target="_blank">
+                            <i class="mw-sl__icon mw-sl__icon--facebook">
+                                <img src="<?= $block->escapeUrl(
+                                    $block->getViewFileUrl(
+                                        'MageWorx_StoreLocator::images/svg/facebook.svg'
+                                    )
+                                          ); ?>"
+                                     alt="<?= $block->escapeHtml(__('Facebook icon')) ?>"/>
+                            </i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($location->getWhatsapp()) : ?>
+                    <li class="mw-sl__stores__details__socialslist__item">
+                        <a href="https://wa.me/<?= $block->escapeUrl($location->getWhatsapp()); ?>" target="_blank">
+                            <i class="mw-sl__icon mw-sl__icon--whatsapp">
+                                <img src="<?= $block->escapeUrl(
+                                    $block->getViewFileUrl(
+                                        'MageWorx_StoreLocator::images/svg/whatsapp.svg'
+                                    )
+                                          ); ?>"
+                                     alt="<?= $block->escapeHtml(__('Whatsapp icon')) ?>"/>
+                            </i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($location->getSkype()) : ?>
+                    <li class="mw-sl__stores__details__socialslist__item">
+                        <a href="skype:<?= $block->escapeUrl($location->getSkype()); ?>?call">
+                            <i class="mw-sl__icon mw-sl__icon--skype">
+                                <img src="<?= $block->escapeUrl(
+                                    $block->getViewFileUrl(
+                                        'MageWorx_StoreLocator::images/svg/skype.svg'
+                                    )
+                                          ); ?>"
+                                     alt="<?= $block->escapeHtml(__('Skype icon')) ?>"/>
+                            </i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </li>
+    </ul>
+    <div class="mw-sl__stores__details__description"> <?= /* @noEscape */
+        $location->getDescription() ?></div>
+</div>

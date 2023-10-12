@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_StoreLocator::location-styles.css"/>
+        <css src="MageWorx_StoreLocator::styles.css"/>
+        <link src="MageWorx_StoreLocator::js/markerClusterer.js"/>
+        <link src="MageWorx_StoreLocator::js/maps/autocomplete.js"/>
+    </head>
+    <body>
+        <referenceBlock name="product.info.addtocart">
+            <block class="MageWorx\StoreLocator\Block\Catalog\Product\FindAStore"
+                   name="mageworx.store_locator.locations"
+                   template="MageWorx_StoreLocator::catalog/product/wrapper.phtml"
+                   ifconfig="mageworx_locations/product_page/show_locations_on_product"
+                   before="-"
+            />
+        </referenceBlock>
+        <referenceBlock name="product.info.addtocart.additional">
+            <block class="MageWorx\StoreLocator\Block\Catalog\Product\FindAStore"
+                   name="mageworx.store_locator.locations.additional"
+                   template="MageWorx_StoreLocator::catalog/product/wrapper.phtml"
+                   ifconfig="mageworx_locations/product_page/show_locations_on_product"
+                   before="-"
+            />
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="MageWorx\StoreLocator\Block\Popup"
+                   name="mageworx.store_locator.locations.popup"
+                   ifconfig="mageworx_locations/product_page/show_locations_on_product"
+                   template="MageWorx_StoreLocator::locations/popup.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

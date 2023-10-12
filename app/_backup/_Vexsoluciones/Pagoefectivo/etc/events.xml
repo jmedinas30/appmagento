@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="payment_method_assign_data">
+        <observer name="additional_data_reader_pagoefectivo" instance="Vexsoluciones\Pagoefectivo\Observer\AdditionalDataReader" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="event_checkout_redirect" instance="Vexsoluciones\Pagoefectivo\Observer\Redirect"  />
+    </event>
+    <event name="sales_order_payment_place_end">
+        <observer name="evento_pedido_after" instance="Vexsoluciones\Pagoefectivo\Observer\SaveOrderAfterSubmitObserver" />
+    </event>
+
+</config>

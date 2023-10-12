@@ -1,0 +1,106 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+
+<?php /**@var $block \Magento\Backend\Block\Widget */ ?>
+<div class="import-export-locations">
+    <?php if (!$block->getIsReadonly()) : ?>
+        <div class="import-locations">
+            <form id="import-form" class="admin__fieldset"
+                  action="<?= /** @noEscape */ $block->getUrl('mageworx_locations/datatransfer/importPost') ?>" method="post"
+                  enctype="multipart/form-data">
+                <?= /** @noEscape */ $block->getBlockHtml('formkey') ?>
+                <div class="fieldset admin__field">
+                    <label for="import_locations_file" class="admin__field-label"><span>
+                            <?= /** @noEscape */ __('Import Stores') ?></span></label>
+                    <div class="admin__field-control">
+                        <input type="file" id="import_locations_file" name="import_locations_file"
+                               class="input-file required-entry"/>
+                        <?= /** @noEscape */ $block->getButtonHtml(__('Import Stores'), '', 'import-submit') ?>
+                    </div>
+                </div>
+            </form>
+            <script>
+                require(['jquery', "mage/mage", "loadingPopup"], function (jQuery) {
+
+                    jQuery('#import-form').mage('form').mage('validation');
+                    (function ($) {
+                        $('.import-submit').click(function () {
+                            if ($(':input[name="import_locations_file"]').val()) {
+                                $('body').loadingPopup({
+                                    timeout: false
+                                });
+                                $(this.form).submit();
+                            }
+                        });
+                    })(jQuery);
+
+                });
+            </script>
+        </div>
+        <div class="export-locations">
+            <form id="export-form" class="admin__fieldset"
+                  action="<?= /** @noEscape */ $block->getUrl('mageworx_locations/datatransfer/exportPost') ?>" method="post"
+                  enctype="multipart/form-data">
+                <?= /** @noEscape */ $block->getBlockHtml('formkey') ?>
+                <div class="fieldset admin__field">
+                    <label for="export_only_default" class="admin__field-label"><span>
+                            <?=  /** @noEscape */ __('Export Only Default Values') ?></span></label>
+                    <div class="admin__field-control">
+                       <select class="admin__control-select" name="export_only_default">
+                           <option value="1"><?= /** @noEscape */ __('Yes') ?></option>
+                           <option  value="0"><?=  /** @noEscape */ __('No') ?></option>
+                       </select>
+                    </div>
+                </div>
+                <div class="fieldset admin__field">
+                    <label for="export_locations_file" class="admin__field-label"><span>
+                            <?= /** @noEscape */ __('Export Stores') ?></span></label>
+                    <div class="admin__field-control">
+                        <?= /** @noEscape */ $block->getButtonHtml(__('Export Stores'), '', 'export-submit') ?>
+                        <br />
+                        <?=  /** @noEscape */ __('This operation can take a long time in case you have a lot of stores')?>
+                    </div>
+                </div>
+            </form>
+            <script>
+                require(['jquery', "mage/mage", "loadingPopup"], function (jQuery) {
+
+                    (function ($) {
+                        $('.export-submit').click(function () {
+                           /* $('body').loadingPopup({
+                                timeout: false
+                            });*/ //@todo show spiner and hide after file load ajax?
+
+                            $(this.form).submit();
+                        });
+                    })(jQuery);
+
+                });
+            </script>
+        </div>
+    <?php endif; ?>
+</div>
+
+<div class="example-export">
+    <form id="example_export_form"
+          class="admin__fieldset"
+          action="<?= /** @noEscape */ $block->getUrl('mageworx_locations/datatransfer/exportExamplePost') ?>"
+          method="post"
+          enctype="multipart/form-data">
+        <?= $block->getBlockHtml('formkey') ?>
+        <div class="fieldset admin__field">
+                <span class="admin__field-label">
+                    <span><?= /** @noEscape */ __('Download example CSV file'); ?></span>
+                </span>
+            <div class="admin__field-control" style="line-height: 32px;">
+                <a href="<?= /** @noEscape */ $block->getUrl(
+                    'mageworx_locations/datatransfer/exportExamplePost'
+                ) ?>"><?= /** @noEscape */ __('Download'); ?></a>
+            </div>
+        </div>
+    </form>
+</div>

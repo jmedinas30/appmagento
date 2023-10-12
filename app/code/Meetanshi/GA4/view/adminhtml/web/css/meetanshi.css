@@ -1,0 +1,28 @@
+.meetanshi .title:before {
+    background-image: url(https://meetanshi.com/media/logo.png);
+    background-size: 150px 19px;
+    display: inline-block;
+    width: 150px;
+    height: 19px;
+    content: "";
+    background-repeat: no-repeat;
+}
+
+#download_ga4_json{
+    background-color: #FFF;
+}
+#download_ga4_json:hover{
+    border-color: #b84002;
+    box-shadow: 0 0 0 1px #eb5202;
+    background-color: whitesmoke;
+}
+
+@media only screen and (max-width: 1500px) {
+    body button#generate_json {
+        font-size: 13px;
+    }
+    body a#download_ga4_json {
+        display: inline-block;
+        margin-top: 8px;
+    }
+}

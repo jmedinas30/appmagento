@@ -1,0 +1,6 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\GoogleMap */
+?>
+<?php if ($block->isShowMap()) : ?>
+    <script src="<?= $block->escapeUrl($block->getScriptUrlWithParams())?>" async defer></script>
+<?php endif; ?>

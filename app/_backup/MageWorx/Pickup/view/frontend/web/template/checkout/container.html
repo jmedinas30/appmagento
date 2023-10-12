@@ -1,0 +1,19 @@
+<!--
+/**
+ * Copyright © Mageworx All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div id="mageworx-location-checkout-chooser" class="mw-store-locator-locations"
+     data-bind="if: isPickupSelected(), visible: isVisible">
+    <div data-bind="if: isLocationSelected()" class="mw-store-locator-locations">
+        <ul class="mw-sl__stores__list">
+            <li class="mw-sl__stores__list__item">
+                <div class="mw-sl__store__info" data-bind="html:getStoreData()"></div>
+            </li>
+        </ul>
+    </div>
+    <button type="button" id="showLocationButton" data-bind="click: openModal">
+        <!-- ko i18n: 'Select store for pickup...'--><!-- /ko -->
+    </button>
+</div>

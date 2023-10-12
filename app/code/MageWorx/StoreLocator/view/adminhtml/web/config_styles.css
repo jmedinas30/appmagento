@@ -1,0 +1,136 @@
+.mw-map-data {
+    width: 90%;
+}
+.mw-map-data-row {
+    width: 70%;
+}
+.mw-map-data-row .label {
+    width: 150px;
+    color: #303030;
+    float: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 30px;
+    text-align: right;
+}
+
+#mwGetCoordinatesModal .header {
+    width: 150px;
+    color: #303030;
+    float: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 30px;
+    text-align: right;
+    margin-top: 25px;
+}
+
+.mw-map-data-row .value input{
+    width: 100%;
+}
+
+#mwGetCoordinatesModal #map {
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#mwGetCoordinatesModal .map-block {
+    display: block;
+}
+
+#mwGetCoordinatesModal .column-left {
+    float: left;
+    width: 35%;
+}
+
+#mwGetCoordinatesModal .column-right {
+    float: left;
+    width: 65%;
+}
+
+#mwGetCoordinatesModal .mw_locator_zoom_value {
+    float:left;
+    width: 25%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.mw-map-data-row-long {
+    width: 90%;
+}
+
+.mw-map-data-row-long .value {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 45px;
+    cursor: text
+}
+.mw-map-data-row-long .mw-sl__input__button {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 45px;
+    flex: 0 1 45px;
+    min-height: 45px;
+    padding: 0;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+    z-index: 20;
+    margin-right: -15px;
+    margin-bottom: -5px;
+}
+
+.mw-map-data-row-long .mw-sl__input__control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    font-family: inherit;
+    min-width: 0;
+    min-height: 45px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 12px 15px;
+    padding-right: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    background: none;
+    color: #909090;
+    z-index: 20;
+    border: 1px solid #909090;
+    animation-name: endBrowserAutofill;
+    background: url(images/search.svg) no-repeat scroll 7px 7px;
+    padding-left:30px;
+}
+
+#row_mageworx_locations_general_default_scale {
+    display: none!important;
+}
+#row_mageworx_locations_general_default_country {
+    display: none!important;
+}
+#row_mageworx_locations_general_default_region {
+    display: none!important;
+}
+#row_mageworx_locations_general_default_city {
+    display: none!important;
+}
+#row_mageworx_locations_general_default_lat {
+    display: none!important;
+}
+#row_mageworx_locations_general_default_lng {
+    display: none!important;
+}

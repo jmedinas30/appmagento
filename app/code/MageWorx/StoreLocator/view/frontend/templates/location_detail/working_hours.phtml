@@ -1,0 +1,47 @@
+<?php
+use MageWorx\Locations\Api\Data\LocationInterface;
+
+/** @var $block \MageWorx\StoreLocator\Block\LocationInfo */
+/** @var $location LocationInterface $location */
+$location = $block->getLocation(); ?>
+
+<?php $workingHours = $location->getFormattedWorkingHours();
+if (($workingHours) || $location->getWorkingHoursType() == LocationInterface::WORKING_24_HOURS_A_DAY) : ?>
+    <li class="mw-sl__stores__details__hours"><i class="mw-sl__icon mw-sl__icon--watch">
+            <img src="
+                        <?= $block->escapeUrl(
+                $block->getViewFileUrl('MageWorx_StoreLocator::images/svg/watch.svg')
+            ); ?>"
+                 alt="<?= $block->escapeHtml(__('Watch icon')) ?>"/>
+        </i>
+        <table class="mw-sl__stores__details__hours__table">
+            <tr>
+                <th class="<?= $location->isOpenNow(
+                ) ? 'mw-sl__store__info__open' : 'mw-sl__store__info__closed' ?>">
+                    <?= $block->escapeHtml(__('Working hours')) ?>
+                </th>
+                <td class="<?= $location->isOpenNow(
+                ) ? 'mw-sl__store__info__open' : 'mw-sl__store__info__closed' ?>">
+                    <?= $block->escapeHtml($location->getWorkingHoursInfo()) ?>
+                </td>
+            </tr>
+            <?php foreach ($workingHours as $day => $time) : ?>
+                <tr>
+                    <th><?= $block->escapeHtml(__($day)) ?></th>
+                    <?php if ($time['off']) : ?>
+                        <td><?= $block->escapeHtml(__('Closed')) ?></td>
+                    <?php else : ?>
+                        <td>
+                            <span><?= $block->escapeHtml($time['from'] . ' - ' . $time['to']) ?></span>
+                            <?php if ($time['has_lunch_time']) : ?>
+                                <span class="mw-sl__store__info__lunch-time">
+                                                <?= $block->escapeHtml('(' . __('Lunch time') . ' ' . $time['lunch_from'] . ' - ' . $time['lunch_to'] . ')') ?>
+                                            </span>
+                            <?php endif ?>
+                        </td>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </li>
+<?php endif; ?>

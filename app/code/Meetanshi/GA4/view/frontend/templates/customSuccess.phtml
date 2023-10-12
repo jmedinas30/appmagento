@@ -1,0 +1,22 @@
+<?php
+/** @var $helper \Meetanshi\GA4\Helper\Data */
+?>
+<?php
+/** @var $checkoutSession \Magento\Checkout\Model\Session */
+$checkoutSession = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Checkout\Model\Session');
+$orderId = $checkoutSession->getData('last_order_id');
+$script = '';
+if ($orderId) :
+    $helper = $this->helper('Meetanshi\GA4\Helper\Data');
+    try {
+        $script = $helper->getPurchaseData($orderId);
+    } catch (\Exception $e) {
+        $script = [];
+        $helper->logMessage($e->getMessage());
+    }
+    ?>
+    <script>
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push(<?php echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($script); ?>);
+    </script>
+<?php endif; ?>

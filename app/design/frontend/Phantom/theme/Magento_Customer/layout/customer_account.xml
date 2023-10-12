@@ -1,0 +1,34 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">  
+    <body>
+        <referenceBlock name="customer_account_navigation"><!--ifconfig="wishlist/general/active"-->
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-logout-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">customer/account/logout</argument>
+                    <argument name="label" xsi:type="string">Cerrar Sesión</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <!-- Remove unwanted account navigation links -->
+        <!-- downloadable product link -->
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+        <!-- subscription link -->
+        <!-- referenceBlock name="customer-account-navigation-newsletter-subscriptions-link" remove="true"/ -->
+        <!-- billing agreement link -->
+        <!-- referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true"/ -->
+        <!-- product review link -->
+        <referenceBlock name="customer-account-navigation-product-reviews-link" remove="true"/>
+        <!-- my credit card link -->
+		<!-- referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/ -->
+        <!-- referenceBlock name="customer-account-navigation-my-credit-cards" remove="true"/ -->
+        <!-- account link -->
+        <!-- referenceBlock name="customer-account-navigation-account-link" remove="true"/  -->
+        <!-- account edit link -->
+        <!-- referenceBlock name="customer-account-navigation-account-edit-link" remove="true"/ -->
+        <!-- address link -->
+        <!-- referenceBlock name="customer-account-navigation-address-link" remove="true"/ -->
+        <!-- orders link -->
+        <!-- referenceBlock name="customer-account-navigation-orders-link" remove="true"/ -->
+        <!-- wish list link -->
+        <!--referenceBlock name="customer-account-navigation-wish-list-link" remove="true"/ -->
+    </body>
+</page>  

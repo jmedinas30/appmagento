@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Meetanshi\GA4\Block\CheckoutPage" template="Meetanshi_GA4::cartView.phtml" name="meetanshi_ga4_cart_view" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Checkout\Block\Onepage" template="Meetanshi_GA4::coupon.phtml" name="meetanshi_ga4_cart_coupon" ifconfig="mt_ga4/general/enable"/>
+        </referenceContainer>
+    </body>
+</page>

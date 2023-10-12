@@ -1,0 +1,14 @@
+{
+    "name": "mageworx/module-storelocatormeta",
+    "version": "1.12.5",
+    "type": "metapackage",
+    "require": {
+        "mageworx/module-locations": "1.9.5",
+        "mageworx/module-pickup": "1.6.7",
+        "mageworx/module-storelocator": "1.8.4",
+        "mageworx/module-locationpages": "1.3.6",
+        "mageworx/module-geoip": ">=2.3.0",
+        "mageworx/module-googleapi": ">=1.1.1",
+        "mageworx/module-info": ">=1.0.0"
+    }
+}

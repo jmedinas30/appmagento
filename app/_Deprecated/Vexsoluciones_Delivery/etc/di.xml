@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blog
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+	<virtualType name="Vexsoluciones\Delivery\Model\ResourceModel\Tienda\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">vexsoluciones_tiendas</argument>
+			<argument name="resourceModel" xsi:type="string">Vexsoluciones\Delivery\Model\ResourceModel\Tienda</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="vexsoluciones_delivery_tienda_data_source" xsi:type="string">Vexsoluciones\Delivery\Model\ResourceModel\Tienda\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+
+	<virtualType name="Vexsoluciones\Delivery\Model\ResourceModel\Sector\Grid\Collection">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">vexsoluciones_reglas_sector</argument>
+			<argument name="resourceModel" xsi:type="string">Vexsoluciones\Delivery\Model\ResourceModel\Sector</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="vexsoluciones_delivery_sector_data_source" xsi:type="string">Vexsoluciones\Delivery\Model\ResourceModel\Sector\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+
+	<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+	    <plugin name="rewrite-street" type="Vexsoluciones\Delivery\Plugin\LayoutProcessorPlugin" sortOrder="10"/>
+	</type>
+
+	<preference for="Vexsoluciones\Delivery\Api\DeliveryInterface" type="Vexsoluciones\Delivery\Model\DeliveryApi" />
+	
+	<type name="Magento\Checkout\Model\ShippingInformationManagement">
+	    <plugin name="save-in-quote-vex" type="Vexsoluciones\Delivery\Plugin\ShippingInformationManagementPlugin" sortOrder="3"/>
+	</type>
+
+	<type name="Magento\Sales\Block\Adminhtml\Order\View\Info">
+        <plugin name="vexsoluciones_delivery_order_info_shipping_date" type="Vexsoluciones\Delivery\Plugin\Block\Adminhtml\DeliveryData" sortOrder="50" />
+    </type>
+
+</config>

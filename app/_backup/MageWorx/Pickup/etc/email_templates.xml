@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="mageworx_locations_general_email_template" label="New Order(MageWorx Pickup)" file="new_order.html" type="html" module="MageWorx_Pickup" area="frontend"/>
+    <template id="mageworx_locations_general_email_template_ready_for_pickup" label="Ready For Pickup(MageWorx Pickup)" file="ready_for_pickup.html" type="html" module="MageWorx_Pickup" area="frontend"/>
+    <template id="mageworx_locations_general_email_to_store_template" label="New Order" file="order_new.html" type="html" module="Magento_Sales" area="frontend"/>
+</config>

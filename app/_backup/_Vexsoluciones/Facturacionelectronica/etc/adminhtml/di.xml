@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Info">
+        <plugin name="vexsoluciones_facturacionelectronica_facturacion_fields_show_fields" type="Vexsoluciones\Facturacionelectronica\Plugin\Block\Adminhtml\FacturacionFields" sortOrder="99999" />
+    </type>
+
+    <virtualType name="Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper" type="Vexsoluciones\Facturacionelectronica\Vexfecore\Database" shared="true">
+        <arguments>
+            <argument name="driver" xsi:type="string">MYSQL</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\configDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\serieDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\comprobanteDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\comprobanteFacturaDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\comprobanteBoletaDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\comprobanteDetalleDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+    <type name="Vexsoluciones\Facturacionelectronica\Vexfecore\DAO\logDAO">
+       <arguments>
+           <argument name="Database" xsi:type="object">Vexsoluciones\Facturacionelectronica\Vexfecore\DatabaseWrapper</argument>
+       </arguments>
+    </type>
+
+
+
+
+</config>

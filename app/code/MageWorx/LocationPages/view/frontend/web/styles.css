@@ -1,0 +1,37 @@
+#mw-store-locator-locations .storeinfo-left {
+    float: left;
+    width: 50%;
+}
+
+#mw-store-locator-locations .storeinfo-right {
+    float: right;
+    width: 50%;
+}
+
+#mw-store-locator-locations .storeinfo-right .mw-sl__map {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    width: 500px;
+    margin: 20px;
+}
+
+.product_list_item_stock_in-stock {
+    font-weight: 600;
+    color: #68a56d;
+    vertical-align: top;
+    margin-top: -15px;
+    display: block;
+    margin-bottom: 15px;
+    float:left!important;
+}
+
+.product_list_item_stock_out-of-stock {
+    font-weight: 600;
+    color: #909090;
+    vertical-align: top;
+    margin-top: -8px;
+    display: block;
+    margin-bottom: 15px;
+    float:left!important;
+}

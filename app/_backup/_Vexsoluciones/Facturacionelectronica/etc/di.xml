@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <preference for="Vexsoluciones\Facturacionelectronica\Api\Data\CheckoutFacturacionFieldsInterface" type="Vexsoluciones\Facturacionelectronica\Model\Data\CheckoutFacturacionFields" />
+    <preference for="Vexsoluciones\Facturacionelectronica\Api\CheckoutFacturacionFieldsRepositoryInterface" type="Vexsoluciones\Facturacionelectronica\Model\CheckoutFacturacionFieldsRepository" />
+ 
+    <preference for="Vexsoluciones\Facturacionelectronica\Api\Data\ComprobanteInterface" type="Vexsoluciones\Facturacionelectronica\Model\Comprobante" />
+
+    <virtualType name="Vexsoluciones\Facturacionelectronica\Model\ResourceModel\Grid\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mg_vexfe_comprobantes</argument>
+            <argument name="resourceModel" xsi:type="string">Vexsoluciones\Facturacionelectronica\Model\ResourceModel\Comprobante</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="grid_record_grid_list_data_source" xsi:type="string">Vexsoluciones\Facturacionelectronica\Model\ResourceModel\Grid\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Config\Model\Config">
+        <plugin name="admin_system_config_save_plugin_factura_electronica"
+                type="Vexsoluciones\Facturacionelectronica\Plugin\AfterConfigSavePlugin" sortOrder="1"/>
+    </type>
+    <type name="Vexsoluciones\Facturacionelectronica\Helper\Validator">
+        <arguments>
+            <argument name="section" xsi:type="string">facturacionelectronica_service</argument>
+            <argument name="moduleCode" xsi:type="string">general</argument>
+            <argument name="itemReference" xsi:type="string">Facturacion electronica - Magento 2</argument>
+        </arguments>
+    </type>
+
+
+</config>

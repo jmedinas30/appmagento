@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+
+        <add id="facturacionelectronica::main"
+             title="Facturación electrónica"
+             module="Vexsoluciones_Facturacionelectronica"
+             sortOrder="9999"
+             parent="Magento_Sales::sales"
+             resource="Magento_Backend::content"
+        />
+
+
+
+        <add id="facturacionelectronica::lista" title="Registradas" translate="Registradas" module="Vexsoluciones_Facturacionelectronica" parent="facturacionelectronica::main" sortOrder="2" dependsOnModule="Vexsoluciones_Facturacionelectronica" action="facturacion/comprobantes/registros/" resource="Vexsoluciones_Facturacionelectronica::main"/>
+    </menu>
+
+</config>

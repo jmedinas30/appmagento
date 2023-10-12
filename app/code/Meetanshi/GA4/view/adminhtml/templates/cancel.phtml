@@ -1,0 +1,37 @@
+<?php
+/** @var $helper \Meetanshi\GA4\Helper\Data */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$session = $objectManager->get('Magento\Backend\Model\Session');
+
+$cancelOrderData = $session->getGA4CancelOrder();
+$helper = $this->helper('Meetanshi\GA4\Helper\Data');
+$refundOrderData = $session->getGA4RefundOrder();
+
+if ($helper->isEnable()) :
+    $isAdd = 0;
+    $script = '';
+    try {
+        if ($cancelOrderData != null && sizeof($cancelOrderData)) {
+            $orderId = $cancelOrderData['id'];
+            $script = $helper->getPurchaseData($orderId, $cancelOrderData['event'], $cancelOrderData['refund']);
+            $isAdd = 1;
+        }elseif ($refundOrderData != null && sizeof($refundOrderData)){
+            $orderId = $refundOrderData['id'];
+            $script = $helper->getPurchaseData($orderId, $refundOrderData['event'], $refundOrderData['refund'], $refundOrderData);
+            $isAdd = 1;
+        }
+    } catch (\Exception $e) {
+        $script = [];
+        $helper->logMessage($e->getMessage());
+    } ?>
+    <?php if ($isAdd):
+    $session->unsGA4CancelOrder(null);
+    $session->unsGA4RefundOrder(null);
+    ?>
+    <script>
+        window.dataLayer.push({ ecommerce: null });
+        //window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(<?php echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($script); ?>);
+    </script>
+<?php endif; ?>
+<?php endif; ?>

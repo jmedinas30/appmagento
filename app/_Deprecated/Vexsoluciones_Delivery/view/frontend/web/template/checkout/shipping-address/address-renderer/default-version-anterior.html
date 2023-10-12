@@ -1,0 +1,96 @@
+
+<div class="shipping-address-item" css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()">
+     
+    <span style="display: block;font-weight: bold;" data-bind="i18n: 'Nueva Direcci&oacute;n', visible: (address().isEditable())" class="checkout-new-address-label"></span>
+
+    <b> Entregar a: </b><!-- ko text: address().prefix --><!-- /ko --> <!-- ko text: address().firstname --><!-- /ko -->
+
+    <!-- ko text: address().lastname --><!-- /ko --> <!-- ko text: address().suffix --><!-- /ko --><br/>
+
+    <b> Direcci&oacute;n: </b>
+    <!-- ko text: address().street --><!-- /ko --><br/>
+ 
+    <!-- ko if: address().countryId != 'PE' -->
+        <!-- ko text: address().postcode --><!-- /ko --> <br/>
+    <!-- /ko -->
+ 
+    <b> Tel&eacute;fono: </b> 
+    <!-- ko text: address().telephone --><!-- /ko --><br/>
+
+    <b> Departamento: </b> 
+    <!-- ko text: address().region --><!-- /ko --><br/>
+
+
+    <!-- ko foreach: { data: address().customAttributes, as: 'element' } -->
+        <!-- ko foreach: { data: Object.keys(element), as: 'attribute' } -->
+         
+            <!-- ko if: attribute == 'provincia_label' --> 
+
+                <b>Provincia</b>
+                  
+                <!-- ko if: element[attribute].value != null -->
+                    <!-- ko if: element[attribute].value != '' -->
+                        <!-- ko text: element[attribute].value --><!-- /ko --> 
+                    <!-- /ko -->
+                    <!-- ko if: element[attribute].value == '' -->
+                        <!-- ko text: '----' --><!-- /ko --> 
+                    <!-- /ko -->
+                <!-- /ko -->
+
+                <!-- ko if: element[attribute].value == null --> 
+
+                    <!-- ko if: element[attribute] != '' -->
+                        <!-- ko text: element[attribute] --><!-- /ko --> 
+                    <!-- /ko -->
+                    <!-- ko if: element[attribute] == '' -->
+                        <!-- ko text: '----' --><!-- /ko --> 
+                    <!-- /ko -->
+
+                <!-- /ko -->
+                <br/>
+
+            <!-- /ko -->
+            <!-- ko if: attribute == 'distrito_label' --> 
+
+                <b>Distrito:</b>
+                  
+                <!-- ko if: element[attribute].value != null -->
+                    <!-- ko if: element[attribute].value != '' -->
+                        <!-- ko text: element[attribute].value --><!-- /ko --> 
+                    <!-- /ko -->
+                    <!-- ko if: element[attribute].value == '' -->
+                        <!-- ko text: '----' --><!-- /ko --> 
+                    <!-- /ko -->
+                <!-- /ko -->
+
+                <!-- ko if: element[attribute].value == null --> 
+
+                    <!-- ko if: element[attribute] != '' -->
+                        <!-- ko text: element[attribute] --><!-- /ko --> 
+                    <!-- /ko -->
+                    <!-- ko if: element[attribute] == '' -->
+                        <!-- ko text: '----' --><!-- /ko --> 
+                    <!-- /ko -->
+
+                <!-- /ko -->
+                <br/>
+
+            <!-- /ko -->
+
+         <!-- /ko -->
+    <!-- /ko -->
+ 
+
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Editar'"></span>
+    </button>
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" click="selectAddress" class="action action-select-shipping-item">
+        <span translate="'Enviar aquí'"></span>
+    </button>
+    <!-- /ko -->
+
+</div>
+

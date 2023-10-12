@@ -1,0 +1,19 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Catalog\Product\FindAStore */
+$locations = $block->getLocations(); ?>
+<span class="icon_location">
+             <img src="<?= $block->escapeUrl($block->getLocationOnProductImageUrl()) ?>">
+         </span>
+<span class="location-button__text">
+            <?php if (count($locations)) : ?>
+                <?= $block->escapeHtml($block->getLocationOnProductText()); ?>
+            <?php else : ?>
+                <?= $block->escapeHtml($block->getLocationOnProductNotAvailableText()); ?>
+            <?php endif; ?>
+        </span>
+<?php /** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+if (count($locations) && $block->isLocationsNamesEnabled()) : ?>
+    <span class="location-button__places">
+                        <?= $block->escapeHtml($block->getLocationsPlaces()); ?>
+                    </span>
+<?php endif; ?>

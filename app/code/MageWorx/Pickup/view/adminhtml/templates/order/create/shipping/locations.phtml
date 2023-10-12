@@ -1,0 +1,42 @@
+<?php
+/** @var $block \MageWorx\Pickup\Block\Adminhtml\Order\Create\LocationChooser */
+?>
+<div id="order-pickup-location-chooser">
+    <?php if ($block->getShippingMethod() == 'mageworxpickup_mageworxpickup') :
+        $locations = $block->getLocations();
+        $chosenId = $block->getChosenLocationId();
+        if (count($locations)) :?>
+        <select id="mageworx_pickup_location_id"
+                name="order[mageworx_pickup_location_id]">
+            <option value="0"><?= $block->escapeHtml(__('Please select store for pickup...'))?></option>
+            <?php foreach ($locations as $location) :
+                $select = $location->getId() == $chosenId ? 'selected' : ''; ?>
+                <option value="<?= $block->escapeHtml($location->getId())?>" <?=
+                $block->escapeHtml($select) ?>><?= $block->escapeHtml($location->getName())?></option>
+            <?php endforeach; ?>
+        </select>
+        <?php else : ?>
+            <?= $block->escapeHtml(__('There are no available stores for pickup')); ?>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+
+<script>
+    require([
+        "jquery"
+    ], function($) {
+
+        $(document).ready(function() {
+            $('#order-pickup-location-chooser').appendTo('.admin__order-shipment-methods');
+
+            $('#order-pickup-location-chooser select').on('change', function () {
+                var optionSelected = $("option:selected", this);
+                var data = [];
+                data['mageworx_pickup_location_id'] = optionSelected.val();
+                order.loadArea(['shipping_method'], true, data);
+            });
+        });
+    });
+
+</script>
+

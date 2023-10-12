@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Magento\Customer\Block\Account\Customer $block */
+?>
+<?php if ($block->customerLoggedIn()) : ?>
+    
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "customer": {
+                    "component": "Magento_Customer/js/view/customer"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<style>
+.header.links .header.links {padding-left:0px !important; margin-left:0px !important; text-align:left !important; display:block !important;}
+.header.links .header.links .authorization-link {display:none !important;}
+</style>
+
+<?php if ($block->getChildHtml()) :?>
+        <?= $block->getChildHtml() ?>
+<?php endif; ?>
+<?php endif; ?>

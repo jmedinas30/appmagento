@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Improntus\PowerPay\Block\Onepage\Failure */
+/** @var $escaper \Magento\Framework\Escaper */
+?>
+<?php if ($block->getRealOrderId()) :?>
+    <?php $order = $block->getOrderData() ?>
+    <p><?= $block->escapeHtml(__('Order #') . $block->getRealOrderId()) ?></p>
+
+<?php endif ?>
+<?php if ($error = $block->getErrorMessage()) :?>
+    <p><strong><?= $block->escapeHtml($error) ?></strong></p>
+<?php endif ?>
+<?php if ($block->getIsPowerpayPayment()) : ?>
+<p><strong><?= $escaper->escapeHtml((__("Transaction rejected."))) ?></strong></p>
+<p><?= $escaper->escapeHtml((__("There was an error processing your payment. Don't worry, no charge was made to your card."))) ?></p>
+<?php endif; ?>
+
+<p><?= $block->escapeHtml(
+        __('Click <a href="%1">here</a> to continue shopping.', $block->escapeUrl($block->getContinueShoppingUrl())),
+        ['a']
+    ) ?>
+</p>

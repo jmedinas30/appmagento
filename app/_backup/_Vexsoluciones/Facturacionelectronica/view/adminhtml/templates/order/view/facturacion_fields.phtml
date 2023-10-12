@@ -1,0 +1,61 @@
+<?php
+
+$comprobanteInfo = $block->getComprobanteInfo();
+
+ 
+?>
+ 
+
+<?php
+
+if ($comprobanteInfo){
+    ?>
+    <section class="admin__page-section" >
+        <div class="admin__page-section-title">
+            <span class="title"><?php /* @escapeNotVerified */ echo __('Información de facturación') ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="order-information">
+
+                <table class="admin__table-secondary order-information-table">
+                    <tbody>
+                    <tr>
+                        <th>
+                            DOCUMENTO
+                        </th>
+                        <td>
+                            <?php echo $comprobanteInfo['documento'];  ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                           RUC
+                        </th>
+                        <td>
+                            <?php echo $comprobanteInfo['ruc'];  ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            RAZON SOCIAL
+                        </th>
+                        <td>
+                            <?php echo trim($comprobanteInfo['razon_social']);  ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <?php /* @escapeNotVerified */ echo __('Dirección fiscal') ?>
+                        </th>
+                        <td>
+                            <?php echo trim($comprobanteInfo['direccion_fiscal']);  ?>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+<?php
+}

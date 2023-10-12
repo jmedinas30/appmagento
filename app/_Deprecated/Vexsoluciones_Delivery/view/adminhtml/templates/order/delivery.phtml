@@ -1,0 +1,96 @@
+<?PHP 
+
+$data = $block->getDataOrder();
+ 
+if($data !== FALSE){ 
+
+	$metododeenvio = $data->getShippingMethod();
+
+	if($data->getShippingAddress()){
+
+		$distritoid = $data->getShippingAddress()->getCity();
+
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); 
+        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        $connection = $resource->getConnection();
+        $sql = "SELECT default_name,nombre_provincia,nombre_distrito FROM vexsoluciones_directorio_distrito 
+        		inner join vexsoluciones_directorio_provincia on vexsoluciones_directorio_provincia.id = vexsoluciones_directorio_distrito.provincia_id 
+        		inner join directory_country_region on vexsoluciones_directorio_provincia.region_id = directory_country_region.region_id
+        		WHERE vexsoluciones_directorio_distrito.id='".$distritoid."';";
+    	$ubigeo = $connection->fetchAll($sql);
+
+    	$region = "";
+    	$provincia = "";
+    	$distrito = "";
+
+    	foreach ($ubigeo as $key) {
+    		$region = $key["default_name"];
+	    	$provincia = $key["nombre_provincia"];
+	    	$distrito = $key["nombre_distrito"];
+    	}
+
+
+
+?>
+ 
+<div class="stock_info_pickup" style="margin:15px 0 25px 0;">
+
+	<div class="admin__page-section-title">
+		<span class="title"> Datos de envio </span>
+	</div>
+
+	
+
+	<div style="margin-top: 5px;"> 
+		<b> Departamento:  </b>
+		<?PHP echo $region; ?>
+	</div>
+ 	
+	<div style="margin-top: 5px;"> 
+		<b> Provincia:  </b>
+		<?PHP echo $provincia; ?>
+	</div>
+	<div style="margin-top: 5px;"> 
+		<b> Distrito:  </b>
+		<?PHP echo $distrito; ?>
+	</div>
+	
+</div>
+
+<?PHP 
+	
+		$pos = strpos($metododeenvio, "delivery_programado");
+		if($pos!==false){
+			$hora = intval($data->getShippingAddress()->getData("vexhoraprogramado"));
+			$horafinal = $hora + 1;
+			$horafinal = ($horafinal==24)?0:$horafinal;
+
+			$horaformato = str_pad($hora,2,"0", STR_PAD_LEFT).":00 - ".str_pad($horafinal,2,"0", STR_PAD_LEFT).":00";
+	?>
+			
+			<div class="stock_info_pickup" style="margin:15px 0 25px 0;">
+
+				<div class="admin__page-section-title">
+					<span class="title"> Envio programado </span>
+				</div>
+
+				
+
+				<div style="margin-top: 5px;"> 
+					<b> Fecha:  </b>
+					<?PHP echo $data->getShippingAddress()->getData("vexdiaprogramado"); ?>
+				</div>
+			 	
+				<div style="margin-top: 5px;"> 
+					<b> Hora:  </b>
+					<?PHP echo $horaformato; ?>
+				</div>
+				
+			</div>
+
+	<?PHP
+		}
+	}
+}
+
+?>

@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                mageworx_locations_location_form.mageworx_locations_location_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Store</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="MageWorx\Locations\Block\Adminhtml\Location\Edit\DeleteButton"/>
+            <button name="save" class="MageWorx\Locations\Block\Adminhtml\Location\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>mageworx_locations_location_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>mageworx_locations_location_form.mageworx_locations_location_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mageworx_locations_location_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="mageworx_locations/location/save"/>
+        </settings>
+        <dataProvider class="MageWorx\Locations\Ui\DataProvider\Location\Form\LocationDataProvider"
+                      name="mageworx_locations_location_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="100">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label translate="true">General Information</label>
+        </settings>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Store Name</label>
+                <visible>true</visible>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="code" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Store Code</label>
+                <visible>true</visible>
+                <dataScope>code</dataScope>
+            </settings>
+        </field>
+        <field name="store_ids" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Store View</label>
+                <dataScope>store_ids</dataScope>
+            </settings>
+        </field>
+        <field name="is_active" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="is_pickup_available" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Available for pickup</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="order" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Sort Order</label>
+                <visible>true</visible>
+                <dataScope>order</dataScope>
+            </settings>
+        </field>
+        <field name="image_path" formElement="fileUploader">
+            <settings>
+                <notice translate="true">Allowed file types: jpeg, gif, png.</notice>
+                <label translate="true">Image</label>
+                <componentType>fileUploader</componentType>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>20000000</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">mageworx_locations/location_fileUploader/save</param>
+                        </uploaderConfig>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="label" xsi:type="string">Description</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="height" xsi:type="string">300px</item>
+                        <item name="add_variables" xsi:type="boolean">false</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_images" xsi:type="boolean">false</item>
+                        <item name="add_directives" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <label>Description</label>
+                <dataScope>description</dataScope>
+                <additionalClasses>
+                    <class name="mageworx_location_description">true</class>
+                </additionalClasses>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="address_tab" sortOrder="110">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+            <label translate="true">Address</label>
+        </settings>
+        <field name="timezone" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="string">use_default</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mageworx_timezone">true</class>
+                </additionalClasses>
+                <label translate="true">Timezone</label>
+                <visible>true</visible>
+                <dataScope>timezone</dataScope>
+                <notice translate="true">This setting allows you to set the timezone of the current store. "Use default" uses the timezone, set in Magento configuration.</notice>
+            </settings>
+        </field>
+        <field name="country_id" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="string">US</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mageworx_country">true</class>
+                </additionalClasses>
+                <label translate="true">Country</label>
+                <visible>true</visible>
+                <dataScope>country_id</dataScope>
+            </settings>
+        </field>
+        <field name="region" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="string">No Regions</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mageworx_region">true</class>
+                </additionalClasses>
+                <label translate="true">State/Province</label>
+                <visible>true</visible>
+                <dataScope>region</dataScope>
+            </settings>
+        </field>
+        <field name="city" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">City</label>
+                <visible>true</visible>
+                <dataScope>city</dataScope>
+            </settings>
+        </field>
+        <field name="address" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Address</label>
+                <visible>true</visible>
+                <dataScope>address</dataScope>
+            </settings>
+        </field>
+        <field name="postcode" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Zip Code</label>
+                <visible>true</visible>
+                <dataScope>postcode</dataScope>
+            </settings>
+        </field>
+        <field name="phone_number" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Phone</label>
+                <visible>true</visible>
+                <dataScope>phone_number</dataScope>
+            </settings>
+        </field>
+        <field name="email" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Email</label>
+                <visible>true</visible>
+                <dataScope>email</dataScope>
+            </settings>
+        </field>
+        <field name="website" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Website</label>
+                <visible>true</visible>
+                <dataScope>website</dataScope>
+            </settings>
+        </field>
+        <field name="facebook" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Facebook</label>
+                <visible>true</visible>
+                <dataScope>facebook</dataScope>
+            </settings>
+        </field>
+        <field name="skype" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Skype</label>
+                <visible>true</visible>
+                <dataScope>skype</dataScope>
+            </settings>
+        </field>
+        <field name="instagram" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Instagram</label>
+                <visible>true</visible>
+                <dataScope>instagram</dataScope>
+            </settings>
+        </field>
+        <field name="whatsapp" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">WhatsApp</label>
+                <visible>true</visible>
+                <dataScope>whatsapp</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_working_hours_type">true</class>
+                </additionalClasses>
+                <dataType>text</dataType>
+                <label translate="true">Working hours</label>
+                <visible>true</visible>
+                <dataScope>working_hours_type</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[everyday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_everyday">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.everyday.has_lunch_time</dataScope>
+                <label translate="true">Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[everyday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_everyday">true</class>
+                </additionalClasses>
+                <label translate="true">Everyday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.everyday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[sunday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.sunday.off</dataScope>
+                <label translate="true">Sunday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[sunday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.sunday.has_lunch_time</dataScope>
+                <label translate="true">Sunday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[sunday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Sunday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.sunday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[monday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.monday.off</dataScope>
+                <label translate="true">Monday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[monday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.monday.has_lunch_time</dataScope>
+                <label translate="true">Monday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[monday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Monday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.monday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[tuesday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.tuesday.off</dataScope>
+                <label translate="true">Tuesday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[tuesday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.tuesday.has_lunch_time</dataScope>
+                <label translate="true">Tuesday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[tuesday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Tuesday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.tuesday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[wednesday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.wednesday.off</dataScope>
+                <label translate="true">Wednesday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[wednesday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.wednesday.has_lunch_time</dataScope>
+                <label translate="true">Wednesday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[wednesday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Wednesday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.wednesday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[thursday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.thursday.off</dataScope>
+                <label translate="true">Thursday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[thursday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.thursday.has_lunch_time</dataScope>
+                <label translate="true">Thursday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[thursday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Thursday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.thursday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[friday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.friday.off</dataScope>
+                <label translate="true">Friday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[friday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.friday.has_lunch_time</dataScope>
+                <label translate="true">Friday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[friday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Friday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.friday</dataScope>
+            </settings>
+        </field>
+        <field name="working_hours[saturday][off]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_off">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.saturday.off</dataScope>
+                <label translate="true">Saturday Day Off</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[saturday][has_lunch_time]" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_day_has_lunch_time">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <dataScope>working_hours.saturday.has_lunch_time</dataScope>
+                <label translate="true">Saturday Has Lunch Time</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="working_hours[saturday]" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="component" xsi:type="string">MageWorx_Locations/js/form/element/timeRange</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <additionalClasses>
+                    <class name="mw-time-picker">true</class>
+                    <class name="mageworx_days">true</class>
+                </additionalClasses>
+                <label translate="true">Saturday</label>
+                <visible>true</visible>
+                <dataScope>working_hours.saturday</dataScope>
+            </settings>
+        </field>
+        <container name="region_switcher" sortOrder="135">
+            <htmlContent name="html_content">
+                <block name="region_switcher"
+                       class="MageWorx\Locations\Block\Adminhtml\Location\Edit\Regions"
+                       template="MageWorx_Locations::js.phtml"
+                />
+            </htmlContent>
+        </container>
+    </fieldset>
+    <fieldset name="products" sortOrder="120">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Products in store</label>
+        </settings>
+        <field name="assign_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_assign_type">true</class>
+                </additionalClasses>
+                <dataType>number</dataType>
+                <label translate="true">Assign Type</label>
+                <visible>true</visible>
+                <dataScope>assign_type</dataScope>
+            </settings>
+        </field>
+        <field name="apply_by_cron" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_apply_by_cron">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <label translate="true">Apply Condition By Cron</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="source_code" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true">You can select an existing inventory source and the products will be loaded from the chosen source. If you choose to create a new inventory source for the current location, the source will be created automatically after saving the location. If you had assigned products to the location, you can transfer them to the new inventory source by selecting the check-box "Transfer previously selected products to the new inventory source"</notice>
+                <additionalClasses>
+                    <class name="mageworx_source_code">true</class>
+                </additionalClasses>
+                <dataType>text</dataType>
+                <label translate="true">Choose Source</label>
+                <visible>true</visible>
+                <dataScope>source_code</dataScope>
+            </settings>
+        </field>
+        <field name="transfer_products" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="mageworx_transfer_products">true</class>
+                </additionalClasses>
+                <dataType>boolean</dataType>
+                <label translate="true">Transfer previously selected products to the new inventory source</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <container name="assign_products_container" sortOrder="160">
+            <htmlContent name="html_content">
+                <block name="mageworx_location_products" class="MageWorx\Locations\Block\Adminhtml\Location\Edit\Products"/>
+            </htmlContent>
+        </container>
+        <container name="conditions_apply_to" sortOrder="170">
+            <htmlContent name="html_content">
+                <block name="mageworx_location_conditions"
+                       class="MageWorx\Locations\Block\Adminhtml\Location\Edit\Conditions"/>
+            </htmlContent>
+        </container>
+        <container name="assign_switcher" sortOrder="135">
+            <htmlContent name="html_content">
+                <block name="assign_switcher"
+                       class="MageWorx\Locations\Block\Adminhtml\Location\Edit\AssignSwitcher"
+                       template="MageWorx_Locations::assign_switcher.phtml"
+                />
+            </htmlContent>
+        </container>
+    </fieldset>
+    <fieldset name="page" sortOrder="140">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+            <label translate="true">Store Page Setting</label>
+        </settings>
+        <field name="meta_title" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Title</label>
+                <visible>true</visible>
+                <dataScope>meta_title</dataScope>
+            </settings>
+        </field>
+        <field name="meta_description" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Description</label>
+                <visible>true</visible>
+                <dataScope>meta_description</dataScope>
+            </settings>
+        </field>
+        <field name="meta_keywords" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Keywords</label>
+                <visible>true</visible>
+                <dataScope>meta_keywords</dataScope>
+            </settings>
+        </field>
+        <field name="meta_robots" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">location</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Robots</label>
+                <visible>true</visible>
+                <dataScope>meta_robots</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

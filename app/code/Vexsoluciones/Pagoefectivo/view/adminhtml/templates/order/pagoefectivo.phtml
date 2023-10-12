@@ -1,0 +1,51 @@
+<?PHP 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); 
+$FormKey = $objectManager->get('Magento\Framework\Data\Form\FormKey');
+$scopeConfig = $objectManager->create('Magento\Framework\App\Config\ScopeConfigInterface');
+$order = $block->getOrderData();
+
+$payment = $order->getPayment();
+
+
+if($payment->getMethod()=="pagoefectivo_pay" || $payment->getMethod()=="cuotealo_pay"){ 
+    
+    if(!empty($payment->getAdditionalInformation('respuesta_cip'))){
+        
+        $datar = json_decode($payment->getAdditionalInformation('respuesta_cip'));
+
+        $texto = "";
+        if($payment->getMethod()=="cuotealo_pay"){
+            $texto = " - Cuotéalo";
+        }
+    
+?>
+ 
+<div class="stock_info_pickup" style="margin:15px 0 25px 0;">
+
+	<div class="admin__page-section-title">
+		<span class="title"> Metodo PagoEfectivo<?= $texto ?> </span>
+	</div>
+    <div style="margin-top: 5px;">
+        <div><span style="font-weight: bold;">Cip: </span><span><?= $datar->cip ?></span></div>
+    </div>
+    <div style="margin-top: 8px;">
+        <div><span style="font-weight: bold;">Currency: </span><span><?= $datar->currency ?></span></div>
+    </div>
+    <div style="margin-top: 8px;">
+        <div><span style="font-weight: bold;">Amount: </span><span><?= $datar->amount ?></span></div>
+    </div>
+    <div style="margin-top: 8px;">
+        <div><span style="font-weight: bold;">TransactionCode: </span><span><?= $datar->transactionCode ?></span></div>
+    </div>
+    <div style="margin-top: 8px;">
+        <div><span style="font-weight: bold;">DateExpiry: </span><span><?= $datar->dateExpiry ?></span></div>
+    </div>
+	
+ 	
+</div>
+
+<?PHP 
+    }
+}
+
+?>

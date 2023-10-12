@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <pagoefectivo_pay>
+                <active>0</active>
+                <model>Vexsoluciones\Pagoefectivo\Model\Payment</model>
+                <payment_action>authorize</payment_action>
+                <title>PagoEfectivo</title>
+                <cip>48</cip>
+                <can_capture>1</can_capture>
+                <order_status>pending</order_status>
+            </pagoefectivo_pay>
+            <cuotealo_pay>
+                <active>0</active>
+                <model>Vexsoluciones\Pagoefectivo\Model\PaymentCuotealo</model>
+                <payment_action>authorize</payment_action>
+                <title>Pago en cuotas vía Cuotéalo BCP</title>
+                <cip>48</cip>
+                <can_capture>1</can_capture>
+                <order_status>pending</order_status>
+            </cuotealo_pay>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
+    <router id="standard">
+
+        <route id="routetest" frontName="routetest">
+            <module name="Vexsoluciones_Facturacionelectronica" />
+        </route>
+
+        <route frontName="holamundo" id="holamundo">
+          <!--The module which this route match to-->
+            <module name="Vexsoluciones_Facturacionelectronica"/>
+        </route>
+
+        <route frontName="comprobante_electronico" id="comprobante_electronico">
+          <!--The module which this route match to-->
+            <module name="Vexsoluciones_Facturacionelectronica"/>
+        </route>
+
+    </router>
+</config>

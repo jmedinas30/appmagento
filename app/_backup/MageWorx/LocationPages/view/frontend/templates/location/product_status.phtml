@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ *
+ * @var $block MageWorx\LocationPages\Block\Location\ProductList\Product\StockStatus
+ */
+if ($block->isProductInStock()) : ?>
+    <span class="product_list_item_stock_in-stock places_list_item_stock_in-stock">
+            <span class="in-stock"><?= $block->escapeHtml(__('In Stock')) ?></span>
+            <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/in-stock.svg')) ?>">
+        </span>
+<?php else : ?>
+    <span class="product_list_item_stock_out-of-stock places_list_item_stock_out-of-stock">
+            <span class="out-of-stock"><?= $block->escapeHtml(__('Out Of Stock')) ?></span>
+            <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/out-of-stock.svg')) ?>">
+        </span>
+<?php endif; ?>

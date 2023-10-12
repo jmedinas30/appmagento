@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        
+        <tab id="deliverytab" translate="label" sortOrder="10">
+            <label>Delivery</label>
+        </tab>
+
+        <section id="delivery" translate="label" type="text" sortOrder="303" showInDefault="1" showInWebsite="1" showInStore="1">
+
+            <class>separator-top</class>
+            <label>Delivery</label>
+            <tab>deliverytab</tab>
+            <resource>Vexsoluciones_Delivery::delivery_config</resource>
+
+            <group id="general" sortOrder="10" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuración General</label>
+
+                <field id="activemapa" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitar Mapa</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="key" sortOrder="10" translate="label comment" type="text" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Api key Google</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="activemapa">1</field>
+                    </depends>
+                </field>
+                
+
+            </group>
+
+        </section>
+
+
+        <section id="carriers" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="delivery" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Delivery</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="license" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Licencia</label>
+                </field>
+
+                <field id="almacen" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                   <label>Almacen</label>        
+                   <source_model>Vexsoluciones\Delivery\Model\Config\Source\Lista</source_model>
+                   <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="regular" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitar Envio regular</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="nombreregular" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nombre envio regular</label>
+                    <depends>
+                        <field id="active">1</field><field id="regular">1</field>
+                    </depends>
+                </field>
+                <field id="tituloregular" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo envio regular</label>
+                    <depends>
+                        <field id="active">1</field><field id="regular">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="express" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitar Envio express</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="nombreexpress" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nombre envio express</label>
+                    <depends>
+                        <field id="active">1</field><field id="express">1</field>
+                    </depends>
+                </field>
+                <field id="tituloexpress" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo envio express</label>
+                    <depends>
+                        <field id="active">1</field><field id="express">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="programado" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Habilitar Envio programado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="nombreprogramado" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nombre envio programado</label>
+                    <depends>
+                        <field id="active">1</field><field id="programado">1</field>
+                    </depends>
+                </field>
+                <field id="tituloprogramado" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Titulo envio programado</label>
+                    <depends>
+                        <field id="active">1</field><field id="programado">1</field>
+                    </depends>
+                </field>
+
+
+                
+            </group>
+        </section>
+
+
+    </system>
+</config>

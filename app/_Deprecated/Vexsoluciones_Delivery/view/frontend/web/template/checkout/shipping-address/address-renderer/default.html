@@ -1,0 +1,58 @@
+
+<div class="shipping-address-item" css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()">
+     
+    <span style="display: block;font-weight: bold;" data-bind="i18n: 'Nueva Direcci&oacute;n', visible: (address().isEditable())" class="checkout-new-address-label"></span>
+
+    <b> Entregar a: </b><!-- ko text: address().prefix --><!-- /ko --> <!-- ko text: address().firstname --><!-- /ko -->
+
+    <!-- ko text: address().lastname --><!-- /ko --> <!-- ko text: address().suffix --><!-- /ko --><br/>
+
+    <b> Direcci&oacute;n: </b>
+    <!-- ko text: address().street --><!-- /ko --><br/>
+ 
+    <!-- ko if: address().countryId != 'PE' -->
+        <!-- ko text: address().postcode --><!-- /ko --> <br/>
+    <!-- /ko -->
+ 
+    <b> Tel&eacute;fono: </b> 
+    <!-- ko text: address().telephone --><!-- /ko --><br/>
+
+    <b> Departamento: </b> 
+    <!-- ko text: address().region --><!-- /ko --><br/>
+
+
+    <!-- ko foreach: { data: address().customAttributes, as: 'element' } -->
+
+        <!-- ko if: element["attribute_code"]=="distrito_label" || element["attribute_code"]=="provincia_label"  -->
+
+            <!-- ko foreach: { data: Object.keys(element), as: 'attribute' } -->
+                
+                <!-- ko if: element[attribute] == 'distrito_label' && attribute=="attribute_code" --> 
+                    <b>Distrito:</b>
+                <!-- /ko -->
+                <!-- ko if: element[attribute] == 'provincia_label' && attribute=="attribute_code" --> 
+                    <b>Provincia:</b>
+                <!-- /ko -->
+                <!-- ko if: attribute=="value" --> 
+                    <!-- ko text: element[attribute] --><!-- /ko -->
+                <!-- /ko -->
+
+             <!-- /ko -->
+             <br>
+        <!-- /ko -->
+    <!-- /ko -->
+ 
+
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Editar'"></span>
+    </button>
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" click="selectAddress" class="action action-select-shipping-item">
+        <span translate="'Enviar aquí'"></span>
+    </button>
+    <!-- /ko -->
+
+</div>
+

@@ -1,0 +1,9 @@
+<?php $_product = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Registry::class)->registry('product');?>
+<div class="product-share">
+  <div class="share-links">
+    <a href="https://www.facebook.com/sharer.php?u=<?php echo $_product->getProductUrl();?>" target="_blank" rel="nofollow" data-tooltip="" data-placement="bottom" title="" class="share-facebook" data-original-title="Facebook">Facebook</a>
+		<a href="https://twitter.com/intent/tweet?text=<?php echo $_product->getName();?>&amp;url=<?php echo $_product->getProductUrl();?>" target="_blank" rel="nofollow" data-tooltip="" data-placement="bottom" title="" class="share-twitter" data-original-title="Twitter">Twitter</a>
+		<a href="whatsapp://send?text=<?php echo $_product->getName();?>&amp;url=<?php echo $_product->getProductUrl();?>" target="_blank" rel="nofollow" data-tooltip="" data-placement="bottom" title="" class="share-whatsapp" data-original-title="WhatsApp">WhatsApp</a>
+		<a href="https://telegram.me/share/url?url=<?php echo $_product->getProductUrl();?>&text=<?php echo $_product->getName();?>" target="_blank" rel="nofollow" data-tooltip="" data-placement="bottom" title="" class="share-telegram" data-original-title="Telegram">Telegram</a>
+	</div>
+</div>

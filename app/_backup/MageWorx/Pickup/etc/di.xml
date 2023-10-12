@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="add_mageworx_location_to_order" type="MageWorx\Pickup\Plugin\AddLocationToOrder"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save_pickup_location_to_quote" type="MageWorx\Pickup\Plugin\SavePickupLocationToQuote"/>
+    </type>
+    <type name="Magento\InventoryShippingAdminUi\Ui\DataProvider\SourceSelectionDataProvider">
+        <plugin name="mageworx_pickup_choose_location_source" type="MageWorx\Pickup\Plugin\ChooseLocationSource"/>
+    </type>
+    <type name="Magento\InventoryShippingAdminUi\Ui\Component\Control\SourceSelection\AlgorithmSelectionButton">
+        <plugin name="mageworx_pickup_hide_button" type="MageWorx\Pickup\Plugin\HideAlgorithmSelectionButton"/>
+    </type>
+    <type name="Magento\Sales\Model\ShipOrder">
+        <plugin name="mageworx_pickup_choose_location_source_for_api_order" type="MageWorx\Pickup\Plugin\CheckSourceForPickup"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\ShipmentRepository">
+        <plugin name="mageworx_pickup_choose_location_source_for_api_shipment" type="MageWorx\Pickup\Plugin\CheckSourceForPickupShipment"/>
+    </type>
+    <type name="Magento\Multishipping\Block\Checkout\Shipping">
+        <plugin name="mageworx_pickup_choose_location_on_multishipping" type="MageWorx\Pickup\Plugin\ShowLocationsOnMultishipping"/>
+    </type>
+    <type name="Magento\Multishipping\Model\Checkout\Type\Multishipping">
+        <plugin name="save_pickup_location_to_quote" type="MageWorx\Pickup\Plugin\CheckPickupLocationForMultishipping"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="check_pickup_location_to_order_paypal" type="MageWorx\Pickup\Plugin\CheckLocationToOrderPaypal"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Email\Sender\OrderSender">
+        <plugin name="mageworx_pickup_get_order_before_send_email" type="MageWorx\Pickup\Plugin\Email\OrderSenderPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Email\Container\IdentityInterface">
+        <plugin name="mageworx_pickup_use_template_send_email" type="MageWorx\Pickup\Plugin\Email\IdentityPlugin"/>
+    </type>
+
+    <!-- For Magento 2.3.1 compatibility -->
+    <preference for="Magento\Sales\Model\ConfigInterface" type="Magento\Sales\Model\Config" />
+</config>

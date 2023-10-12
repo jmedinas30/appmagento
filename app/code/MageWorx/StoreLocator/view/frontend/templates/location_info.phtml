@@ -1,0 +1,73 @@
+<?php
+use MageWorx\Locations\Api\Data\LocationInterface;
+
+/** @var $block \MageWorx\StoreLocator\Block\LocationInfo */
+/** @var $location LocationInterface $location */
+$location = $block->getLocation(); ?>
+<div class="mw-sl__stores__list__item_block">
+<li class="mw-sl__stores__list__item mw-store-locator-active-place location-info_<?=
+$block->escapeHtml($block->getCodeByScale($location, $block->getScale())) ?> location-info_<?= $block->escapeHtml(
+    $block->getCodeByScale($location, $block->getParentScale()
+)) ?> location-info-block_<?= $block->escapeHtml($location->getId()) ?>
+    <?php foreach ($block->getExtraAttributes() as $attribute) : ?>
+        <?php if ($location->getData($attribute['attribute_code'])) : ?>
+            location-attr_<?= $block->escapeHtml(__($attribute['attribute_code'])) ?>_true
+        <?php else: ?>
+            location-attr_<?= $block->escapeHtml(__($attribute['attribute_code'])) ?>_false
+        <?php endif; ?>
+    <?php endforeach; ?>
+">
+    <address class="mw-sl__store__info">
+        <span class="mw-sl__store__info__name"><?= $block->escapeHtml($block->getLocationName($location)); ?></span>
+        <br/><?= $block->escapeHtml($location->getAddress()); ?>, <?= $block->escapeHtml($location->getCity()); ?><?= $location->getRegion(
+        ) == __(\MageWorx\Locations\Model\Source\Region::NO_REGIONS) ? '' : ', ' . $block->escapeHtml(
+                __($block->getLocationsRegion($location))
+            ); ?>
+        <?= $block->escapeHtml($location->getPostcode()); ?>
+        <br/><?= $block->escapeHtml(__($location->getCountry())); ?>
+
+        <?= /** @noEscape */ $block->getWorkingHoursHtml($location) ?>
+
+        <?php if (!$location->getIsPickupAvailable()) : ?>
+            <br/>
+            <span class="mw-sl__store__info__pickup-is-not-available">
+                <?= $block->escapeHtml(__('In-store pickup is not available')) ?></span>
+        <?php endif; ?>
+    </address>
+    <div class="mw-sl__stores__list__item__right">
+        <div class="mw-sl__stores__details__route"><a
+                    href="<?= $block->escapeUrl($block->getRouteUrl($location)); ?>" target="_blank">
+                <i class="mw-sl__icon mw-sl__icon--route">
+                    <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/route.svg')); ?>"
+                         alt="<?= $block->escapeHtml(__('Route')) ?>"/>
+                </i>
+                <span><?= $block->escapeHtml(__('Route')) ?></span>
+            </a>
+        </div>
+        <div class="mw-sl__store__details" id="<?= $block->escapeHtml($location->getId()) ?>"><i
+                    class="mw-sl__icon mw-sl__icon--details">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('MageWorx_StoreLocator::images/svg/details.svg')); ?>"
+                     alt="<?= $block->escapeHtml(__('Details icon')) ?>"/></i>
+            <?= $block->escapeHtml(__('Details')) ?>
+        </div>
+        <?php if ($block->isCheckout() && $location->getIsPickupAvailable()) : ?>
+            <?php if ($locationAvailable = $block->isLocationAvailable($location)) : ?>
+                <button class="mw-sl__store__select" id="<?= $block->escapeHtml($location->getId()) ?>">
+                    <?=$block->escapeHtml(__('Select store')) ?>
+                </button>
+            <?php else : ?>
+                <button class="mw-sl__store__select__gray">
+                    <?=$block->escapeHtml(__('Select store')) ?>
+                </button>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+</li>
+    <?php if ($block->isCheckout() && $location->getIsPickupAvailable()) : ?>
+        <?php if (!$locationAvailable) : ?>
+            <div  class="mw-sl__store__not-available">
+                <?= $block->escapeHtml(__('Requested quantity for added product(s) is not available'))?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>

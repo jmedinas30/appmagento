@@ -1,0 +1,28 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Locations */
+?>
+<div class="current_page_type" id="<?= $block->escapeHtmlAttr($block->getCurrentPageType()) ?>"></div>
+<div class="current_product" id="<?= $block->escapeHtmlAttr(is_array($block->getCurrentProductId()) ?
+                 $block->getCurrentProductId()[0] :$block->getCurrentProductId()) ?>"></div>
+<div class="mw-left-block">
+    <?php if ($block->getFilterType() == 'filter') : ?>
+        <?= $block->getSearchBoxHtml() ?>
+        <div id="mw-all-stores">
+            <?= $block->getLocationsFilterHtml() ?>
+        </div>
+    <?php else : ?>
+        <div class="mw-sl__stores__wrapper">
+            <div class="mw-list_left_block">
+                <?php if ($block->getFilterType() !== 'list_without_map') : ?>
+                <div class="mw-search_box_for_list"><?= $block->getSearchBoxHtml() ?></div>
+                <?php endif; ?>
+                <span id="mw-all-stores-filters">
+                    <?= /* @noEscape */$block->getLocationsFilterForListHtml(); ?>
+                    </span>
+            </div>
+            <span id="mw-all-stores">
+                    <?= $block->getLocationsListHtml() ?>
+                </span>
+        </div>
+    <?php endif; ?>
+</div>

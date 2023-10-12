@@ -1,0 +1,15 @@
+<?php
+/** @var $block \MageWorx\StoreLocator\Block\Popup */
+?>
+<div id="locationPopup" class="modal" <?php if (!$block->getIsPopupUpdate()) : ?>
+    style="display: none"
+<?php endif; ?>
+>
+    <?php if ($block->getIsPopupUpdate() || $block->getIsCheckoutPage()) : ?>
+        <div class="modal-content">
+            <div id="mw-store-locator-locations" class="mw-store-locator-locations">
+                <?= /* @noEscape */ $block->getLocationsHtml(); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

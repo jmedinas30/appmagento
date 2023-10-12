@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageworx" sortOrder="2001">
+            <label>MageWorx</label>
+        </tab>
+        <section id="mageworx_locations" translate="label" type="text" sortOrder="100" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Store Locator</label>
+            <tab>mageworx</tab>
+            <resource>MageWorx_Locations::config_locations</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[General]]></label>
+                <field id="default_map_view" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Default map view</label>
+                    <source_model>MageWorx\Locations\Model\Source\DefaultMapView</source_model>
+                    <comment><![CDATA[This setting defines the default map and address view at the ‘Find a store’ page and in ‘Find a store’ pop-ups. “Customer location” zooms the map to a customer location detected by GeoIP. “Default location” zooms the map to a location according to the “Default scale” settings. If the customer location cannot be determined for some reasons, the default location is used.]]></comment>
+                </field>
+                <field id="default_scale" translate="label comment" type="hidden" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1" >
+                    <label><![CDATA[Default scale]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                </field>
+                <field id="default_country" translate="label comment" type="hidden" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default country]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                    <source_model>MageWorx\Locations\Model\Source\Country</source_model>
+                </field>
+                <field id="default_region" translate="label comment" type="hidden" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default region]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                </field>
+                <field id="default_city" translate="label comment" type="hidden" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default city]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                </field>
+                <field id="default_map_center" translate="label comment" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default location]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\DefaultMapCenter</frontend_model>
+                </field>
+                <field id="default_lat" translate="label comment" type="hidden" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default Latitude]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                </field>
+                <field id="default_lng" translate="label comment" type="hidden" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default Longitude]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\WithoutInheritCheckbox</frontend_model>
+                </field>
+            </group>
+            <group id="map" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Map Settings]]></label>
+                <field id="show_map" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display map]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="marker_icon" translate="label comment" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Marker Icon]]></label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mageworx/marker_icon</upload_dir>
+                    <base_url type="media" scope_info="1">mageworx/marker_icon</base_url>
+                    <comment><![CDATA[Allowed file types: PNG, GIF, JPG, JPEG.]]></comment>
+                    <depends>
+                        <field id="show_map">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="filter" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Filter Settings]]></label>
+                <field id="use_current_location" translate="label comment" type="select" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Enable "Use my current location"]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="radius_values" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Predefined Radius Values]]></label>
+                    <comment><![CDATA[You can add comma separated values for drop-down of 'Radius to search'.]]></comment>
+                </field>
+                <field id="radius_unit" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Radius Unit]]></label>
+                    <source_model>MageWorx\StoreLocator\Model\Source\RadiusUnits</source_model>
+                </field>
+                <field id="default_radius_value" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default Radius]]></label>
+                    <validate>validate-zero-or-greater</validate>
+                    <comment><![CDATA[This value determines the default radius to display the available store. It helps to improve the front-end performance if there are many stores in the system. The default radius is calculated a customer's location or a default location in the following priority:
+                            </br> - Customer location by IP
+                            </br> - Customer location from browser
+                            </br> - Default location from configuration if unable to determine a customer's location using two options mentioned above.
+                            </br></br>Leave empty or '0' to show all stores by default.]]></comment>
+                </field>
+                <field id="filter_by" translate="label comment" type="select" sortOrder="40" showInDefault="1">
+                    <label><![CDATA[Filter by]]></label>
+                    <source_model>MageWorx\StoreLocator\Model\Source\Scale</source_model>
+            </field>
+            </group>
+            <group id="product_page" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Product Page]]></label>
+                <field id="show_locations_on_product" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display block on product page]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="stores_display_mode" translate="label comment" type="select" sortOrder="12" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Stores display mode]]></label>
+                    <source_model>MageWorx\StoreLocator\Model\Source\StoresDisplayMode</source_model>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="display_stock_status" translate="label comment" type="select" sortOrder="13" showInDefault="1"
+                       showInWebsite="1" showInStore="1" canRestore="1">
+                    <label><![CDATA[Display stock status as]]></label>
+                    <source_model>MageWorx\StoreLocator\Model\Source\StockStatusDisplayMode</source_model>
+                    <depends>
+                        <field id="stores_display_mode">detailed</field>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                    <comment><![CDATA[This setting allows you to display either the stock status (in stock, out of stock) or the available quantity of the product in the store.]]></comment>
+                </field>
+                <field id="qty_message" translate="label comment" type="text" sortOrder="15" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Quantity message]]></label>
+                    <comment><![CDATA[This setting allows you to change the message to display the available quantity of the current product in each store. If the product is out of stock in the certain store, "out of stock" status will be displayed.]]></comment>
+                    <depends>
+                        <field id="stores_display_mode">detailed</field>
+                        <field id="show_locations_on_product">1</field>
+                        <field id="display_stock_status">2</field>
+                    </depends>
+                </field>
+                <field id="default_stores_amount" translate="label comment" type="text" sortOrder="17" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Default stores amount]]></label>
+                    <validate>validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="locations_on_product_text" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA['Find a store' message]]></label>
+                    <comment><![CDATA[Use [count] to show available stores count]]></comment>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="locations_on_product_not_available_text" translate="label comment" type="text" sortOrder="22" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Not available in stores message]]></label>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="locations_on_product_select_option_text" translate="label comment" type="text" sortOrder="23" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Select options message]]></label>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="show_locations_name" translate="label comment" type="select" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display available places names]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="image" translate="label comment" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Image]]></label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">mageworx/location_image</upload_dir>
+                    <base_url type="media" scope_info="1">mageworx/location_image</base_url>
+                    <comment><![CDATA[Allowed file types: PNG, GIF, JPG, JPEG. Use icon with size 32x32 or smaller]]></comment>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+                <field id="popup_layout" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Popup Layout]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\LayoutPreview</frontend_model>
+                    <source_model>MageWorx\StoreLocator\Model\Source\Layout</source_model>
+                    <comment><![CDATA[Note: If map not available 'Store List Without Map' will be use]]></comment>
+                    <depends>
+                        <field id="show_locations_on_product">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="link_settings" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label><![CDATA[Find a Store Page]]></label>
+                <field id="show_link" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Display link in header]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="link_title" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Link title]]></label>
+                    <depends>
+                        <field id="show_link">1</field>
+                    </depends>
+                </field>
+                <field id="link_url" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Link URL]]></label>
+                    <depends>
+                        <field id="show_link">1</field>
+                    </depends>
+                </field>
+                <field id="page_layout" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Page Layout]]></label>
+                    <frontend_model>MageWorx\StoreLocator\Block\Adminhtml\LayoutPreview</frontend_model>
+                    <source_model>MageWorx\StoreLocator\Model\Source\Layout</source_model>
+                    <comment><![CDATA[Note: If map not available 'Store List Without Map' will be use]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

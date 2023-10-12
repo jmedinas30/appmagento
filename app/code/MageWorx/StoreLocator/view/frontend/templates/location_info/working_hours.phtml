@@ -1,0 +1,14 @@
+<?php
+use MageWorx\Locations\Api\Data\LocationInterface;
+
+/** @var $block \MageWorx\StoreLocator\Block\LocationInfo */
+/** @var $location LocationInterface $location */
+$location = $block->getLocation(); ?>
+
+<?php $workingHours = $location->getWorkingHours();
+if ($workingHours || $location->getWorkingHoursType() == LocationInterface::WORKING_24_HOURS_A_DAY) : ?>
+    <br/><span class="store__info_<?= $block->escapeHtml($location->getId()) ?>"></span> <span
+        class="store__info_wh_<?= $block->escapeHtml($location->getId()) ?> <?= $location->isOpenNow() ? 'mw-sl__store__info__open'
+            : 'mw-sl__store__info__closed' ?>">
+                <?= $block->escapeHtml($location->getWorkingHoursInfo()) ?></span>
+<?php endif; ?>

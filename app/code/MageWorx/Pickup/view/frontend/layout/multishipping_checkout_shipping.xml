@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_Pickup::styles.css"/>
+        <css src="MageWorx_StoreLocator::location-styles.css"/>
+        <css src="MageWorx_StoreLocator::styles.css"/>
+        <link src="MageWorx_Pickup::js/multishipping/location.js"/>
+        <link src="MageWorx_StoreLocator::js/markerClusterer.js"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="MageWorx\Pickup\Block\Multishipping\Popup"
+                   name="mageworx.store_locator.locations.popup"
+                   ifconfig="carriers/mageworxpickup/active"
+                   template="MageWorx_StoreLocator::locations/popup.phtml">
+                <arguments>
+                    <argument name="is_checkout_page" xsi:type="boolean">true</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,12 @@
+<?php
+/** @var $block \Meetanshi\GA4\Block\CheckoutPage */
+?>
+<?php if ($block->getQuoteId()) :
+    /** @var $helper \Meetanshi\GA4\Helper\Data */
+    $helper = $this->helper('Meetanshi\GA4\Helper\Data');
+    $script = $helper->getCheckoutCartData($block->getQuoteId());
+    ?>
+    <script>
+        <?php echo $script;?>
+    </script>
+<?php endif; ?>

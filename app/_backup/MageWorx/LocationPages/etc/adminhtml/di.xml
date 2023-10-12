@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MageWorx\Locations\Ui\Component\Listing\Column\LocationActions">
+        <plugin name="mageworx_locationpages_add_view_action" type="MageWorx\LocationPages\Plugin\AddViewActionPlugin" sortOrder="1" />
+    </type>
+    <type name="Magento\Store\Model\Store">
+        <plugin name="mageworx_locationpages_store_plugin" type="MageWorx\LocationPages\Plugin\UpdateLocationsOnStoreSavingPlugin"/>
+    </type>
+    <type name="Magento\Config\Model\Config">
+        <plugin name="mageworx_locationpages_save_urls_plugin" type="MageWorx\LocationPages\Plugin\UpdatePathInfoOnConfigSavingPlugin"/>
+    </type>
+</config>

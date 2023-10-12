@@ -1,0 +1,25 @@
+{
+    "name": "vexsoluciones/facturacionelectronica",
+    "description": "Facturacion electrónica Perú - Nubefactura",
+    "keywords" : "facturacion, electronica, Peru, facturas, boletas, SUNAT",
+    "homepage" : "https://www.nubefactura.com",
+    "require": {
+      "php": "~5.6.5|7.0.2|7.0.4|~7.0.6|~7.1.0"
+    },
+    "type": "magento2-module",
+    "autoload": {
+            "files": [
+                "registration.php"
+            ],
+           "psr-4": {
+               "vexsoluciones\\facturacionelectronica\\": ""
+           }
+    },
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0"
+    ],
+    "support": {
+         "email": "soporte@nubefactura.com"
+     }
+}

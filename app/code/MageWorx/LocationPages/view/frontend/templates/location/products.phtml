@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Location Page view template
+ *
+ * @var $block MageWorx\LocationPages\Block\Location
+ */
+if ($block->isProductEnabled()) :
+    ?>
+    <div class="product-list">
+        <?= $block->getProductListHtml() ?>
+    </div>
+<?php endif; ?>

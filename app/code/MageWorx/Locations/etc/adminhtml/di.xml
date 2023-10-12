@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="MageWorx\Locations\Ui\DataProvider\Location\Form\Modifier\Pool"
+                 type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="class" xsi:type="string">MageWorx\Locations\Ui\DataProvider\Location\Form\Modifier\LocationModifier</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="MageWorx\Locations\Ui\DataProvider\Location\Form\LocationDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">MageWorx\Locations\Ui\DataProvider\Location\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <type name="MageWorx\Locations\Model\Datatransfer\CsvExportHandler">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="date_created" xsi:type="string">date_created</item>
+                <item name="date_modified" xsi:type="string">date_modified</item>
+                <item name="store_id" xsi:type="string">store_id</item>
+                <item name="location_page_path" xsi:type="string">location_page_path</item>
+                <item name="conditions_serialized" xsi:type="string">conditions_serialized</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

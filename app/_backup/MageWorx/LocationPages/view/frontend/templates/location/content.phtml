@@ -1,0 +1,189 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Location Page view template
+ *
+ * @var $block MageWorx\LocationPages\Block\Location
+ */
+/** @var \MageWorx\Locations\Api\Data\LocationInterface $location */
+$location = $block->getCurrentLocation();
+if ($location) :?>
+    <div id="mw-store-locator-details-page">
+        <?= $block->getMapHtml($location) ?>
+        <div class="mw-sl__details"><h2 class="mw-sl__details__name"><?= $block->escapeHtml($location->getName()) ?></h2>
+            <ul class="mw-sl__details__list">
+                <li class="mw-sl__details__item mw-sl__details__item--location">
+                    <?= $block->escapeHtml($location->getAddress()); ?>, <?=
+                    $block->escapeHtml($location->getCity()); ?>
+                    <br/>
+                    <?= $location->getRegion() == \MageWorx\Locations\Model\Source\Region::NO_REGIONS ? '' :
+                            $block->escapeHtml($location->getRegion()) . ', '; ?>
+                    <?= $block->escapeHtml($location->getPostcode()); ?> <?=
+                        $block->escapeHtml($location->getCountry()); ?>
+                    <br/>
+                </li>
+                <li class="mw-sl__details__item mw-sl__details__item--direction">
+                    <a href="<?= $block->escapeUrl($block->getRouteUrl($location)); ?>" target="_blank"><?=
+                        $block->escapeHtml(__('Get direction')) ?></a>
+                </li>
+                <?php if ($location->getPhoneNumber()) : ?>
+                    <li class="mw-sl__details__item mw-sl__details__item--tel">
+                        <a href="tel:<?= $block->escapeUrl($location->getPhoneNumber()); ?>">
+                            <?= $block->escapeHtml($location->getPhoneNumber()); ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <li class="mw-sl__details__item mw-sl__details__item--hours">
+                    <span class="store__info_<?= (int)$location->getId() ?>"></span> <span
+                            class="store__info_wh_<?= (int)$location->getId() ?>"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="mw-sl__store-info">
+            <div class="mw-sl__store-info__wrapper">
+                <div class="mw-sl__store-info__description">
+                    <?php if ($location->getDescription()) : ?>
+                        <h2 class="mw-sl__store-info__heading"><?= $block->escapeHtml(__('Store description')) ?></h2>
+                        <p class="mw-sl__store-info__content"><?= /** @noEscape */$location->getDescription(); ?></p>
+                    <?php endif; ?>
+                    <ul class="mw-sl__store-info__additional">
+                        <?php if ($location->getEmail()) : ?>
+                            <li class="mw-sl__store-info__additional__item mw-sl__store-info__additional__item--email">
+                                <a
+                                        href="mailto:<?= $block->escapeUrl($location->getEmail()); ?>">
+                                    <?= $block->escapeHtml($location->getEmail()); ?>
+                                </a></li>
+                        <?php endif; ?>
+                        <?php if ($location->getWebsiteUrl()) : ?>
+                            <li class="mw-sl__store-info__additional__item mw-sl__store-info__additional__item--website">
+                                <a
+                                        href="https://<?= $block->escapeUrl($location->getWebsiteUrl()); ?>"
+                                        target="_blank">
+                                    <?= $block->escapeUrl($location->getWebsiteUrl()); ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <ul class="mw-sl__store-info__socialslist">
+                        <?php if ($location->getInstagram()) : ?>
+                            <li class="mw-sl__store-info__socialslist__item"><a
+                                        href="https://instagram.com/<?= $block->escapeUrl(
+                                            $location->getInstagram()
+                                                                    ); ?>" target="_blank"><i
+                                            class="mw-sl__icon mw-sl__icon--instagram"><img
+                                                src="<?= $block->escapeUrl($block->getViewFileUrl(
+                                                    'MageWorx_StoreLocator::images/svg/instagram.svg'
+                                                )); ?>"
+                                                alt="<?= $block->escapeHtml(__('Instagram icon')) ?>"/></i></a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($location->getFacebook()) : ?>
+                            <li class="mw-sl__store-info__socialslist__item"><a
+                                        href="https://facebook.com/<?= $block->escapeUrl(
+                                            $location->getFacebook()
+                                                                   ); ?>" target="_blank"><i
+                                            class="mw-sl__icon mw-sl__icon--facebook"><img
+                                                src="<?= $block->escapeUrl($block->getViewFileUrl(
+                                                    'MageWorx_StoreLocator::images/svg/facebook.svg'
+                                                )); ?>"
+                                                alt="<?= $block->escapeHtml(__('Facebook icon')) ?>"/></i></a></li>
+                        <?php endif; ?>
+                        <?php if ($location->getWhatsapp()) : ?>
+                            <li class="mw-sl__store-info__socialslist__item">
+                                <a href="https://wa.me/<?= $block->escapeUrl($location->getWhatsapp()); ?>"
+                                   target="_blank"><i
+                                            class="mw-sl__icon mw-sl__icon--whatsapp"><img
+                                                src="<?= $block->escapeUrl($block->getViewFileUrl(
+                                                    'MageWorx_StoreLocator::images/svg/whatsapp.svg'
+                                                )); ?>"
+                                                alt="<?= $block->escapeHtml(__('Whatsapp icon')) ?>"/></i></a></li>
+                        <?php endif; ?>
+                        <?php if ($location->getSkype()) : ?>
+                            <li class="mw-sl__store-info__socialslist__item">
+                                <a href="skype:<?= $block->escapeUrl($location->getSkype()); ?>?call"><i
+                                            class="mw-sl__icon mw-sl__icon--skype">
+                                        <img src="<?= $block->escapeUrl($block->getViewFileUrl(
+                                            'MageWorx_StoreLocator::images/svg/skype.svg'
+                                        )); ?>" alt="<?= $block->escapeHtml(__('Skype icon')) ?>"/></i>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <?php if ($location->getImagePath()) : ?>
+                    <div class="mw-sl__store-info__image"><img
+                                src="<?= $block->escapeUrl($block->getLocationImageUrl($location->getImagePath())); ?>"
+                                alt="<?= $block->escapeHtml(
+                                    $location->getName()
+                                     ) ?>"/></div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="mw-sl__store-info">
+            <?php if ($workingHours = $location->getFormattedWorkingHours()) : ?>
+                <div class="mw-sl__infotable"><h2 class="mw-sl__infotable__heading"><?= $block->escapeHtml(__('Hours')) ?></h2>
+                    <table class="mw-sl__infotable__table">
+                        <?php foreach ($workingHours as $day => $time) : ?>
+                            <tr class="mw-sl__infotable__row">
+                                <td class="mw-sl__infotable__cell"><?= $block->escapeHtml(__($day)) ?></td>
+                                <?php if ($time['off']) : ?>
+                                    <td class="mw-sl__infotable__cell"><?= $block->escapeHtml(__('Closed')) ?></td>
+                                <?php else : ?>
+                                    <td class="mw-sl__infotable__cell">
+                                        <span><?= $block->escapeHtml($time['from'] . ' - ' . $time['to']) ?></span>
+                                        <?php if ($time['has_lunch_time']) : ?>
+                                            <span class="mw-sl__infotable__lunch-time">
+                                                <?= $block->escapeHtml('(' . __('Lunch time') . ' ' . $time['lunch_from'] . ' - ' . $time['lunch_to'] . ')') ?>
+                                            </span>
+                                        <?php endif ?>
+                                    </td>
+                                <?php endif ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        require(["jquery", "uiRegistry"], function ($, registry) {
+            var mwLocations = JSON.parse('<?= $block->escapeJs(json_encode(['location_ids' => [(int)$location->getId()]]))?>');
+            mwLocations['store_id'] = <?= (int)$block->getCurrentStoreId()?>;
+            if (typeof mwLocations !== 'undefined') {
+                $.ajax({
+                    url: '<?= $block->escapeUrl($block->getWorkingHoursUrl())?>' + '?_=' + new Date().getTime(),
+                    type: 'POST',
+                    isAjax: true,
+                    dataType: 'json',
+                    data: mwLocations,
+                    success: function (xhr, status, errorThrown) {
+                        var items = [];
+                        $.each(xhr, function (locationCode, val) {
+                            if (typeof (val['isOpen']) !== 'undefined' && typeof (val['info']) !== 'undefined') {
+                                if (val['isOpen']) {
+                                    $('.store__info_' + locationCode).addClass('mw-sl__store__info__open');
+                                    $('.store__info_' + locationCode).text('Open now');
+                                    $('.store__info_wh_' + locationCode).addClass('mw-sl__store__info__open');
+                                    $('.store__info_wh_' + locationCode).text(val['info']);
+                                } else {
+                                    $('.store__info_' + locationCode).addClass('mw-sl__store__info__closed');
+                                    $('.store__info_' + locationCode).text('Closed now');
+                                    $('.store__info_wh_' + locationCode).addClass('mw-sl__store__info__closed');
+                                    $('.store__info_wh_' + locationCode).text(val['info']);
+                                }
+                            }
+                        });
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log('There was an error loading stores\' working hours.');
+                    }
+                });
+            }
+        });
+    </script>
+<?php endif; ?>

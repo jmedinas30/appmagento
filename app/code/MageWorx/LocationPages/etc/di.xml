@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MageWorx\LocationPages\Api\Data\LocationPageInterface"
+                type="MageWorx\LocationPages\Model\LocationPage"/>
+    <preference for="MageWorx\LocationPages\Api\Data\LocationListInterface"
+                type="MageWorx\LocationPages\Model\LocationList"/>
+    <preference for="MageWorx\LocationPages\Api\LocationListRepositoryInterface"
+                type="MageWorx\LocationPages\Model\LocationListRepository"/>
+    <virtualType name="locationFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Attribute</item>
+                <item name="decimal" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Decimal</item>
+                <item name="price" xsi:type="string">MageWorx\LocationPages\Model\Layer\Filter\Price</item>
+                <item name="category" xsi:type="string">MageWorx\LocationPages\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MageWorx\LocationPages\Block\Navigation\Location"
+                 type="Magento\LayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">locationFilterList</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\Catalog\Model\Layer\FilterableAttributeListInterface"
+                type="Magento\Catalog\Model\Layer\Category\FilterableAttributeList"/>
+    <type name="Magento\Catalog\Model\Layer\Resolver">
+        <plugin name="mageworx_location_layer_resolver"
+                type="MageWorx\LocationPages\Plugin\AddLocationLayerPlugin" sortOrder="1"/>
+    </type>
+    <type name="\Magento\Framework\Search\Adapter\Aggregation\AggregationResolver">
+        <plugin name="mageworx_location_aggregation_resolver"
+                type="MageWorx\LocationPages\Plugin\AddAggregationResolver" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="mageworx_location_page_show_stock_status"
+                type="MageWorx\LocationPages\Plugin\ShowStockOnLocationPagePlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Search\Model\SearchEngine">
+        <plugin name="mageworx_location_page_use_mysql_for_location_page"
+                type="MageWorx\LocationPages\Plugin\UseMysqlForLocationPagePlugin" sortOrder="1"/>
+    </type>
+</config>
